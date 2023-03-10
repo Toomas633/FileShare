@@ -22,6 +22,6 @@
 
 
 # Ignore test upload files
-!uploads
+!uploads/test.txt
 uploads/*
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode
