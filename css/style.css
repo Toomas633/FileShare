@@ -20,14 +20,16 @@ body {
   margin: 0;
 }
 
-#login-button {
+#login-button, #login-button:visited {
   background-color: transparent;
   border: none;
+  text-decoration: none;
   color: #2196f3;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 20px;
   margin-right: 10px;
   text-decoration: none;
+  font-weight: bold;
 }
 
 #login-button:hover {
@@ -194,7 +196,8 @@ body {
   cursor: pointer;
 }
 
-.close:hover,.close:focus {
+.close:hover,
+.close:focus {
   color: #2196f3;
   text-decoration: none;
   cursor: pointer;
