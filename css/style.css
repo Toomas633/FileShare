@@ -11,6 +11,7 @@ body {
   display: flex;
   align-items: center;
   padding: 10px;
+  max-height: 50px;
 }
 
 #page-name {
@@ -201,4 +202,10 @@ body {
   color: #2196f3;
   text-decoration: none;
   cursor: pointer;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #2196f3;
+  margin-bottom: 20px;
 }

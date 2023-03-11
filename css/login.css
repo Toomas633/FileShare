@@ -87,6 +87,7 @@ button[type="submit"]:hover {
     display: flex;
     align-items: center;
     padding: 10px;
+    max-height: 50px;
   }
   #page-name {
     flex-grow: 1;
