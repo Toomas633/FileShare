@@ -35,3 +35,5 @@ TODO:
   * [ ] Overview
   * [ ] Running instructions
   * [ ] Demo link
+* [ ] Maybe:
+  * [ ] Docker
