@@ -1,0 +1,25 @@
+ /* Style for the top bar */
+ #top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Style for the page name */
+#page-name {
+    text-decoration: none;
+    color: #fff;
+    font-size: 24px;
+}
+
+/* Style for the logout button */
+#logout-btn {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
