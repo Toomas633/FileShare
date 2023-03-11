@@ -65,6 +65,7 @@ body {
 }
 
 #link-popup {
+  width: 25%;
   background-color: #121212;
   color: #fff;
   border-radius: 5px;
@@ -159,6 +160,7 @@ body {
 }
 
 #error-popup {
+  width: 25%;
   background-color: #121212;
   color: #fff;
   border-radius: 5px;
