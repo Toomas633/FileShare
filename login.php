@@ -9,7 +9,9 @@
 
 <body>
 	<div id="top-bar">
-		<h1 id="page-name">File Upload</h1>
+		<a href="index.html" style="text-decoration: none;" id="page-name">
+			<h1 id="page-name">File Upload</h1>
+		</a>
 		<a href="/" id="back-button">&#8678; Back</a>
 	</div>
 	<div class="container">
