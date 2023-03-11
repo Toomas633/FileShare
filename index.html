@@ -13,10 +13,15 @@
     </header>
     <div id="file-upload-form">
       <h2>Upload a File</h2>
-      <form action="php/upload.php" method="post" enctype="multipart/form-data">
+      <form id="upload-form" enctype="multipart/form-data">
         <div id="drop-area">
           <p>Drag and drop a file here or click to select a file</p>
           <input type="file" id="file-input" name="file-input" accept="*" />
+        </div>
+        <div id="slider-container">
+          <label for="delete-time-slider">Delete Time:</label>
+          <input type="range" id="delete-time-slider" name="delete-time-slider" min="0" max="13" step="1" value="0">
+          <span id="slider-value">Never</span>
         </div>
         <button type="submit" id="upload-button">Upload File</button>
       </form>

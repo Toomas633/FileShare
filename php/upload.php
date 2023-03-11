@@ -29,10 +29,14 @@ if ($uploadOk == 0) {
     // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
-        $fileUrl = $linkBeginning . "uploads/" . $fileName;
-        echo $fileUrl;
+        if (in_array($file_extension, ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'mp4', 'webm', 'ogg', 'pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx'])) {
+            $fileUrl = $linkBeginning . $fileName;
+            echo $fileUrl;
+        } else {
+            $fileUrl = $linkBeginning . "download.php/" . $fileName;
+            echo $fileUrl;
+        }
     } else {
         echo "ERROR: Sorry, there was an error uploading your file.";
     }
 }
-?>

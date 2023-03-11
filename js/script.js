@@ -5,6 +5,8 @@ const errorPopup = document.getElementById("error-popup");
 const errorText = document.getElementById("error");
 const linkInput = document.getElementById("link");
 const copyLinkButton = document.getElementById("copy-link-button");
+const deleteTimeSlider = document.getElementById("delete-time-slider");
+const deleteTimeDisplay = document.getElementById("slider-value");
 
 // Allow drag and drop for file upload
 dropArea.addEventListener("dragover", (e) => {
@@ -46,6 +48,26 @@ form.addEventListener("submit", (e) => {
         errorText.value = linkEnding.substring(7);
         errorPopup.style.display = "block";
       } else {
+        const deleteTime = deleteTimeSlider.value;
+        var deleteDate = Date.now() + deleteTime * 60 * 1000;
+        var fileName = linkEnding.substring(linkEnding.lastIndexOf('/') + 1)
+        const fileData = {
+          name: fileName,
+          uploadTime: Date.now(),
+          deleteTime: deleteDate,
+        };
+        var json_data = JSON.stringify(fileData);
+        // Send data to PHP script using AJAX
+        var xhr = new XMLHttpRequest();
+        var url = "php/write.php";
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log(xhr.responseText);
+          }
+        };
+        xhr.send("data=" + json_data);
         linkInput.value = linkEnding;
         linkPopup.style.display = "block";
       }
@@ -66,7 +88,6 @@ copyLinkButton.addEventListener("click", (e) => {
   }, 3000);
 });
 
-
 // Close the popup when the user clicks the close button
 const closeButtons = document.querySelectorAll(".close");
 
@@ -75,4 +96,22 @@ closeButtons.forEach((button) => {
     e.preventDefault();
     location.reload();
   });
+});
+
+// Display the selected delete time value next to the slider
+deleteTimeSlider.addEventListener("input", () => {
+  const sliderValue = parseInt(deleteTimeSlider.value);
+  let deleteTimeDisplayValue;
+
+  if (sliderValue === 0) {
+    deleteTimeDisplayValue = "Never";
+  } else if (sliderValue <= 12) {
+    deleteTimeDisplayValue = `${sliderValue} hour${sliderValue > 1 ? "s" : ""}`;
+  } else if (sliderValue === 13) {
+    deleteTimeDisplayValue = "24 hours";
+  } else {
+    deleteTimeDisplayValue = "Never";
+  }
+
+  deleteTimeDisplay.innerHTML = deleteTimeDisplayValue;
 });
