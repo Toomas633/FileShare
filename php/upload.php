@@ -7,8 +7,9 @@ $uploadOk = 1;
 $errorMsg = "";
 $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
-// Read the beginning of the generated link from a file
+// Read the beginning of the generated link and max file size from a file
 $linkBeginning = file_get_contents("link_address.txt");
+$maxFileSize = intval(file_get_contents("max_size.txt"));
 
 // Check if file already exists
 if (file_exists($targetFile)) {
@@ -17,8 +18,13 @@ if (file_exists($targetFile)) {
 }
 
 // Check file size
-if ($_FILES["file"]["size"] > 5000000) {
-    $errorMsg = "ERROR: Sorry, your file is too large.";
+if (isset($maxFileSize)) {
+    if ($_FILES["file"]["size"] > $maxFileSize) {
+        $errorMsg = "ERROR: Sorry, your file is too large.";
+        $uploadOk = 0;
+    }
+} else {
+    $errorMsg = "ERROR: Max file size not set or file unavailable.";
     $uploadOk = 0;
 }
 
@@ -29,7 +35,7 @@ if ($uploadOk == 0) {
     // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
-        if (in_array($file_extension, ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'mp4', 'webm', 'ogg', 'pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx'])) {
+        if (in_array($imageFileType, ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'mp4', 'webm', 'ogg', 'pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx'])) {
             $fileUrl = $linkBeginning . $fileName;
             echo $fileUrl;
         } else {
