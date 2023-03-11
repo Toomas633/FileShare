@@ -1,4 +1,5 @@
 <?php
+session_set_cookie_params(0);
 session_start(); // Start a session
 
 $password_file = "admin_password.txt"; // Path to password file
