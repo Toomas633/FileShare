@@ -1,6 +1,8 @@
 <?php
 $targetDir = "../uploads/";
-$targetFile = $targetDir . basename($_FILES["file"]["name"]);
+$extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+$fileName = uniqid() . '.' . $extension;
+$targetFile = $targetDir . $fileName;
 $uploadOk = 1;
 $errorMsg = "";
 $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
@@ -27,7 +29,7 @@ if ($uploadOk == 0) {
     // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
-        $fileUrl = $linkBeginning . "uploads/" . basename($_FILES["file"]["name"]);
+        $fileUrl = $linkBeginning . "uploads/" . $fileName;
         echo $fileUrl;
     } else {
         echo "ERROR: Sorry, there was an error uploading your file.";
