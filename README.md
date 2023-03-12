@@ -36,5 +36,13 @@ TODO:
   * [ ] Overview
   * [ ] Running instructions
   * [ ] Demo link
+* [ ] Preview icons
+  * [ ] image
+  * [X] pdf
+  * [X] doc
+  * [ ] txt
+  * [ ] excel
+  * [ ] powerpoint
+  * [X] general files
 * [ ] Maybe:
   * [ ] Docker
