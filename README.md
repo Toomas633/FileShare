@@ -28,7 +28,6 @@ TODO:
   * [ ] file preview icons
   * [ ] file not found
   * [ ] download  and/or delete
-* [ ] overall styling
 * [ ] delete script for the backround
   * [ ] delete files that have db time over
   * [ ] delete db record if file not in uploads folder
@@ -46,5 +45,6 @@ TODO:
   * [X] general files
   * [X] zip icon
   * [X] rar icon
-* [ ] Maybe:
+* [ ] Styling
+* [ ] Maybe
   * [ ] Docker
