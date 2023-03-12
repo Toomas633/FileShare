@@ -18,9 +18,9 @@ TODO:
 * [ ] settings page
   * [X] server address eddit
   * [X] max file size edit
-  * [ ] file list
-  * [ ] file delete
-  * [ ] file preview icons
+  * [X] file list
+  * [X] file delete
+  * [X] file preview icons
   * [X] logout
   * [X] password change
   * [ ] styling
@@ -36,13 +36,15 @@ TODO:
   * [ ] Overview
   * [ ] Running instructions
   * [ ] Demo link
-* [ ] Preview icons
-  * [ ] image
+* [X] Preview icons
+  * [X] image
   * [X] pdf
   * [X] doc
-  * [ ] txt
-  * [ ] excel
-  * [ ] powerpoint
+  * [X] txt
+  * [X] excel
+  * [X] powerpoint
   * [X] general files
+  * [X] zip icon
+  * [X] rar icon
 * [ ] Maybe:
   * [ ] Docker
