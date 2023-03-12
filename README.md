@@ -10,11 +10,11 @@ TODO:
   * [X] styling
   * [X] database for uploaded files
   * [X] delete time selection slider
-* [ ] login page
+* [X] login page
   * [X] Login
   * [X] Logout on page close
   * [X] styling
-  * [ ] skip login if already logged in
+  * [X] skip login if already logged in
 * [ ] settings page
   * [X] server address eddit
   * [X] max file size edit
