@@ -132,6 +132,16 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                                 case "docx":
                                     echo "<img src='icons/doc-icon.png' class='file-preview'>";
                                     break;
+                                case "txt":
+                                    echo "<img src='icons/txt-icon.png' class='file-preview'>";
+                                    break;
+                                case "xlsx":
+                                case "csv":
+                                    echo "<img src='icons/excel-icon.png' class='file-preview'>";
+                                    break;
+                                case ".pptx":
+                                    echo "<img src='icons/powerpoint-icon.png' class='file-preview'>";
+                                    break;
                                 default:
                                     echo "<img src='icons/file-icon.png' class='file-preview'>";
                             }
