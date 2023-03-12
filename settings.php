@@ -30,12 +30,27 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             header('Location: login.php');
             exit;
         }
-        $link_address = '';
+
+        $link_address = file_get_contents('php/link_address.txt');
+        $max_size = file_get_contents('php/max_size.txt') / 1000000;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $link_address = $_POST['link_address'];
-            file_put_contents('php/link_address.txt', $link_address);
+            if (isset($_POST['save_link_address'])) {
+                $link_address = $_POST['link_address'];
+                file_put_contents('php/link_address.txt', $link_address);
+            }
+
+            if (isset($_POST['save_max_size'])) {
+                $max_size = $_POST['max_size'];
+                file_put_contents('php/max_size.txt', $max_size * 1000000);
+            }
         } else {
-            $link_address = file_get_contents('php/link_address.txt');
+            if (file_exists('php/link_address.txt')) {
+                $link_address = file_get_contents('php/link_address.txt');
+            }
+
+            if (file_exists('php/max_size.txt')) {
+                $max_size = file_get_contents('php/max_size.txt') / 1000000;
+            }
         }
         ?>
         </div>
@@ -55,12 +70,19 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             </form>
         </div>
     </div>
-    <h1>Settings</h1>
-    <form method="post">
-        <label for="link_address">Link Address:</label>
-        <input type="text" name="link_address" id="link_address" value="<?php echo htmlspecialchars($link_address); ?>">
-        <input type="submit" value="Save">
-    </form>
+    <div id="sidebar">
+        <h1>Settings</h1>
+        <form method="post">
+            <label for="link_address">Server Address:</label>
+            <input type="text" name="link_address" id="link_address" value="<?= htmlspecialchars($link_address, ENT_QUOTES); ?>">
+            <input type="submit" name="save_link_address" value="Save">
+        </form>
+        <form method="post">
+            <label for="max_size">Max File Size (MB):</label>
+            <input type="text" name="max_size" id="max_size" value="<?= htmlspecialchars($max_size, ENT_QUOTES); ?>" pattern="[0-9]+">
+            <input type="submit" name="save_max_size" value="Save">
+        </form>
+    </div>
     <div id="success-popup"></div>
     <div id="error-popup"></div>
     <script type="text/javascript" src="js/settings.js"></script>
