@@ -83,10 +83,87 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <input type="submit" name="save_max_size" value="Save">
         </form>
     </div>
-    <div id="success-popup"></div>
-    <div id="error-popup"></div>
-    <script type="text/javascript" src="js/settings.js"></script>
-    <script type="text/javascript" src="js/logout.js"></script>
+    <div id="file-list">
+        <h2>List of Files</h2>
+        <div class="row">
+            <?php
+            // Check if the status query parameter is set
+            if (isset($_GET['status'])) {
+                // Display the status message
+                echo "<p class='warning'>" . htmlspecialchars($_GET['status']) . "</p>";
+            }
+            ?>
+            <div class="row">
+                <?php
+                // Define the directory path
+                $dir = "uploads/";
+
+                // Open the directory
+                if ($handle = opendir($dir)) {
+
+                    // Initialize counter variable
+                    $count = 0;
+
+                    // Loop through each file in the directory
+                    while (false !== ($file = readdir($handle))) {
+
+                        // Ignore the "." and ".." directories
+                        if ($file != "." && $file != "..") {
+
+                            // Get the file extension
+                            $extension = pathinfo($file, PATHINFO_EXTENSION);
+
+                            // Display the file name, preview, and delete button
+                            echo "<div class='col'>";
+                            echo "<div class='preview'>";
+
+                            // Display a preview based on the file extension
+                            switch ($extension) {
+                                case "jpg":
+                                case "jpeg":
+                                case "png":
+                                case "gif":
+                                    echo "<img src='icons/image-icon.png'> class='file-preview'";
+                                    break;
+                                case "pdf":
+                                    echo "<img src='icons/pdf-icon.png' class='file-preview'>";
+                                    break;
+                                case "doc":
+                                case "docx":
+                                    echo "<img src='icons/doc-icon.png' class='file-preview'>";
+                                    break;
+                                default:
+                                    echo "<img src='icons/file-icon.png' class='file-preview'>";
+                            }
+
+                            echo "</div>";
+                            echo "<p>$file</p>";
+                            echo "<button class='delete' onclick='confirmDelete(\"$dir$file\")'><i class='fas fa-trash-alt'></i></button>";
+                            echo "</div>";
+
+                            // Increment the counter
+                            $count++;
+
+                            // Wrap every 3 files in a new row
+                            if ($count % 3 == 0) {
+                                echo "</div><div class='row'>";
+                            }
+                        }
+                    }
+
+                    // Close the directory
+                    closedir($handle);
+                }
+                ?>
+            </div>
+        </div>
+        <script>
+            function confirmDelete(file) {
+                if (confirm("Are you sure you want to delete this file?")) {
+                    window.location.href = "php/delete.php?file=" + file;
+                }
+            }
+        </script>
 </body>
 
 </html>
