@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL & ~E_WARNING & ~E_DEPRECATED);
 session_set_cookie_params(0);
 session_start();
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
@@ -144,6 +145,24 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                         }
                         echo "<div class='text-container'>";
                         echo "<p id='file-name'>$file</p>";
+                        $db = file_get_contents('db/database.json');
+                        $data = json_decode($db, true);
+                        $deleteTime = null;
+                        foreach ($data['files'] as $fileToDelete) {
+                            if ($fileToDelete['name'] === $file) {
+                                if (intval($fileToDelete['uploadTime']) === intval($fileToDelete['deleteTime'])) {
+                                    $deleteTime = "Never";
+                                    break;
+                                } else {
+                                    $deleteTime = intval($fileToDelete['deleteTime']) / 1000;
+                                    $deleteTime = date('G:i:s j-M-Y', $deleteTime);
+                                    break;
+                                }
+                            } else {
+                                $deleteTime = "Unknown";
+                            }
+                        }
+                        echo "<p id='file-delete-time'>Delete time: $deleteTime</p>";
                         echo "</div>";
                         echo "<button class='delete' id='delete-button' onclick='confirmDelete(\"$dir$file\")'><i class='fas fa-trash-alt'></i></button>";
                         echo "</div>";

@@ -23,6 +23,8 @@ TODO:
   * [X] file preview icons
   * [X] logout
   * [X] password change
+  * [ ] time zone dropdown
+  * [ ] display file delete time in chosen timezone
   * [ ] styling
 * [ ] download page
   * [ ] file preview icons
