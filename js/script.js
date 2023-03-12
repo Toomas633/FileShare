@@ -25,6 +25,24 @@ dropArea.addEventListener("drop", (e) => {
   fileInput.files = e.dataTransfer.files;
 });
 
+// Display the selected delete time value next to the slider
+deleteTimeSlider.addEventListener("input", () => {
+  const sliderValue = parseInt(deleteTimeSlider.value);
+  let deleteTimeDisplayValue;
+
+  if (sliderValue === 0) {
+    deleteTimeDisplayValue = "Never";
+  } else if (sliderValue <= 12) {
+    deleteTimeDisplayValue = `${sliderValue} hour${sliderValue > 1 ? "s" : ""}`;
+  } else if (sliderValue === 13) {
+    deleteTimeDisplayValue = "24 hours";
+  } else {
+    deleteTimeDisplayValue = "Never";
+  }
+
+  deleteTimeDisplay.innerHTML = deleteTimeDisplayValue;
+});
+
 // Generate link and display it in a popup upon file upload
 const form = document.querySelector("form");
 
@@ -48,9 +66,12 @@ form.addEventListener("submit", (e) => {
         errorText.value = linkEnding.substring(7);
         errorPopup.style.display = "block";
       } else {
-        const deleteTime = deleteTimeSlider.value;
-        var deleteDate = Date.now() + deleteTime * 60 * 1000;
-        var fileName = linkEnding.substring(linkEnding.lastIndexOf('/') + 1)
+        if (deleteTimeSlider.value <= 12) {
+          var deleteDate = Date.now() + deleteTimeSlider.value * 60 *  60 * 1000;
+        } else {
+          var deleteDate = Date.now() + 24 * 60 * 60 * 1000;
+        }
+        var fileName = linkEnding.substring(linkEnding.lastIndexOf("/") + 1);
         const fileData = {
           name: fileName,
           uploadTime: Date.now(),
@@ -61,7 +82,10 @@ form.addEventListener("submit", (e) => {
         var xhr = new XMLHttpRequest();
         var url = "php/write.php";
         xhr.open("POST", url, true);
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.setRequestHeader(
+          "Content-type",
+          "application/x-www-form-urlencoded"
+        );
         xhr.onreadystatechange = function () {
           if (xhr.readyState == 4 && xhr.status == 200) {
             console.log(xhr.responseText);
@@ -96,22 +120,4 @@ closeButtons.forEach((button) => {
     e.preventDefault();
     location.reload();
   });
-});
-
-// Display the selected delete time value next to the slider
-deleteTimeSlider.addEventListener("input", () => {
-  const sliderValue = parseInt(deleteTimeSlider.value);
-  let deleteTimeDisplayValue;
-
-  if (sliderValue === 0) {
-    deleteTimeDisplayValue = "Never";
-  } else if (sliderValue <= 12) {
-    deleteTimeDisplayValue = `${sliderValue} hour${sliderValue > 1 ? "s" : ""}`;
-  } else if (sliderValue === 13) {
-    deleteTimeDisplayValue = "24 hours";
-  } else {
-    deleteTimeDisplayValue = "Never";
-  }
-
-  deleteTimeDisplay.innerHTML = deleteTimeDisplayValue;
 });
