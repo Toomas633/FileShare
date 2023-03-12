@@ -46,7 +46,7 @@ body {
 
 .col {
   float: left;
-  width: calc((100%-250px) / 2);
+  width: calc((100%-250px) / 3);
   padding-left: 5px;
   padding-right: 5px;
   height: 90px;
