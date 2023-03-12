@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background-color: #282828;
   font-family: Arial, sans-serif;
@@ -14,11 +20,14 @@ body {
   height: 40px;
 }
 
-#page-name {
-  flex-grow: 1;
+#page-name,
+#page-name:visited {
   font-size: 24px;
-  font-weight: bold;
   margin: 0;
+  flex-grow: 1;
+  font-weight: bold;
+  text-decoration: none;
+  color: #2196f3;
 }
 
 #login-button,
@@ -212,13 +221,6 @@ body {
 }
 
 h1 {
-  font-size: 2rem;
-  text-decoration: none;
-  color: #2196f3;
-  margin-bottom: 20px;
-}
-
-#page-name:visited {
   font-size: 2rem;
   text-decoration: none;
   color: #2196f3;
