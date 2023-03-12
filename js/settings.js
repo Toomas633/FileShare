@@ -59,3 +59,9 @@ changePasswordForm.addEventListener("submit", (event) => {
   const data = `current_password=${currentPassword}&new_password=${newPassword}&confirm_password=${confirmPassword}`;
   xhr.send(data);
 });
+
+function confirmDelete(file) {
+  if (confirm("Are you sure you want to delete this file? ")) {
+      window.location.href = "php/delete.php?file=" + file;
+  }
+}
