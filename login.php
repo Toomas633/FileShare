@@ -1,3 +1,12 @@
+<?php
+error_reporting(E_ALL & ~E_WARNING);
+session_set_cookie_params(0);
+session_start();
+if (isset($_SESSION['logged_in']) || $_SESSION['logged_in'] === true) {
+	header('Location: settings.php');
+	exit;
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -9,10 +18,7 @@
 
 <body>
 	<div id="top-bar">
-		<a href="index.html" style="text-decoration: none;" id="page-name">
-			<h1 id="page-name">File Upload</h1>
-		</a>
-		<a href="/" id="back-button">&#8678; Back</a>
+		<h1 id="page-name"><a href="index.html" style="text-decoration: none;" id="page-name">File Upload</a></h1>
 	</div>
 	<div class="container">
 		<div class="card">
