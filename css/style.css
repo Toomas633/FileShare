@@ -11,7 +11,7 @@ body {
   display: flex;
   align-items: center;
   padding: 10px;
-  max-height: 50px;
+  height: 40px;
 }
 
 #page-name {
@@ -210,8 +210,20 @@ body {
   cursor: pointer;
 }
 
-h1 {
+h1, h1:visited {
   font-size: 2rem;
+  text-decoration: none;
   color: #2196f3;
   margin-bottom: 20px;
+}
+
+.fa-settings{
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-image: url("../icons/settings.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 5px;
 }
