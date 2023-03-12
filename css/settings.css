@@ -18,7 +18,7 @@ body {
   display: flex;
   align-items: center;
   padding: 10px;
-  height: 40px;
+  height: 60px;
 }
 
 #page-name {
@@ -37,12 +37,13 @@ body {
 
 #change-password-btn {
   background-color: #2196f3;
-  border: none;
   color: #fff;
-  cursor: pointer;
-  font-size: 16px;
+  border: none;
   padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
   transition: background-color 0.3s;
+  border-radius: 4px;
 }
 
 #change-password-btn:hover {
@@ -63,7 +64,6 @@ body {
   background-color: #c82333;
 }
 
-/* Modal styles */
 #password-change-modal {
   display: none;
   position: fixed;
