@@ -103,7 +103,7 @@
                     $deleteTime = "Unknown";
                 }
             }
-            echo "<p id='file-delete-time'>Delete time: $deleteTime ( $timezone )</p>";
+            echo "<p id='file-delete-time'>Delete time: $deleteTime ( Server timezone: $timezone )</p>";
             echo "</div>";
             echo "<button class='delete' id='delete-button' onclick='confirmDelete(\"$file\")'><i class='fas fa-trash-alt'></i></button>";
             echo "</div>";
