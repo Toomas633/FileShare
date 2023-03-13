@@ -57,3 +57,4 @@ TODO:
 * [ ] Maybe
   * [ ] Docker
   * [ ] Upload random name switch
+  * [ ] Light/Dark mode switch
