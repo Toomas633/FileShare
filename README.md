@@ -24,9 +24,9 @@ TODO:
   * [X] logout
   * [X] password change
   * [X] display file delete time
-  * [ ] time zone dropdown
+  * [X] time zone dropdown
   * [ ] display file delete time in chosen timezone
-  * [ ] styling
+  * [X] styling
 * [ ] download page
   * [ ] file preview icons
   * [ ] file not found
@@ -48,6 +48,8 @@ TODO:
   * [X] general files
   * [X] zip icon
   * [X] rar icon
+  * [X] audio icon
+  * [X] video icon
 * [ ] Styling
 * [ ] Maybe
   * [ ] Docker

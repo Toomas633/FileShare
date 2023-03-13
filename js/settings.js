@@ -62,6 +62,47 @@ changePasswordForm.addEventListener("submit", (event) => {
 
 function confirmDelete(file) {
   if (confirm("Are you sure you want to delete this file? ")) {
-      window.location.href = "php/delete.php?file=" + file;
+    window.location.href = "php/delete.php?file=" + file;
   }
 }
+
+const selectElement = document.querySelector('select[name="timezone"]');
+
+window.addEventListener("load", () => {
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "php/read_tz.php");
+  xhr.addEventListener("load", () => {
+    if (xhr.status === 200) {
+      const timezone = xhr.responseText.trim();
+      selectElement.value = timezone;
+    } else {
+      errorPopup.innerHTML = "Error reading timezone:". xhr.status;
+      errorPopup.style.display = "block";
+      setTimeout(() => {
+        errorPopup.style.display = "none";
+      }, 3000);
+    }
+  });
+  xhr.send();
+});
+
+selectElement.addEventListener("change", (event) => {
+  const timezone = event.target.value;
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", "php/write_tz.php");
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  const data = `timezone=${timezone}`;
+  xhr.addEventListener("load", () => {
+    if (xhr.status === 200) {
+      successPopup.innerHTML = "Timezone written successfully!";
+      successPopup.style.display = "block";
+    } else {
+      errorPopup.innerHTML = "Error writing timezone: ".xhr.status;
+      errorPopup.style.display = "block";
+      setTimeout(() => {
+        errorPopup.style.display = "none";
+      }, 3000);
+    }
+  });
+  xhr.send(data);
+});
