@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #282828;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#top-bar {
+  background-color: #121212;
+  color: #2196f3;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  height: 60px;
+}
+
+#page-name,
+#page-name:visited {
+  font-size: 24px;
+  margin: 0;
+  flex-grow: 1;
+  font-weight: bold;
+  text-decoration: none;
+  color: #2196f3;
+}

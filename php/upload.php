@@ -29,7 +29,7 @@ if ($uploadOk == 0) {
             $fileUrl = $linkBeginning ."uploads/". $fileName;
             echo $fileUrl;
         } else {
-            $fileUrl = $linkBeginning . "download.php/" . $fileName;
+            $fileUrl = $linkBeginning . "download.php?file=" . $fileName;
             echo $fileUrl;
         }
     } else {
