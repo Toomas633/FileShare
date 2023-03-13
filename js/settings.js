@@ -4,17 +4,14 @@ const changePasswordForm = document.querySelector(
 );
 const successPopup = document.getElementById("success-popup");
 const errorPopup = document.getElementById("error-popup");
-
 const changePasswordBtn = document.getElementById("change-password-btn");
 changePasswordBtn.addEventListener("click", () => {
   changePasswordModal.style.display = "block";
 });
-
 const closePasswordModal = document.getElementById("close-password-modal");
 closePasswordModal.addEventListener("click", () => {
   changePasswordModal.style.display = "none";
 });
-
 changePasswordForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const currentPasswordInput = document.getElementById("current-password");
@@ -23,7 +20,6 @@ changePasswordForm.addEventListener("submit", (event) => {
   const currentPassword = currentPasswordInput.value;
   const newPassword = newPasswordInput.value;
   const confirmPassword = confirmPasswordInput.value;
-
   const xhr = new XMLHttpRequest();
   xhr.open("POST", "php/change_password.php", true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -59,15 +55,12 @@ changePasswordForm.addEventListener("submit", (event) => {
   const data = `current_password=${currentPassword}&new_password=${newPassword}&confirm_password=${confirmPassword}`;
   xhr.send(data);
 });
-
 function confirmDelete(file) {
   if (confirm("Are you sure you want to delete this file? ")) {
     window.location.href = "php/delete.php?file=" + file;
   }
 }
-
 const selectElement = document.querySelector('select[name="timezone"]');
-
 window.addEventListener("load", () => {
   const xhr = new XMLHttpRequest();
   xhr.open("GET", "php/read_tz.php");
@@ -76,7 +69,7 @@ window.addEventListener("load", () => {
       const timezone = xhr.responseText.trim();
       selectElement.value = timezone;
     } else {
-      errorPopup.innerHTML = "Error reading timezone:". xhr.status;
+      errorPopup.innerHTML = "Error reading timezone:" + xhr.status;
       errorPopup.style.display = "block";
       setTimeout(() => {
         errorPopup.style.display = "none";
@@ -85,7 +78,6 @@ window.addEventListener("load", () => {
   });
   xhr.send();
 });
-
 selectElement.addEventListener("change", (event) => {
   const timezone = event.target.value;
   const xhr = new XMLHttpRequest();
@@ -97,7 +89,7 @@ selectElement.addEventListener("change", (event) => {
       successPopup.innerHTML = "Timezone written successfully!";
       successPopup.style.display = "block";
     } else {
-      errorPopup.innerHTML = "Error writing timezone: ".xhr.status;
+      errorPopup.innerHTML = "Error writing timezone: " + xhr.status;
       errorPopup.style.display = "block";
       setTimeout(() => {
         errorPopup.style.display = "none";

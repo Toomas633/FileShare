@@ -7,29 +7,22 @@ const linkInput = document.getElementById("link");
 const copyLinkButton = document.getElementById("copy-link-button");
 const deleteTimeSlider = document.getElementById("delete-time-slider");
 const deleteTimeDisplay = document.getElementById("slider-value");
-
-// Allow drag and drop for file upload
 dropArea.addEventListener("dragover", (e) => {
   e.preventDefault();
   dropArea.classList.add("dragover");
 });
-
 dropArea.addEventListener("dragleave", (e) => {
   e.preventDefault();
   dropArea.classList.remove("dragover");
 });
-
 dropArea.addEventListener("drop", (e) => {
   e.preventDefault();
   dropArea.classList.remove("dragover");
   fileInput.files = e.dataTransfer.files;
 });
-
-// Display the selected delete time value next to the slider
 deleteTimeSlider.addEventListener("input", () => {
   const sliderValue = parseInt(deleteTimeSlider.value);
   let deleteTimeDisplayValue;
-
   if (sliderValue === 0) {
     deleteTimeDisplayValue = "Never";
   } else if (sliderValue <= 12) {
@@ -39,21 +32,15 @@ deleteTimeSlider.addEventListener("input", () => {
   } else {
     deleteTimeDisplayValue = "Never";
   }
-
   deleteTimeDisplay.innerHTML = deleteTimeDisplayValue;
 });
 
-// Generate link and display it in a popup upon file upload
 const form = document.querySelector("form");
-
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-
   const file = fileInput.files[0];
-
   const formData = new FormData();
   formData.append("file", file);
-
   fetch("php/upload.php", {
     method: "POST",
     body: formData,
@@ -67,7 +54,7 @@ form.addEventListener("submit", (e) => {
         errorPopup.style.display = "block";
       } else {
         if (deleteTimeSlider.value <= 12) {
-          var deleteDate = Date.now() + deleteTimeSlider.value * 60 *  60 * 1000;
+          var deleteDate = Date.now() + deleteTimeSlider.value * 60 * 60 * 1000;
         } else {
           var deleteDate = Date.now() + 24 * 60 * 60 * 1000;
         }
@@ -100,8 +87,6 @@ form.addEventListener("submit", (e) => {
       console.error(error);
     });
 });
-
-// Copy link to clipboard
 copyLinkButton.addEventListener("click", (e) => {
   e.preventDefault();
   linkInput.select();
@@ -111,10 +96,7 @@ copyLinkButton.addEventListener("click", (e) => {
     copyLinkButton.innerHTML = '<i class="fa-clipboard"></i> Copy Link';
   }, 3000);
 });
-
-// Close the popup when the user clicks the close button
 const closeButtons = document.querySelectorAll(".close");
-
 closeButtons.forEach((button) => {
   button.addEventListener("click", (e) => {
     e.preventDefault();

@@ -29,26 +29,23 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             header('Location: login.php');
             exit;
         }
-
-        $link_address = file_get_contents('php/link_address.txt');
-        $max_size = file_get_contents('php/max_size.txt') / 1000000;
+        $link_address = file_get_contents('db/link_address.txt');
+        $max_size = file_get_contents('db/max_size.txt') / 1000000;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['save_link_address'])) {
                 $link_address = $_POST['link_address'];
-                file_put_contents('php/link_address.txt', $link_address);
+                file_put_contents('db/link_address.txt', $link_address);
             }
-
             if (isset($_POST['save_max_size'])) {
                 $max_size = $_POST['max_size'];
-                file_put_contents('php/max_size.txt', $max_size * 1000000);
+                file_put_contents('db/max_size.txt', $max_size * 1000000);
             }
         } else {
-            if (file_exists('php/link_address.txt')) {
-                $link_address = file_get_contents('php/link_address.txt');
+            if (file_exists('db/link_address.txt')) {
+                $link_address = file_get_contents('db/link_address.txt');
             }
-
-            if (file_exists('php/max_size.txt')) {
-                $max_size = file_get_contents('php/max_size.txt') / 1000000;
+            if (file_exists('db/max_size.txt')) {
+                $max_size = file_get_contents('db/max_size.txt') / 1000000;
             }
         }
         ?>
@@ -173,30 +170,19 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         <h2>List of Files</h2>
         <div class="warning"></div>
         <?php
-        // Check if the status query parameter is set
         if (isset($_GET['status'])) {
-            // Display the status message
             echo "<p class='warning'>" . htmlspecialchars($_GET['status']) . "</p>";
         }
         ?>
         <div class="row">
             <?php
-            // Define the directory path
-            $dir = "uploads/";
-            // Open the directory
-            if ($handle = opendir($dir)) {
-                // Initialize counter variable
+            if ($handle = opendir("uploads/")) {
                 $count = 0;
-                // Loop through each file in the directory
                 while (false !== ($file = readdir($handle))) {
-                    // Ignore the "." and ".." directories
                     if ($file != "." && $file != "..") {
-                        // Get the file extension
                         $extension = pathinfo($file, PATHINFO_EXTENSION);
-                        // Display the file name, preview, and delete button
                         echo "<div class='col'>";
                         echo "<div class='file'>";
-                        // Display a preview based on the file extension
                         switch ($extension) {
                             case "jpg":
                             case "jpeg":
@@ -247,7 +233,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                         $db = file_get_contents('db/database.json');
                         $data = json_decode($db, true);
                         $deleteTime = null;
-                        $timezone = file_get_contents('php/tz.txt');
+                        $timezone = file_get_contents('db/tz.txt');
                         foreach ($data['files'] as $fileToDelete) {
                             if ($fileToDelete['name'] === $file) {
                                 if (intval($fileToDelete['uploadTime']) === intval($fileToDelete['deleteTime'])) {
@@ -269,15 +255,12 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                         echo "<button class='delete' id='delete-button' onclick='confirmDelete(\"$dir$file\")'><i class='fas fa-trash-alt'></i></button>";
                         echo "</div>";
                         echo "</div>";
-                        // Increment the counter
                         $count++;
-                        // Wrap every 3 files in a new row
                         if ($count % 3 == 0) {
                             echo "</div><div class='row'>";
                         }
                     }
                 }
-                // Close the directory
                 closedir($handle);
             }
             ?>
