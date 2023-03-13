@@ -167,6 +167,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <option value="Pacific/Tongatapu">(GMT+13:00) Nuku'alofa</option>
             <option value="Pacific/Kiritimati">(GMT+14:00) Kiritimati</option>
         </select>
+        <button id="refresh-btn" onclick="location.reload()">Refresh</button>
     </div>
     <div id="file-list">
         <h2>List of Files</h2>
@@ -246,14 +247,17 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                         $db = file_get_contents('db/database.json');
                         $data = json_decode($db, true);
                         $deleteTime = null;
+                        $timezone = file_get_contents('php/tz.txt');
                         foreach ($data['files'] as $fileToDelete) {
                             if ($fileToDelete['name'] === $file) {
                                 if (intval($fileToDelete['uploadTime']) === intval($fileToDelete['deleteTime'])) {
                                     $deleteTime = "Never";
                                     break;
                                 } else {
-                                    $deleteTime = intval($fileToDelete['deleteTime']) / 1000;
-                                    $deleteTime = date('G:i:s j-M-Y', $deleteTime);
+                                    $deleteTime = $fileToDelete['deleteTime'] / 1000;
+                                    $deleteTime = new DateTime("@$deleteTime");
+                                    $deleteTime->setTimezone(new DateTimeZone($timezone));
+                                    $deleteTime = $deleteTime->format('H:i:s d-M-Y');
                                     break;
                                 }
                             } else {

@@ -1,7 +1,6 @@
 !!! WORK IN PROGRESS, UNFINISHED !!!
 
 TODO:
-
 * [X] index
   * [X] error popups
   * [X] link generation
@@ -15,7 +14,7 @@ TODO:
   * [X] Logout on page close
   * [X] styling
   * [X] skip login if already logged in
-* [ ] settings page
+* [X] settings page
   * [X] server address eddit
   * [X] max file size edit
   * [X] file list
@@ -25,7 +24,7 @@ TODO:
   * [X] password change
   * [X] display file delete time
   * [X] time zone dropdown
-  * [ ] display file delete time in chosen timezone
+  * [X] display file delete time in chosen timezone
   * [X] styling
 * [ ] download page
   * [ ] file preview icons
