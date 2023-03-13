@@ -31,16 +31,16 @@ body {
 }
 
 #error-popup {
-    top: 60px;
-    right: 10px;
-    display: block;
-    position: absolute;
-    background-color: #282828;
-    border: 1px solid red;
-    border-radius: 5px;
-    width: 250px;
-    height: 50px;
-    padding: 10px;
+  top: 60px;
+  right: 10px;
+  display: block;
+  position: absolute;
+  background-color: #282828;
+  border: 1px solid red;
+  border-radius: 5px;
+  width: 250px;
+  height: 50px;
+  padding: 10px;
 }
 
 #link-error {
@@ -48,4 +48,71 @@ body {
   top: 60px;
   text-align: center;
   padding-top: 5px;
+}
+
+#found-file {
+  background-color: #535353;
+  padding: 10px;
+  position: absolute;
+  top: 80px;
+  left: 25%;
+  width: 50%;
+  height: fit-content;
+  border:none;
+  border-radius: 5px;
+}
+
+.file-preview {
+  float: left;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 80px;
+  height: 80px;
+}
+
+.text-container {
+  float: left;
+  left: 90px;
+  width: calc(100% - 190px);
+  text-align: left;
+}
+
+#file-name {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  color: #2196f3;
+  text-align: left;
+}
+
+#file-delete-time {
+  padding-bottom: 20px;
+  color: #fff;
+  text-align: left;
+}
+
+#delete-button {
+  box-sizing: border-box;
+  float: right;
+  border: none;
+  background-color: #535353;
+  cursor: pointer;
+  width: 80px;
+  height: 80px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.fa-trash-alt {
+  border: none;
+  content: "";
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  padding-top: 20px;
+  padding-left: 20px;
+  background-image: url("../icons/trash.png");
+  background-repeat: no-repeat;
+  background-color: none;
+  background-size: contain;
 }
