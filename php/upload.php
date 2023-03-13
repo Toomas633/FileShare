@@ -26,7 +26,7 @@ if ($uploadOk == 0) {
 } else {
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
         if (in_array($imageFileType, ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'mp4', 'webm', 'ogg', 'pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'mp3', 'wav'])) {
-            $fileUrl = $linkBeginning . $fileName;
+            $fileUrl = $linkBeginning ."uploads/". $fileName;
             echo $fileUrl;
         } else {
             $fileUrl = $linkBeginning . "download.php/" . $fileName;
