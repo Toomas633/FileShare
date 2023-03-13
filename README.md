@@ -1,6 +1,7 @@
 !!! WORK IN PROGRESS, UNFINISHED !!!
 
 TODO:
+
 * [X] index
   * [X] error popups
   * [X] link generation
@@ -52,3 +53,4 @@ TODO:
 * [ ] Styling
 * [ ] Maybe
   * [ ] Docker
+  * [ ] Upload random name switch
