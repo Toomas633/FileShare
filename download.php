@@ -18,7 +18,7 @@
         $fileName = $_GET['file'];
     } else {
         echo '<div id="error-popup">';
-        echo "<p id='link-error'>Error: File name not specified.</p>";
+        echo "<p id='link-error'>Error: Invalid download link.</p>";
         echo "</div>";
     }
     ?>
