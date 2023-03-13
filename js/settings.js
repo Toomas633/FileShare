@@ -56,7 +56,7 @@ changePasswordForm.addEventListener("submit", (event) => {
   xhr.send(data);
 });
 function confirmDelete(file) {
-  if (confirm("Are you sure you want to delete this file? ")) {
+  if (confirm("Are you sure you want to delete this file? "+file)) {
     window.location.href = "php/delete.php?file=" + file;
   }
 }
