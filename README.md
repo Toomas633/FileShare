@@ -29,6 +29,7 @@ TODO:
   * [X] styling
 * [ ] download page
   * [ ] file preview icons
+  * [X] invalid link
   * [ ] file not found
   * [ ] download  and/or delete
 * [ ] delete script for the backround
