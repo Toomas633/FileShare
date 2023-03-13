@@ -28,10 +28,12 @@ TODO:
   * [X] display file delete time in chosen timezone
   * [X] styling
 * [ ] download page
-  * [ ] file preview icons
+  * [X] file preview icons
   * [X] invalid link
-  * [ ] file not found
-  * [ ] download  and/or delete
+  * [X] file not found
+  * [ ] download
+  * [X] delete
+  * [ ] delete database entry
 * [ ] delete script for the backround
   * [ ] delete files that have db time over
   * [ ] delete db record if file not in uploads folder
