@@ -252,6 +252,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                         }
                         echo "<p id='file-delete-time'>Delete time: $deleteTime</p>";
                         echo "</div>";
+                        echo "<button id='download-button' onclick='downloadFile(\"$dir$file\")'><i class='fas fa-download-alt'></i></button>";
                         echo "<button class='delete' id='delete-button' onclick='confirmDelete(\"$dir$file\")'><i class='fas fa-trash-alt'></i></button>";
                         echo "</div>";
                         echo "</div>";
