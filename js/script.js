@@ -34,12 +34,17 @@ deleteTimeSlider.addEventListener("input", () => {
   }
   deleteTimeDisplay.innerHTML = deleteTimeDisplayValue;
 });
-
+const toggleSwitch = document.getElementById('toggle-switch');
 const form = document.querySelector("form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const file = fileInput.files[0];
   const formData = new FormData();
+  if (toggleSwitch.checked) {
+    var random = 1;
+  } else {
+    var random = 0;
+  }
   formData.append("file", file);
   fetch("php/upload.php", {
     method: "POST",
