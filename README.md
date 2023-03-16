@@ -10,12 +10,13 @@ TODO:
   * [X] styling
   * [X] database for uploaded files
   * [X] delete time selection slider
+  * [ ] random name toggle
 * [X] login page
   * [X] Login
   * [X] Logout on page close
   * [X] styling
   * [X] skip login if already logged in
-* [X] settings page
+* [ ] settings page
   * [X] server address eddit
   * [X] max file size edit
   * [X] file list
@@ -27,6 +28,8 @@ TODO:
   * [X] time zone dropdown
   * [X] display file delete time in chosen timezone
   * [X] styling
+  * [X] download
+  * [ ] delete database entry
 * [ ] download page
   * [X] file preview icons
   * [X] invalid link
