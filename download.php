@@ -105,6 +105,7 @@
             }
             echo "<p id='file-delete-time'>Delete time: $deleteTime ( Server timezone: $timezone )</p>";
             echo "</div>";
+            echo "<button id='download-button' onclick='downloadFile(\"$dir$file\")'><i class='fas fa-download-alt'></i></button>";
             echo "<button class='delete' id='delete-button' onclick='confirmDelete(\"$file\")'><i class='fas fa-trash-alt'></i></button>";
             echo "</div>";
         } else {

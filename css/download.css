@@ -58,7 +58,7 @@ body {
   left: 25%;
   width: 50%;
   height: fit-content;
-  border:none;
+  border: none;
   border-radius: 5px;
 }
 
@@ -73,7 +73,7 @@ body {
 .text-container {
   float: left;
   left: 90px;
-  width: calc(100% - 190px);
+  width: calc(100% - 240px);
   text-align: left;
 }
 
@@ -112,6 +112,32 @@ body {
   padding-top: 20px;
   padding-left: 20px;
   background-image: url("../icons/trash.png");
+  background-repeat: no-repeat;
+  background-color: none;
+  background-size: contain;
+}
+
+#download-button {
+  box-sizing: border-box;
+  border: none;
+  float: right;
+  background-color: #535353;
+  cursor: pointer;
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+}
+
+.fa-download-alt {
+  border: none;
+  content: "";
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  padding-top: 20px;
+  padding-left: 20px;
+  background-image: url("../icons/download-button.png");
   background-repeat: no-repeat;
   background-color: none;
   background-size: contain;
