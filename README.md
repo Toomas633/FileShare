@@ -1,6 +1,7 @@
 # !!! WORK IN PROGRESS, UNFINISHED !!!
 
 ## TODO
+
 * [X] index
   * [X] error popups
   * [X] link generation
@@ -35,9 +36,9 @@
   * [X] file not found
   * [X] download
   * [X] delete
-* [ ] delete script for the backround
-  * [ ] delete files that have db time over
-  * [ ] delete db record if file not in uploads folder
+* [X] delete script for the backround
+  * [X] delete files that have db time over
+  * [X] delete db record if file not in uploads folder
 * [ ] README
   * [ ] Overview
   * [ ] Running instructions
