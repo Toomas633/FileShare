@@ -12,7 +12,7 @@
                 "-dxdebug.mode=debug",
                 "-dxdebug.start_with_request=yes",
                 "-S",
-                "localhost:0"
+                "localhost:8000"
             ],
             "program": "",
             "cwd": "${workspaceRoot}",

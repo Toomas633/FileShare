@@ -1,6 +1,6 @@
-!!! WORK IN PROGRESS, UNFINISHED !!!
+# !!! WORK IN PROGRESS, UNFINISHED !!!
 
-TODO:
+## TODO
 
 * [X] index
   * [X] error popups
@@ -10,7 +10,7 @@ TODO:
   * [X] styling
   * [X] database for uploaded files
   * [X] delete time selection slider
-  * [ ] random name toggle
+  * [X] random name toggle
 * [X] login page
   * [X] Login
   * [X] Logout on page close
@@ -29,14 +29,13 @@ TODO:
   * [X] display file delete time in chosen timezone
   * [X] styling
   * [X] download
-  * [ ] delete database entry
-* [ ] download page
+  * [ ] file name click links to download page for that file
+* [X] download page
   * [X] file preview icons
   * [X] invalid link
   * [X] file not found
-  * [ ] download
+  * [X] download
   * [X] delete
-  * [ ] delete database entry
 * [ ] delete script for the backround
   * [ ] delete files that have db time over
   * [ ] delete db record if file not in uploads folder
@@ -56,8 +55,6 @@ TODO:
   * [X] rar icon
   * [X] audio icon
   * [X] video icon
-* [ ] Styling
 * [ ] Maybe
   * [ ] Docker
-  * [ ] Upload random name switch
   * [ ] Light/Dark mode switch

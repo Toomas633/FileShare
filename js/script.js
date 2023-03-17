@@ -34,19 +34,20 @@ deleteTimeSlider.addEventListener("input", () => {
   }
   deleteTimeDisplay.innerHTML = deleteTimeDisplayValue;
 });
-const toggleSwitch = document.getElementById('toggle-switch');
+
 const form = document.querySelector("form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  const toggleSwitch = document.getElementById('toggle-switch');
   const file = fileInput.files[0];
   const formData = new FormData();
+  formData.append("file", file);
   if (toggleSwitch.checked) {
     var random = 1;
   } else {
     var random = 0;
   }
-  formData.append("file", file);
-  fetch("php/upload.php", {
+  fetch("php/upload.php?random=" + random, {
     method: "POST",
     body: formData,
   })

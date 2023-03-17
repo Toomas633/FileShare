@@ -1,7 +1,12 @@
 <?php
 $targetDir = "../uploads/";
+$random = intval($_GET['random']);
 $extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-$fileName = uniqid() . '.' . $extension;
+if ($random == 0){
+    $fileName = pathinfo($_FILES['file']['name'],PATHINFO_BASENAME);
+} else {
+    $fileName = uniqid() . '.' . $extension;
+}
 $targetFile = $targetDir . $fileName;
 $uploadOk = 1;
 $errorMsg = "";
