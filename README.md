@@ -1,7 +1,6 @@
 # !!! WORK IN PROGRESS, UNFINISHED !!!
 
 ## TODO
-
 * [X] index
   * [X] error popups
   * [X] link generation
@@ -16,7 +15,7 @@
   * [X] Logout on page close
   * [X] styling
   * [X] skip login if already logged in
-* [ ] settings page
+* [X] settings page
   * [X] server address eddit
   * [X] max file size edit
   * [X] file list
@@ -29,7 +28,7 @@
   * [X] display file delete time in chosen timezone
   * [X] styling
   * [X] download
-  * [ ] file name click links to download page for that file
+  * [X] file name click links to download page for that file
 * [X] download page
   * [X] file preview icons
   * [X] invalid link
@@ -55,6 +54,4 @@
   * [X] rar icon
   * [X] audio icon
   * [X] video icon
-* [ ] Maybe
-  * [ ] Docker
-  * [ ] Light/Dark mode switch
+* [ ] Docker

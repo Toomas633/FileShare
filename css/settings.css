@@ -79,14 +79,18 @@ body {
   text-align: left;
 }
 
-#file-name {
-  padding-top: 20px;
-  padding-bottom: 10px;
+#file-name,
+#file-name:visited {
+  text-decoration: none;
+  position: relative;
+  top:20px ;
   color: #2196f3;
   text-align: left;
 }
 
 #file-delete-time {
+  position: relative;
+  top: 25px;
   padding-bottom: 20px;
   color: #fff;
   text-align: left;

@@ -229,7 +229,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                                 echo "<img src='icons/file-icon.png' class='file-preview'>";
                         }
                         echo "<div class='text-container'>";
-                        echo "<p id='file-name'>$file</p>";
+                        echo "<a href='download.php?file=$file' id='file-name'>$file</a>";
                         $db = file_get_contents('db/database.json');
                         $data = json_decode($db, true);
                         $deleteTime = null;
