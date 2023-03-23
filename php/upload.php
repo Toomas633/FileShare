@@ -12,18 +12,12 @@ $uploadOk = 1;
 $errorMsg = "";
 $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 $linkBeginning = file_get_contents("../db/link_address.txt");
-$maxFileSize = intval(file_get_contents("../db/max_size.txt"));
 if (file_exists($targetFile)) {
     $errorMsg = "ERROR: Sorry, file already exists.";
     $uploadOk = 0;
 }
-if (isset($maxFileSize)) {
-    if ($_FILES["file"]["size"] > $maxFileSize) {
-        $errorMsg = "ERROR: Sorry, your file is too large.";
-        $uploadOk = 0;
-    }
-} else {
-    $errorMsg = "ERROR: Max file size not set or file unavailable.";
+if ($_FILES["file"]["size"] > 5000000) {
+    $errorMsg = "ERROR: Sorry, your file is too large.";
     $uploadOk = 0;
 }
 if ($uploadOk == 0) {
