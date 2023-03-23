@@ -6,7 +6,26 @@
   - [Windows service](#windows)
     - [Web server](#web-server)
     - [Python script](#python-script)
+- [TODO](#todo)
+- [Suggestions](#suggestions)
 - [Donate](#donate)
+
+This is a simple file sharing website, that generates direct and/or download page links to files.
+
+Features:
+* One file per upload (size < 5MB)
+* Random name toggle.
+* File preview icons.
+* Same file name check.
+* Delete time slider form  1-12h, 24h or never.
+* Easy link copy.
+* Admin page.
+    * Display timezone select.
+    * Delete and download buttons.
+    * File list with hyperlink to download page.
+    * Generated link beginning for hosting behind a domain. 
+* Download page with download and delete buttons.
+* Status messages and popups
 
 Demo here:
 
@@ -22,7 +41,7 @@ Demo here:
   - [Web server](#web-server)
   - [Python script](#python-script)
 
-* Clone the GitHub repository to your local machine using the command `git clone https://github.com/Toomas633/FileShare.git.`
+* Clone the GitHub repository to your local machine using the command `git clone https://github.com/Toomas633/FileShare.git`.
 * Start a local server to access the website in your browser. You can do this by running the command `php -S localhost:8000` (or a different port number) in your terminal from the project directory.
 * For timed file delete also run `cleanup.py` on the backround.
 * Access the website in your browser. Once the server is running, you can access the website by navigating to [http://localhost:8000](http://localhost:8000) (or the appropriate URL) in your web browser.
@@ -78,6 +97,16 @@ Demo here:
 * Click "OK" to save the action and then "OK" again to save the task.
 
 That's it! Your Python script should now run in the background on system start in Windows. You can check that the task is running by opening the Task Manager and looking for the Python process.
+
+## TODO
+
+- [ ] Direct or download link toggle
+- [ ] Migrate from json and txt files to sql
+- [ ] Docker image
+
+## Suggestions
+
+Suggestions are welcome and can be posted under the issues. Anything is welcome, including extra functionality, extra preview icons etc.
 
 ## Donate
 
