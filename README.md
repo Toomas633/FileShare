@@ -15,6 +15,7 @@
 This is a simple file sharing website, that generates direct and/or download page links to files.
 
 Features:
+
 * One file per upload (size < 5MB)
 * Random name toggle.
 * File preview icons.
@@ -43,7 +44,7 @@ Demo here: placeholder.link
   - [Web server](#web-server)
   - [Python script](#python-script)
 
-* Clone the GitHub repository to your local machine using the command `git clone https://github.com/Toomas633/FileShare.git`.
+* Clone the GitHub repository to your local machine using the command `git clone https://github.com/Toomas633/FileShare.git` or download the zip from releases and unpack it to desired destination.
 * Start a local server to access the website in your browser. You can do this by running the command `php -S localhost:8000` (or a different port number) in your terminal from the project directory.
 * For timed file delete also run `cleanup.py` on the backround.
 * Access the website in your browser. Once the server is running, you can access the website by navigating to [http://localhost:8000](http://localhost:8000) (or the appropriate URL) in your web browser.
