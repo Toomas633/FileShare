@@ -10,6 +10,15 @@
 - [Suggestions](#suggestions)
 - [Donate](#donate)
 
+<!-- remarkable-carousel -->
+![Upload](https://raw.githubusercontent.com/Toomas633/FileShare/main/.github/preview/upload.png)
+![Link](https://raw.githubusercontent.com/Toomas633/FileShare/main/.github/preview/link.png)
+![Download](https://raw.githubusercontent.com/Toomas633/FileShare/main/.github/preview/download.png)
+![Login](https://raw.githubusercontent.com/Toomas633/FileShare/main/.github/preview/login.png)
+![Settings](https://raw.githubusercontent.com/Toomas633/FileShare/main/.github/preview/settings.png)
+![Password change](https://raw.githubusercontent.com/Toomas633/FileShare/main/.github/preview/change%20password.png)
+<!-- remarkable-carousel-end -->
+
 This is a simple file sharing website, that generates direct and/or download page links to files.
 
 Features:
