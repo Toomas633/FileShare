@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>File Upload</title>
+    <title>Download</title>
     <link rel="stylesheet" type="text/css" href="css/download.css" />
     <link rel="icon" type="icons/png" href="icons/fav.png">
 </head>
 
 <body>
     <header id="top-bar">
-        <h1 id="page-name"><a href="index.html" style="text-decoration: none;" id="page-name">File Upload</a></h1>
+        <h1 id="page-name"><a href="index.html" style="text-decoration: none;" id="page-name">FileShare</a></h1>
         <a href="login.php" id="login-button"><i class="fa-settings"></i></a>
     </header>
     <?php

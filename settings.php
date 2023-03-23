@@ -18,7 +18,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 
 <body>
     <header id="top-bar">
-        <h1 id="page-name"><a href="index.html" style="text-decoration: none;" id="page-name">File Upload</a></h1>
+        <h1 id="page-name"><a href="index.html" style="text-decoration: none;" id="page-name">FileShare</a></h1>
         <button id="change-password-btn">Change Password</button>
         <?php
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
