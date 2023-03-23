@@ -12,7 +12,6 @@
 
 ![Preview](https://raw.githubusercontent.com/Toomas633/FileShare/main/.github/preview/preview.gif)
 
-
 This is a simple file sharing website, that generates direct and/or download page links to files.
 
 Features:
@@ -23,14 +22,14 @@ Features:
 * Delete time slider form  1-12h, 24h or never.
 * Easy link copy.
 * Admin page.
-    * Display timezone select.
-    * Delete and download buttons.
-    * File list with hyperlink to download page.
-    * Generated link beginning for hosting behind a domain. 
+  * Display timezone select.
+  * Delete and download buttons.
+  * File list with hyperlink to download page.
+  * Generated link beginning for hosting behind a domain.
 * Download page with download and delete buttons.
 * Status messages and popups
 
-Demo here:
+Demo here: placeholder.link
 
 ## Requirements
 
@@ -117,4 +116,4 @@ Monero: `8Ajf5M6meNpL9TaHuDRbXjAH31LcQ9ge5BEiwMZjLaoiMDZRxaVy19FgbP4tbUKpKoeq1kq
 
 Bitcoin: `3NPFV9ivECdSgyCXeNk4h5Gm3q1xiDRnPV`
 
-More options on https://toomas633.com/donate/
+More options on [https://toomas633.com/donate/](https://toomas633.com/donate/)
