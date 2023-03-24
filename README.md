@@ -16,7 +16,7 @@ This is a simple file sharing website, that generates direct and/or download pag
 
 Features:
 
-* One file per upload (size < 5MB)
+* One file per upload (size < 2MB)
 * Random name toggle.
 * File preview icons.
 * Same file name check.
