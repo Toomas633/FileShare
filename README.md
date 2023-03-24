@@ -16,7 +16,7 @@ This is a simple file sharing website, that generates direct and/or download pag
 
 Features:
 
-* One file per upload (size < 5MB)
+* One file per upload
 * Random name toggle.
 * File preview icons.
 * Same file name check.
@@ -36,6 +36,7 @@ Demo here: placeholder.link
 
 * Make sure you have PHP installed on your local machine. You can check this by running the command `php -v` in your terminal. If you don't have PHP installed, you can download it from the [official PHP website](https://www.php.net/).
 * Install Python on your Windows machine if it is not already installed. You can download the latest version of Python from the official website at [https://www.python.org/downloads/](https://www.python.org/downloads/).
+* Make sure to change the values of `post_max_size` and  `upload_max_filesize` in `php.ini` to a desired size ammount, or bigger files can't be uploaded (defaults are 8M and 2M in the file, so the uploaded file can only be of size 2MB and less)
 
 ## Running instructions
 

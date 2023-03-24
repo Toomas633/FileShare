@@ -32,6 +32,6 @@ if ($uploadOk == 0) {
             echo $fileUrl;
         }
     } else {
-        echo "ERROR: Sorry, there was an error uploading your file." . $fileName;
+        echo "ERROR: Sorry, there was an error uploading your file.";
     }
 }
