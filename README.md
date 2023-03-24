@@ -104,7 +104,6 @@ That's it! Your Python script should now run in the background on system start i
 
 ## TODO
 
-- [ ] Direct or download link toggle
 - [ ] Migrate from json and txt files to sql
 - [ ] Docker image
 
