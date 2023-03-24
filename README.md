@@ -30,7 +30,7 @@ Features:
 * Download page with download and delete buttons.
 * Status messages and popups
 
-Demo here: placeholder.link
+Default password: Password.123
 
 ## Requirements
 
