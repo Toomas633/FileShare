@@ -12,7 +12,7 @@
 
 ![Preview](https://raw.githubusercontent.com/Toomas633/FileShare/main/.github/preview/preview.gif)
 
-This is a simple file sharing website, that generates direct and/or download page links to files.
+This is a simple file sharing website, that generates direct and/or download page links to files. Direct linking works for generating links for in config files or any other reason something would want to load something directly from web or if you don't want to check the downloaded file but get it instantly. Download page links are great for sharing files for easy download checking.
 
 Features:
 
