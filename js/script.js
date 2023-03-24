@@ -71,7 +71,13 @@ form.addEventListener("submit", (e) => {
         } else {
           var deleteDate = Date.now() + 24 * 60 * 60 * 1000;
         }
-        var fileName = linkEnding.substring(linkEnding.lastIndexOf("/") + 1);
+        if (direct === 1) {
+          var fileName = linkEnding.substring(linkEnding.lastIndexOf("/") + 1);
+        }
+        else {
+          var fileName = linkEnding.substring(linkEnding.lastIndexOf("=") + 1);
+ 
+        }
         const fileData = {
           name: fileName,
           uploadTime: Date.now(),
