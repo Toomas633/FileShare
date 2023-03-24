@@ -1,29 +1,4 @@
 {
     "files": [
-        {
-            "name": ">\nERROR: Sorry, file already exists.",
-            "uploadTime": 1679583010303,
-            "deleteTime": 1679583010303
-        },
-        {
-            "name": ">\nERROR: Sorry, file already exists.",
-            "uploadTime": 1679583042780,
-            "deleteTime": 1679583042780
-        },
-        {
-            "name": ">\nERROR: Sorry, file already exists.",
-            "uploadTime": 1679583060618,
-            "deleteTime": 1679583060618
-        },
-        {
-            "name": "download.php?file=akismet.5.1.zip",
-            "uploadTime": 1679583295778,
-            "deleteTime": 1679583295778
-        },
-        {
-            "name": "download.php?file=Frontplate_V3.stl",
-            "uploadTime": 1679583940166,
-            "deleteTime": 1679583940166
-        }
     ]
 }

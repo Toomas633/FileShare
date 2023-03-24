@@ -3,7 +3,7 @@ $file = $_GET['file'];
 $dir = "../uploads/";
 if (file_exists($dir . $file)) {
     if (unlink($dir . $file)) {
-        header("Location: ../index.html");
+        header("Location: ../index.php");
         exit();
     } else {
         $status = "Error deleting file.";

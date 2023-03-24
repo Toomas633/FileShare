@@ -34,20 +34,27 @@ deleteTimeSlider.addEventListener("input", () => {
   }
   deleteTimeDisplay.innerHTML = deleteTimeDisplayValue;
 });
-
 const form = document.querySelector("form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  const toggleSwitch = document.getElementById('toggle-switch');
+  const randomToggleSwitch = document.getElementById("random-toggle-switch");
+  const directToggleSwitch = document.getElementById("direct-toggle-switch");
   const file = fileInput.files[0];
   const formData = new FormData();
   formData.append("file", file);
-  if (toggleSwitch.checked) {
+  if (randomToggleSwitch.checked) {
     var random = 1;
   } else {
     var random = 0;
   }
-  fetch("php/upload.php?random=" + random, {
+  formData.append("random", random);
+  if (directToggleSwitch.checked) {
+    var direct = 1;
+  } else {
+    var direct = 0;
+  }
+  formData.append("direct", direct)
+  fetch("php/upload.php", {
     method: "POST",
     body: formData,
   })
@@ -64,7 +71,13 @@ form.addEventListener("submit", (e) => {
         } else {
           var deleteDate = Date.now() + 24 * 60 * 60 * 1000;
         }
-        var fileName = linkEnding.substring(linkEnding.lastIndexOf("/") + 1);
+        if (direct === 1) {
+          var fileName = linkEnding.substring(linkEnding.lastIndexOf("/") + 1);
+        }
+        else {
+          var fileName = linkEnding.substring(linkEnding.lastIndexOf("=") + 1);
+ 
+        }
         const fileData = {
           name: fileName,
           uploadTime: Date.now(),
