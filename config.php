@@ -9,17 +9,3 @@ try {
 } catch (PDOException $e) {
     die('Connection failed: ' . $e->getMessage());
 }
-
-$sql = "CREATE TABLE settings (
-    password TEXT NOT NULL,
-    url TEXT NOT NULL,
-    timezone TEXT NOT NULL
-)";
-
-// Execute the SQL statement to create the table
-try {
-$pdo->exec($sql);
-echo "Table 'users' created successfully.";
-} catch (PDOException $e) {
-die("Table creation failed: " . $e->getMessage());
-}
