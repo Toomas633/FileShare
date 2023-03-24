@@ -254,6 +254,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             ?>
         </div>
     </div>
+    <div id="success-popup"></div>
+    <div id="error-popup"></div>
     <script type="text/javascript" src="js/settings.js"></script>
     <script type="text/javascript" src="js/logout.js"></script>
 </body>
