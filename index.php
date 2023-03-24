@@ -9,7 +9,7 @@
   <body>
     <header id="top-bar">
       <h1 id="page-name">
-        <a href="index.html" style="text-decoration: none" id="page-name"
+        <a href="index.php" style="text-decoration: none" id="page-name"
           >FileShare</a
         >
       </h1>
