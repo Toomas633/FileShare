@@ -1,4 +1,5 @@
 <?php
+require_once('../config.php');
 $data = json_decode($_POST['data'], true);
 $json = file_get_contents('../db/database.json');
 $arr_data = json_decode($json, true);

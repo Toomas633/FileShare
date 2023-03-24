@@ -1,4 +1,5 @@
 <?php
+require_once('../config.php');
 $timezone = $_POST['timezone'];
 $file = fopen('../db/tz.txt', 'w');
 if ($file) {

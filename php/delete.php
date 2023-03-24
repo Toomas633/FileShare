@@ -1,4 +1,5 @@
 <?php
+require_once('../config.php');
 $file = $_GET['file'];
 $dir = "../uploads/";
 if (file_exists($dir . $file)) {

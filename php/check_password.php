@@ -1,4 +1,5 @@
 <?php
+require_once('../config.php');
 session_set_cookie_params(0);
 session_start();
 $password_file = "../db/admin_password.txt";

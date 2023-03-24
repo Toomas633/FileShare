@@ -1,4 +1,5 @@
 <?php
+require_once('../config.php');
 $targetDir = "../uploads/";
 $extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 $random = intval($_POST['random']);
@@ -16,10 +17,6 @@ if (file_exists($targetFile)) {
     $errorMsg = "ERROR: Sorry, file already exists.";
     $uploadOk = 0;
 }
-if (intval($_FILES["file"]["size"]) > 5000000) {
-    $errorMsg = "ERROR: Sorry, your file is too large.";
-    $uploadOk = 0;
-}
 if ($uploadOk == 0) {
     echo $errorMsg;
 } else {
@@ -32,6 +29,6 @@ if ($uploadOk == 0) {
             echo $fileUrl;
         }
     } else {
-        echo "ERROR: Sorry, there was an error uploading your file.";
+        echo "ERROR: Sorry, your file is too large.";
     }
 }

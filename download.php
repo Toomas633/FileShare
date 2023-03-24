@@ -14,7 +14,7 @@
         <a href="login.php" id="login-button"><i class="fa-settings"></i></a>
     </header>
     <?php
-    error_reporting(E_ALL & ~E_WARNING);
+    require_once('config.php');
     if (isset($_GET['file'])) {
         $file = $_GET['file'];
         $status = $_GET['status'];
