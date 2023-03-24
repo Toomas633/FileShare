@@ -9,10 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $new_password = $_POST['new_password'];
     $confirm_password = $_POST['confirm_password'];
     $password_file = '../db/admin_password.txt';
-    $password = file_get_contents($password_file);
-    if ($current_password === $password) {
+    $stored_password = trim(file_get_contents($password_file));;
+    if (password_verify($current_password, $stored_password)) {
         if ($new_password === $confirm_password) {
-            file_put_contents($password_file, $new_password);
+            file_put_contents($password_file, password_hash($new_password, PASSWORD_BCRYPT));
             echo json_encode(array('status' => 'success', 'message' => 'Password changed successfully.'));
         } else {
             echo json_encode(array('status' => 'error', 'message' => 'New password and confirm password do not match.'));
