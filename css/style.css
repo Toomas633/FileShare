@@ -249,7 +249,7 @@ h1 {
   display: none;
 }
 
-#switch-value {
+#random-switch-value {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -262,7 +262,7 @@ h1 {
   border-radius: 34px;
 }
 
-#switch-value:before {
+#random-switch-value:before {
   position: absolute;
   content: "";
   height: 20px;
@@ -275,15 +275,15 @@ h1 {
   border-radius: 50%;
 }
 
-input:checked + #switch-value {
+input:checked + #random-switch-value {
   background-color: #2196f3;
 }
 
-input:focus + #switch-value {
+input:focus + #random-switch-value {
   box-shadow: 0 0 1px #2196f3;
 }
 
-input:checked + #switch-value:before {
+input:checked + #random-switch-value:before {
   -webkit-transform: translateX(20px);
   -ms-transform: translateX(20px);
   transform: translateX(20px);
@@ -298,4 +298,66 @@ input:checked + #switch-value:before {
 
 #slider-container {
   padding: 10px;
+}
+
+#direct{
+  margin-top: 10px;
+}
+
+.direct-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.direct-switch input {
+  display: none;
+}
+
+#direct-switch-value {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #535353;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+#direct-switch-value:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 0px;
+  bottom: 0px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + #direct-switch-value {
+  background-color: #2196f3;
+}
+
+input:focus + #direct-switch-value {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + #direct-switch-value:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+#direct-lable  {
+  height: 40px;
+  position: relative;
+  bottom: 5px;
+  padding: 5px;
 }
