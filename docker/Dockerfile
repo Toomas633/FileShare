@@ -7,6 +7,7 @@ RUN docker-php-ext-install pdo_mysql mysqli gd zip pdo_sqlite sqlite3 && a2enmod
 RUN docker-php-ext-configure sqlite3 --with-sqlite3=/usr/local && docker-php-ext-install sqlite3
 COPY cleanup.py /usr/src/app
 WORKDIR /usr/src/app
-CMD ["python3", "cleanup.py", "&"]
 ENV MAX_FILESIZE 5M
+VOLUME /var/www/html/uploads/
+CMD ["python3", "cleanup.py", "&"]
 EXPOSE 80
