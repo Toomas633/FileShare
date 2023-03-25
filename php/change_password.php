@@ -20,8 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($new_password === $confirm_password) {
             $pdo = new PDO('sqlite:' . DB_FILE2);
             $query = $pdo->prepare('UPDATE settings SET value = :new_value WHERE setting = :setting');
-            $query->bindParam(':new_value', password_hash($new_password, PASSWORD_BCRYPT), PDO::PARAM_STR);
-            $query->bindParam(':setting', 'password', PDO::PARAM_STR);
+            $query->bindValue(':new_value', password_hash($new_password, PASSWORD_BCRYPT), PDO::PARAM_STR);
+            $query->bindValue(':setting', 'password', PDO::PARAM_STR);
             $query->execute();
             $pdo = null;
             echo json_encode(array('status' => 'success', 'message' => 'Password changed successfully.'));
