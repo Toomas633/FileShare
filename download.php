@@ -94,20 +94,24 @@
             $data = $query->fetchAll(PDO::FETCH_ASSOC);
             $pdo = null;
             $deleteTime = null;
-            foreach ($data as $fileToDelete) {
-                if ($fileToDelete['name'] === $file) {
-                    if (intval($fileToDelete['uploadTime']) === intval($fileToDelete['deleteTime'])) {
-                        $deleteTime = "Never";
-                        break;
+            if (count($data) == 0) {
+                $deleteTime = "Unknown";
+            } else {
+                foreach ($data as $fileToDelete) {
+                    if ($fileToDelete['name'] === $file) {
+                        if (intval($fileToDelete['uploadTime']) === intval($fileToDelete['deleteTime'])) {
+                            $deleteTime = "Never";
+                            break;
+                        } else {
+                            $deleteTime = $fileToDelete['deleteTime'] / 1000;
+                            $deleteTime = new DateTime("@$deleteTime");
+                            $deleteTime->setTimezone(new DateTimeZone($timezone));
+                            $deleteTime = $deleteTime->format('H:i:s d-M-Y');
+                            break;
+                        }
                     } else {
-                        $deleteTime = $fileToDelete['deleteTime'] / 1000;
-                        $deleteTime = new DateTime("@$deleteTime");
-                        $deleteTime->setTimezone(new DateTimeZone($timezone));
-                        $deleteTime = $deleteTime->format('H:i:s d-M-Y');
-                        break;
+                        $deleteTime = "Unknown";
                     }
-                } else {
-                    $deleteTime = "Unknown";
                 }
             }
             echo "<p id='file-delete-time'>Delete time: $deleteTime ( Server timezone: $timezone )</p>";
