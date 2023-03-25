@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL & ~E_WARNING & ~E_DEPRECATED);
+require_once('config.php');
 session_set_cookie_params(0);
 session_start();
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
@@ -29,15 +29,32 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             header('Location: login.php');
             exit;
         }
-        $link_address = file_get_contents('db/link_address.txt');
+        $pdo = new PDO('sqlite:' . DB_FILE);
+        $query = $pdo->prepare('SELECT value FROM settings WHERE setting = :setting');
+        $query->bindValue(':setting', 'url', PDO::PARAM_STR);
+        $query->execute();
+        $row = $query->fetch(PDO::FETCH_ASSOC);
+        $link_address = $row['value'];
+        $pdo = null;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['save_link_address'])) {
                 $link_address = $_POST['link_address'];
-                file_put_contents('db/link_address.txt', $link_address);
+                $pdo = new PDO('sqlite:' . DB_FILE);
+                $query = $pdo->prepare('UPDATE settings SET value = :new_value WHERE setting = :setting');
+                $query->bindValue(':new_value', $link_address, PDO::PARAM_STR);
+                $query->bindValue(':setting', 'url', PDO::PARAM_STR);
+                $query->execute();
+                $pdo = null;
             }
         } else {
             if (file_exists('db/link_address.txt')) {
-                $link_address = file_get_contents('db/link_address.txt');
+                $pdo = new PDO('sqlite:' . DB_FILE);
+                $query = $pdo->prepare('SELECT value FROM settings WHERE setting = :setting');
+                $query->bindValue(':setting', 'url', PDO::PARAM_STR);
+                $query->execute();
+                $row = $query->fetch(PDO::FETCH_ASSOC);
+                $link_address = $row['value'];
+                $pdo = null;
             }
         }
         ?>
@@ -217,24 +234,35 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                         }
                         echo "<div class='text-container'>";
                         echo "<a href='download.php?file=$file' id='file-name'>$file</a>";
-                        $db = file_get_contents('db/database.json');
-                        $data = json_decode($db, true);
+                        $pdo = new PDO('sqlite:' . DB_FILE);
+                        $query = $pdo->prepare('SELECT value FROM settings WHERE setting = :setting');
+                        $query->bindValue(':setting', 'timezone', PDO::PARAM_STR);
+                        $query->execute();
+                        $row = $query->fetch(PDO::FETCH_ASSOC);
+                        $timezone = $row['value'];
+                        $query = $pdo->prepare('SELECT * FROM files');
+                        $query->execute();
+                        $data = $query->fetchAll(PDO::FETCH_ASSOC);
+                        $pdo = null;
                         $deleteTime = null;
-                        $timezone = file_get_contents('db/tz.txt');
-                        foreach ($data['files'] as $fileToDelete) {
-                            if ($fileToDelete['name'] === $file) {
-                                if (intval($fileToDelete['uploadTime']) === intval($fileToDelete['deleteTime'])) {
-                                    $deleteTime = "Never";
-                                    break;
+                        if (count($data) == 0) {
+                            $deleteTime = "Unknown";
+                        } else {
+                            foreach ($data as $fileToDelete) {
+                                if ($fileToDelete['name'] === $file) {
+                                    if (intval($fileToDelete['uploadTime']) === intval($fileToDelete['deleteTime'])) {
+                                        $deleteTime = "Never";
+                                        break;
+                                    } else {
+                                        $deleteTime = intval($fileToDelete['deleteTime']) / 1000;
+                                        $deleteTime = new DateTime("@$deleteTime");
+                                        $deleteTime->setTimezone(new DateTimeZone($timezone));
+                                        $deleteTime = $deleteTime->format('H:i:s d-M-Y');
+                                        break;
+                                    }
                                 } else {
-                                    $deleteTime = $fileToDelete['deleteTime'] / 1000;
-                                    $deleteTime = new DateTime("@$deleteTime");
-                                    $deleteTime->setTimezone(new DateTimeZone($timezone));
-                                    $deleteTime = $deleteTime->format('H:i:s d-M-Y');
-                                    break;
+                                    $deleteTime = "Unknown";
                                 }
-                            } else {
-                                $deleteTime = "Unknown";
                             }
                         }
                         echo "<p id='file-delete-time'>Delete time: $deleteTime</p>";
@@ -251,9 +279,12 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                 }
                 closedir($handle);
             }
+            $pdo = null;
             ?>
         </div>
     </div>
+    <div id="success-popup"></div>
+    <div id="error-popup"></div>
     <script type="text/javascript" src="js/settings.js"></script>
     <script type="text/javascript" src="js/logout.js"></script>
 </body>

@@ -238,6 +238,11 @@ h1 {
   margin-right: 5px;
 }
 
+#random {
+  float: left;
+  margin-left: 60px;
+}
+
 .random-switch {
   position: relative;
   display: inline-block;
@@ -297,11 +302,12 @@ input:checked + #random-switch-value:before {
 }
 
 #slider-container {
-  padding: 10px;
+  margin-top: 60px;
 }
 
 #direct{
-  margin-top: 10px;
+  float: right;
+  margin-right: 60px;
 }
 
 .direct-switch {

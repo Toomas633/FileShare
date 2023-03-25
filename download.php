@@ -14,7 +14,7 @@
         <a href="login.php" id="login-button"><i class="fa-settings"></i></a>
     </header>
     <?php
-    error_reporting(E_ALL & ~E_WARNING);
+    require_once('config.php');
     if (isset($_GET['file'])) {
         $file = $_GET['file'];
         $status = $_GET['status'];
@@ -83,24 +83,35 @@
             }
             echo "<div class='text-container'>";
             echo "<p id='file-name'>$file</p>";
-            $db = file_get_contents('db/database.json');
-            $data = json_decode($db, true);
+            $pdo = new PDO('sqlite:' . DB_FILE);
+            $query = $pdo->prepare('SELECT value FROM settings WHERE setting = :setting');
+            $query->bindValue(':setting', 'timezone', PDO::PARAM_STR);
+            $query->execute();
+            $row = $query->fetch(PDO::FETCH_ASSOC);
+            $timezone = $row['value'];
+            $query = $pdo->prepare('SELECT * FROM files');
+            $query->execute();
+            $data = $query->fetchAll(PDO::FETCH_ASSOC);
+            $pdo = null;
             $deleteTime = null;
-            $timezone = file_get_contents('db/tz.txt');
-            foreach ($data['files'] as $fileToDelete) {
-                if ($fileToDelete['name'] === $file) {
-                    if (intval($fileToDelete['uploadTime']) === intval($fileToDelete['deleteTime'])) {
-                        $deleteTime = "Never";
-                        break;
+            if (count($data) == 0) {
+                $deleteTime = "Unknown";
+            } else {
+                foreach ($data as $fileToDelete) {
+                    if ($fileToDelete['name'] === $file) {
+                        if (intval($fileToDelete['uploadTime']) === intval($fileToDelete['deleteTime'])) {
+                            $deleteTime = "Never";
+                            break;
+                        } else {
+                            $deleteTime = $fileToDelete['deleteTime'] / 1000;
+                            $deleteTime = new DateTime("@$deleteTime");
+                            $deleteTime->setTimezone(new DateTimeZone($timezone));
+                            $deleteTime = $deleteTime->format('H:i:s d-M-Y');
+                            break;
+                        }
                     } else {
-                        $deleteTime = $fileToDelete['deleteTime'] / 1000;
-                        $deleteTime = new DateTime("@$deleteTime");
-                        $deleteTime->setTimezone(new DateTimeZone($timezone));
-                        $deleteTime = $deleteTime->format('H:i:s d-M-Y');
-                        break;
+                        $deleteTime = "Unknown";
                     }
-                } else {
-                    $deleteTime = "Unknown";
                 }
             }
             echo "<p id='file-delete-time'>Delete time: $deleteTime ( Server timezone: $timezone )</p>";
@@ -118,6 +129,7 @@
         echo "<p id='link-error'>Error: Invalid download link.</p>";
         echo "</div>";
     }
+    $pdo = null;
     ?>
     <script type="text/javascript" src="js/download.js"></script>
     <script type="text/javascript" src="js/logout.js"></script>

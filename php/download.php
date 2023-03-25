@@ -1,4 +1,5 @@
 <?php
+require_once('../config.php');
 if (isset($_POST['filename'])) {
     $file = $_POST['filename'];
     $filepath = '../uploads/' . $file;

@@ -36,7 +36,10 @@ Default password: Password.123
 
 * Make sure you have PHP installed on your local machine. You can check this by running the command `php -v` in your terminal. If you don't have PHP installed, you can download it from the [official PHP website](https://www.php.net/).
 * Install Python on your Windows machine if it is not already installed. You can download the latest version of Python from the official website at [https://www.python.org/downloads/](https://www.python.org/downloads/).
-* Make sure to change the values of `post_max_size` and  `upload_max_filesize` in `php.ini` to a desired size ammount, or bigger files can't be uploaded (defaults are 8M and 2M in the file, so the uploaded file can only be of size 2MB and less)
+* Change the values of `post_max_size` and  `upload_max_filesize` in `php.ini` to a desired size amount, or bigger files can't be uploaded (defaults are 8M and 2M in the file, so the uploaded file can only be of size 2MB and less)
+* Check that you have php-sqlite3 installed and enabled.
+  * On debian run `sudo apt get php-sqlite3`, windows should have the .dll files included in the php folder.
+  * Edit `php.ini` and uncomment `extension=pdo_sqlite` and `extension=sqlite3` and assign the php installation dir path to `sqlite3.extension_dir =`, for example `sqlite3.extension_dir = C:\php` on windows.
 
 ## Running instructions
 
@@ -104,7 +107,6 @@ That's it! Your Python script should now run in the background on system start i
 
 ## TODO
 
-- [ ] Migrate from json and txt files to sql
 - [ ] Docker image
 
 ## Suggestions

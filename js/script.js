@@ -84,7 +84,6 @@ form.addEventListener("submit", (e) => {
           deleteTime: deleteDate,
         };
         var json_data = JSON.stringify(fileData);
-        // Send data to PHP script using AJAX
         var xhr = new XMLHttpRequest();
         var url = "php/write.php";
         xhr.open("POST", url, true);
