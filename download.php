@@ -89,11 +89,12 @@
             $query->execute();
             $row = $query->fetch(PDO::FETCH_ASSOC);
             $timezone = $row['value'];
+            $query = $pdo->prepare('SELECT * FROM files');
+            $query->execute();
+            $data = $query->fetchAll(PDO::FETCH_ASSOC);
             $pdo = null;
-            $db = file_get_contents('db/database.json');
-            $data = json_decode($db, true);
             $deleteTime = null;
-            foreach ($data['files'] as $fileToDelete) {
+            foreach ($data as $fileToDelete) {
                 if ($fileToDelete['name'] === $file) {
                     if (intval($fileToDelete['uploadTime']) === intval($fileToDelete['deleteTime'])) {
                         $deleteTime = "Never";

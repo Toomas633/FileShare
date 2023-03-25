@@ -29,7 +29,13 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             header('Location: login.php');
             exit;
         }
-        $link_address = file_get_contents('db/link_address.txt');
+        $pdo = new PDO('sqlite:' . DB_FILE);
+        $query = $pdo->prepare('SELECT value FROM settings WHERE setting = :setting');
+        $query->bindValue(':setting', 'url', PDO::PARAM_STR);
+        $query->execute();
+        $row = $query->fetch(PDO::FETCH_ASSOC);
+        $link_address = $row['value'];
+        $pdo = null;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['save_link_address'])) {
                 $link_address = $_POST['link_address'];
@@ -234,17 +240,18 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                         $query->execute();
                         $row = $query->fetch(PDO::FETCH_ASSOC);
                         $timezone = $row['value'];
+                        $query = $pdo->prepare('SELECT * FROM files');
+                        $query->execute();
+                        $data = $query->fetchAll(PDO::FETCH_ASSOC);
                         $pdo = null;
-                        $db = file_get_contents('db/database.json');
-                        $data = json_decode($db, true);
                         $deleteTime = null;
-                        foreach ($data['files'] as $fileToDelete) {
+                        foreach ($data as $fileToDelete) {
                             if ($fileToDelete['name'] === $file) {
                                 if (intval($fileToDelete['uploadTime']) === intval($fileToDelete['deleteTime'])) {
                                     $deleteTime = "Never";
                                     break;
                                 } else {
-                                    $deleteTime = $fileToDelete['deleteTime'] / 1000;
+                                    $deleteTime = intval($fileToDelete['deleteTime']) / 1000;
                                     $deleteTime = new DateTime("@$deleteTime");
                                     $deleteTime->setTimezone(new DateTimeZone($timezone));
                                     $deleteTime = $deleteTime->format('H:i:s d-M-Y');
