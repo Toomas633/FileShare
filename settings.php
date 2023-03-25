@@ -33,11 +33,22 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['save_link_address'])) {
                 $link_address = $_POST['link_address'];
-                file_put_contents('db/link_address.txt', $link_address);
+                $pdo = new PDO('sqlite:' . DB_FILE);
+                $query = $pdo->prepare('UPDATE settings SET value = :new_value WHERE setting = :setting');
+                $query->bindValue(':new_value', $link_address, PDO::PARAM_STR);
+                $query->bindValue(':setting', 'url', PDO::PARAM_STR);
+                $query->execute();
+                $pdo = null;
             }
         } else {
             if (file_exists('db/link_address.txt')) {
-                $link_address = file_get_contents('db/link_address.txt');
+                $pdo = new PDO('sqlite:' . DB_FILE);
+                $query = $pdo->prepare('SELECT value FROM settings WHERE setting = :setting');
+                $query->bindValue(':setting', 'url', PDO::PARAM_STR);
+                $query->execute();
+                $row = $query->fetch(PDO::FETCH_ASSOC);
+                $link_address = $row['value'];
+                $pdo = null;
             }
         }
         ?>
@@ -217,10 +228,16 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                         }
                         echo "<div class='text-container'>";
                         echo "<a href='download.php?file=$file' id='file-name'>$file</a>";
+                        $pdo = new PDO('sqlite:' . DB_FILE);
+                        $query = $pdo->prepare('SELECT value FROM settings WHERE setting = :setting');
+                        $query->bindValue(':setting', 'timezone', PDO::PARAM_STR);
+                        $query->execute();
+                        $row = $query->fetch(PDO::FETCH_ASSOC);
+                        $timezone = $row['value'];
+                        $pdo = null;
                         $db = file_get_contents('db/database.json');
                         $data = json_decode($db, true);
                         $deleteTime = null;
-                        $timezone = file_get_contents('db/tz.txt');
                         foreach ($data['files'] as $fileToDelete) {
                             if ($fileToDelete['name'] === $file) {
                                 if (intval($fileToDelete['uploadTime']) === intval($fileToDelete['deleteTime'])) {
@@ -251,6 +268,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                 }
                 closedir($handle);
             }
+            $pdo = null;
             ?>
         </div>
     </div>

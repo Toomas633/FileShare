@@ -83,10 +83,16 @@
             }
             echo "<div class='text-container'>";
             echo "<p id='file-name'>$file</p>";
+            $pdo = new PDO('sqlite:' . DB_FILE);
+            $query = $pdo->prepare('SELECT value FROM settings WHERE setting = :setting');
+            $query->bindValue(':setting', 'timezone', PDO::PARAM_STR);
+            $query->execute();
+            $row = $query->fetch(PDO::FETCH_ASSOC);
+            $timezone = $row['value'];
+            $pdo = null;
             $db = file_get_contents('db/database.json');
             $data = json_decode($db, true);
             $deleteTime = null;
-            $timezone = file_get_contents('db/tz.txt');
             foreach ($data['files'] as $fileToDelete) {
                 if ($fileToDelete['name'] === $file) {
                     if (intval($fileToDelete['uploadTime']) === intval($fileToDelete['deleteTime'])) {
@@ -118,6 +124,7 @@
         echo "<p id='link-error'>Error: Invalid download link.</p>";
         echo "</div>";
     }
+    $pdo = null;
     ?>
     <script type="text/javascript" src="js/download.js"></script>
     <script type="text/javascript" src="js/logout.js"></script>

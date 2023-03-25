@@ -1,11 +1,10 @@
 <?php
 require_once('../config.php');
 $timezone = $_POST['timezone'];
-$file = fopen('../db/tz.txt', 'w');
-if ($file) {
-  fwrite($file, $timezone);
-  fclose($file);
-  http_response_code(200);
-} else {
-  http_response_code(500);
-}
+$pdo = new PDO('sqlite:' . DB_FILE2);
+$query = $pdo->prepare('UPDATE settings SET value = :new_value WHERE setting = :setting');
+$query->bindValue(':new_value', $timezone, PDO::PARAM_STR);
+$query->bindValue(':setting', 'timezone', PDO::PARAM_STR);
+$query->execute();
+$pdo = null;
+http_response_code(200);
