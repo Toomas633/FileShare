@@ -24,7 +24,7 @@ RUN apt install -y \
 COPY docker/php.ini /usr/local/etc/php/conf.d/php.ini
 COPY . /var/www/html
 COPY cleanup.py /usr/local/bin
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN chmod +x /usr/local/bin/cleanup.py
 WORKDIR /var/www/html
 EXPOSE 80
