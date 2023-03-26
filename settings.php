@@ -180,9 +180,9 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         ?>
         <div class="row">
             <?php
-            if ($handle = opendir("uploads/")) {
+            if ($dir = opendir("uploads/")) {
                 $count = 0;
-                while (false !== ($file = readdir($handle))) {
+                while (false !== ($file = readdir($dir))) {
                     if ($file != "." && $file != "..") {
                         $extension = pathinfo($file, PATHINFO_EXTENSION);
                         echo "<div class='col'>";
@@ -254,8 +254,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                                         $deleteTime = "Never";
                                         break;
                                     } else {
-                                        $deleteTime = intval($fileToDelete['deleteTime']) / 1000;
-                                        $deleteTime = new DateTime("@$deleteTime");
+                                        $deleteTime = (float) intval($fileToDelete['deleteTime']) / 1000;
+                                        $deleteTime = DateTime::createFromFormat('U.u', sprintf('%.6f', $deleteTime ));
                                         $deleteTime->setTimezone(new DateTimeZone($timezone));
                                         $deleteTime = $deleteTime->format('H:i:s d-M-Y');
                                         break;
@@ -277,7 +277,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                         }
                     }
                 }
-                closedir($handle);
+                closedir($dir);
             }
             $pdo = null;
             ?>

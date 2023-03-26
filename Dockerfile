@@ -6,11 +6,14 @@ VOLUME /var/www/html/uploads/
 RUN apt update && apt upgrade -y
 RUN apt install -y \
     php \
+    php-cli \
+    php-fpm \
     php-sqlite3 \ 
     sqlite3 \
     libsqlite3-dev \
     python3 \
     python3-pip \
+    python-is-python3 \
     git \
     zip \
     unzip \

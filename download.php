@@ -103,8 +103,8 @@
                             $deleteTime = "Never";
                             break;
                         } else {
-                            $deleteTime = $fileToDelete['deleteTime'] / 1000;
-                            $deleteTime = new DateTime("@$deleteTime");
+                            $deleteTime = (float) $fileToDelete['deleteTime'] / 1000;
+                            $deleteTime = DateTime::createFromFormat('U.u', sprintf('%.6f', $deleteTime));
                             $deleteTime->setTimezone(new DateTimeZone($timezone));
                             $deleteTime = $deleteTime->format('H:i:s d-M-Y');
                             break;
