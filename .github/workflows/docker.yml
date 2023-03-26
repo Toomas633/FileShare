@@ -18,6 +18,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          ref: main
+
+      - name: Get latest tag
+        id: latest_tag
+        run: echo "::set-output name=tag::$(git describe --abbrev=0 --tags)"
 
       - name: Login to GHCR
         uses: docker/login-action@v1
@@ -33,4 +39,4 @@ jobs:
           push: true
           tags: |
             ghcr.io/fileshare:latest
-            ghcr.io/fileshare:${{ github.ref.tags}}
+            ghcr.io/fileshare:${{ steps.latest_tag.outputs.tag }}
