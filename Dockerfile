@@ -7,7 +7,7 @@ RUN apt install -y git zip unzip libpng-dev libjpeg-dev libfreetype6-dev libpq-d
 RUN docker-php-ext-install pgsql pdo pdo_pgsql pdo_sqlite sqlite3 && a2enmod rewrite
 COPY cleanup.py /usr/src/app
 WORKDIR /usr/src/app
-CMD ["python3", "cleanup.py", "&"]
 ENV MAX_FILESIZE 5M
 VOLUME /var/www/html/uploads/
 EXPOSE 80
+CMD ["python3", "cleanup.py", "&"]
