@@ -40,6 +40,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: |
-            ghcr.io/fileshare:latest
-            ghcr.io/fileshare:v1.3
+          tags: ghcr.io/fileshare:v1.3
