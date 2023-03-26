@@ -1,5 +1,4 @@
 FROM ubuntu:20.04
-LABEL version=latest
 ENV MAX_FILESIZE 5M
 ENV TZ=Europe/Tallinn
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
