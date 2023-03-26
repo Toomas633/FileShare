@@ -109,7 +109,7 @@ That's it! Your Python script should now run in the background on system start i
 ### Docker
 
 * Make sure you have Docker installed on your machine. You can download and install Docker from the official Docker website.
-* Pull the image usin `docker pull ghcr.io/toomas633/fileshare`. 
+* Pull the image usin `docker pull ghcr.io/toomas633/fileshare:latest`. 
 * Then run `docker run -d --restart always -p 8080:80 -e TZ=Europe/Tallinn -e MAX_FILESIZE=5M -v /host/path:/var/www/html/uploads/ fileshare` to start the container. This command will run the "fileshare" Docker image in the background, map port 80 from the container to port 8080 on your host machine. Be sure to replace the `Europe/Tallinn` with your correct timezone, change the `MAX_FILESIZE=` to a desired ammount and point `/host/path` to the folder you want the uploaded files to be saved to so they are not lost on container update.
 * Once the container is running, you can access the file sharing service by opening a web browser and navigating to `http://localhost:8080`.
 
@@ -118,7 +118,7 @@ Alternativelly create a `docker-compose.yml`, copy the contents under here and r
 version: '3.9'
 services:
   fileshare:
-    image: ghcr.io/toomas633/fileshare
+    image: ghcr.io/toomas633/fileshare:latest
     container_name: fileshare
     ports:
       - "8080:80"
