@@ -21,21 +21,6 @@ jobs:
         with:
           ref: main
 
-      - name: Get latest tag
-        id: get-latest-tag
-        uses: actions/github-script@v4
-        with:
-          script: |
-            const tags = await github.repos.listTags({
-              owner: context.repo.owner,
-              repo: context.repo.repo
-            });
-            const latestTag = tags.data[0].name;
-            console.log(`Latest tag: ${latestTag}`);
-            return { latestTag: latestTag };
-          secrets: |
-            GITHUB_TOKEN
-
       - name: Login to GHCR
         uses: docker/login-action@v1
         with:
@@ -50,4 +35,4 @@ jobs:
           push: true
           tags: |
             ghcr.io/fileshare:latest
-            ghcr.io/fileshare:$${{ steps.get-latest-tag.outputs.latest-tag }}
+            hcr.io/fileshare:${{ github.event.release.tag_name }}
