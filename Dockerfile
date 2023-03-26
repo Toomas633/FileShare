@@ -3,7 +3,6 @@ ENV MAX_FILESIZE 5M
 ENV TZ=Europe/Tallinn
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 VOLUME /var/www/html/uploads/
-RUN timedatectl set-timezone UTC
 RUN apt update && apt upgrade -y
 RUN apt install -y \
     php \
