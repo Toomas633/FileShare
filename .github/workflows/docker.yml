@@ -33,4 +33,4 @@ jobs:
           push: true
           tags: |
             ghcr.io/fileshare:latest
-            ghcr.io/fileshare:${{ github.ref. 'refs/tags/' }}
+            ghcr.io/fileshare:${{ github.ref.tags}}
