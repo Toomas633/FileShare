@@ -1,4 +1,4 @@
-FROM php:8.2-apache
+FROM php:latest-apache
 WORKDIR /var/www/html
 COPY . /var/www/html
 COPY docker/php.ini /usr/local/etc/php/conf.d/php.ini
