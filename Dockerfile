@@ -1,4 +1,8 @@
 FROM ubuntu:20.04
+ENV MAX_FILESIZE 5M
+ENV TZ=Europe/Tallinn
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+VOLUME /var/www/html/uploads/
 RUN timedatectl set-timezone UTC
 RUN apt update && apt upgrade -y
 RUN apt install -y \
@@ -24,7 +28,5 @@ COPY cleanup.py /usr/local/bin
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN chmod +x /usr/local/bin/cleanup.py
 WORKDIR /var/www/html
-ENV MAX_FILESIZE 5M
-VOLUME /var/www/html/uploads/
 EXPOSE 80
 CMD ["/usr/bin/supervisord", "-n"]
