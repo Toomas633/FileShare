@@ -6,7 +6,7 @@
   - [Windows service](#windows)
     - [Web server](#web-server)
     - [Python script](#python-script)
-- [TODO](#todo)
+  - [Docker](#docker)
 - [Suggestions](#suggestions)
 - [Donate](#donate)
 
@@ -47,6 +47,7 @@ Default password: Password.123
 - [Windows service](#windows)
   - [Web server](#web-server)
   - [Python script](#python-script)
+- [Docker](#docker)
 
 * Clone the GitHub repository to your local machine using the command `git clone https://github.com/Toomas633/FileShare.git` or download the zip from releases and unpack it to desired destination.
 * Start a local server to access the website in your browser. You can do this by running the command `php -S localhost:8000` (or a different port number) in your terminal from the project directory.
@@ -105,9 +106,30 @@ Default password: Password.123
 
 That's it! Your Python script should now run in the background on system start in Windows. You can check that the task is running by opening the Task Manager and looking for the Python process.
 
-## TODO
+### Docker
 
-- [ ] Docker image
+* Make sure you have Docker installed on your machine. You can download and install Docker from the official Docker website.
+* Pull the image usin `docker pull ghcr.io/toomas633/fileshare`. 
+* Then run `docker run -d --restart always -p 8080:80 -e TZ=Europe/Tallinn -e MAX_FILESIZE=5M -v /host/path:/var/www/html/uploads/ fileshare` to start the container. This command will run the "fileshare" Docker image in the background, map port 80 from the container to port 8080 on your host machine. Be sure to replace the `Europe/Tallinn` with your correct timezone, change the `MAX_FILESIZE=` to a desired ammount and point `/host/path` to the folder you want the uploaded files to be saved to so they are not lost on container update.
+* Once the container is running, you can access the file sharing service by opening a web browser and navigating to `http://localhost:8080`.
+
+Alternativelly create a `docker-compose.yml`, copy the contents under here and run it with `docker-compose up -d`.
+```
+version: '3.9'
+services:
+  fileshare:
+    image: ghcr.io/toomas633/fileshare
+    container_name: fileshare
+    ports:
+      - "8080:80"
+    environment:
+      - TZ=Europe/Tallinn
+      - MAX_FILESIZE=5M
+    volumes:
+      - /host/path:/var/www/html/uploads/
+    restart: always
+```
+
 
 ## Suggestions
 
