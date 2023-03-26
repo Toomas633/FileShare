@@ -42,4 +42,4 @@ jobs:
           push: true
           tags: |
             ghcr.io/fileshare:latest
-            ghcr.io/fileshare:1.3
+            ghcr.io/fileshare:v1.3
