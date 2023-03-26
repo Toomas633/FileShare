@@ -27,7 +27,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push latest Release
+      - name: Build and push latest release
         uses: docker/build-push-action@v2
         if: ${{ github.event_name == 'release' }}
         with:
@@ -35,7 +35,7 @@ jobs:
           push: true
           tags: ghcr.io/$GITHUB_WORKSPACE/fileshare:${{ github.event.release.tag_name }}
 
-      - name: Build and push latest Docker image
+      - name: Build and push latest image
         uses: docker/build-push-action@v2
         with:
           context: .
