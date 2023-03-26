@@ -1,4 +1,4 @@
-name: Build and push Docker image to GHCR
+name: Build and push Docker image
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
     types: [created]
 
 jobs:
-  build:
+  GHCR:
     runs-on: ubuntu-latest
 
     steps:
@@ -40,4 +40,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/fileshare:v1.3
+          tags: |
+            ghcr.io/toomas633/fileshare:latest
+            ghcr.io/toomas633/fileshare:v1.3
