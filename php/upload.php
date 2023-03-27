@@ -1,6 +1,6 @@
 <?php
 require_once('../config.php');
-$targetDir = "../uploads/";
+$targetDir = DIR_PATH . "uploads/";
 $extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 $random = intval($_POST['random']);
 $direct = intval($_POST['direct']);
@@ -12,7 +12,7 @@ if ($random == 0) {
 $targetFile = $targetDir . $fileName;
 $uploadOk = 1;
 $errorMsg = "";
-$pdo = new PDO('sqlite:' . DB_FILE2);
+$pdo = new PDO('sqlite:' . DB_FILE);
 $query = $pdo->prepare('SELECT value FROM settings WHERE setting = :setting');
 $query->bindValue(':setting', 'url', PDO::PARAM_STR);
 $query->execute();

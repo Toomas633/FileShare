@@ -2,11 +2,11 @@
 require_once('../config.php');
 if (isset($_POST['filename'])) {
     $file = $_POST['filename'];
-    $filepath = '../uploads/' . $file;
+    $filepath = DIR_PATH . 'uploads/' . $file;
     $filename = basename($file);
     if (!file_exists($filepath)) {
         $status = "File not found.";
-        header("Location: ../settings.php?status=" . urlencode($status));
+        header("Location: " . DIR_PATH . "settings.php?status=" . urlencode($status));
         exit();
     }
     header('Content-Type: application/octet-stream');

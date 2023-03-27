@@ -171,7 +171,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         ?>
         <div class="row">
             <?php
-            $dir = "uploads/";
+            $dir = DIR_PATH . "uploads/";
             if ($handler = opendir($dir)) {
                 $count = 0;
                 while (false !== ($file = readdir($handler))) {

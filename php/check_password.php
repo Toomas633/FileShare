@@ -2,7 +2,7 @@
 require_once('../config.php');
 session_set_cookie_params(0);
 session_start();
-$pdo = new PDO('sqlite:' . DB_FILE2);
+$pdo = new PDO('sqlite:' . DB_FILE);
 $query = $pdo->prepare('SELECT value FROM settings WHERE setting = :setting');
 $query->bindValue(':setting', 'password', PDO::PARAM_STR);
 $query->execute();

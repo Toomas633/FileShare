@@ -1,5 +1,7 @@
 <?php
-define('DB_FILE', 'db/database.db');
-define('DB_FILE2', '../db/database.db');
 ini_set('display_errors', 1);
-//error_reporting(E_ALL & ~E_WARNING & ~E_DEPRECATED);
+$current_file_path = __FILE__;
+$current_file_dir = dirname($current_file_path);
+define('DIR_PATH', $current_file_dir . '/');
+define('DB_FILE', $current_file_dir . '/db/database.db');
+error_reporting(E_ALL & ~E_WARNING & ~E_DEPRECATED);

@@ -23,7 +23,7 @@
             echo "<p id='link-error'>$status</p>";
             echo "</div>";
         }
-        $folder = "uploads/";
+        $folder = DIR_PATH . "uploads/";
         $file_found = false;
         $dir = new DirectoryIterator($folder);
         foreach ($dir as $fileinfo) {

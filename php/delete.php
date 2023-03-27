@@ -1,7 +1,7 @@
 <?php
 require_once('../config.php');
 $file = $_GET['file'];
-$dir = "../uploads/";
+$dir = DIR_PATH . "uploads/";
 if (file_exists($dir . $file)) {
   if (unlink($dir . $file)) {
     $status = "File deleted successfully.";

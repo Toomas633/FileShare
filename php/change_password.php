@@ -6,7 +6,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     exit;
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $pdo = new PDO('sqlite:' . DB_FILE2);
+    $pdo = new PDO('sqlite:' . DB_FILE);
     $current_password = $_POST['current_password'];
     $new_password = $_POST['new_password'];
     $confirm_password = $_POST['confirm_password'];
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pdo = null;
     if (password_verify($current_password, $stored_password)) {
         if ($new_password === $confirm_password) {
-            $pdo = new PDO('sqlite:' . DB_FILE2);
+            $pdo = new PDO('sqlite:' . DB_FILE);
             $query = $pdo->prepare('UPDATE settings SET value = :new_value WHERE setting = :setting');
             $query->bindValue(':new_value', password_hash($new_password, PASSWORD_BCRYPT), PDO::PARAM_STR);
             $query->bindValue(':setting', 'password', PDO::PARAM_STR);
