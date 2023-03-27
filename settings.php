@@ -29,13 +29,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             header('Location: login.php');
             exit;
         }
-        $pdo = new PDO('sqlite:' . DB_FILE);
-        $query = $pdo->prepare('SELECT value FROM settings WHERE setting = :setting');
-        $query->bindValue(':setting', 'url', PDO::PARAM_STR);
-        $query->execute();
-        $row = $query->fetch(PDO::FETCH_ASSOC);
-        $link_address = $row['value'];
-        $pdo = null;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['save_link_address'])) {
                 $link_address = $_POST['link_address'];
@@ -47,15 +40,13 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                 $pdo = null;
             }
         } else {
-            if (file_exists('db/link_address.txt')) {
-                $pdo = new PDO('sqlite:' . DB_FILE);
-                $query = $pdo->prepare('SELECT value FROM settings WHERE setting = :setting');
-                $query->bindValue(':setting', 'url', PDO::PARAM_STR);
-                $query->execute();
-                $row = $query->fetch(PDO::FETCH_ASSOC);
-                $link_address = $row['value'];
-                $pdo = null;
-            }
+            $pdo = new PDO('sqlite:' . DB_FILE);
+            $query = $pdo->prepare('SELECT value FROM settings WHERE setting = :setting');
+            $query->bindValue(':setting', 'url', PDO::PARAM_STR);
+            $query->execute();
+            $row = $query->fetch(PDO::FETCH_ASSOC);
+            $link_address = $row['value'];
+            $pdo = null;
         }
         ?>
         </div>
@@ -180,9 +171,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         ?>
         <div class="row">
             <?php
-            if ($dir = opendir("uploads/")) {
+            $dir = "uploads/";
+            if ($handler = opendir($dir)) {
                 $count = 0;
-                while (false !== ($file = readdir($dir))) {
+                while (false !== ($file = readdir($handler))) {
                     if ($file != "." && $file != "..") {
                         $extension = pathinfo($file, PATHINFO_EXTENSION);
                         echo "<div class='col'>";
@@ -267,8 +259,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                         }
                         echo "<p id='file-delete-time'>Delete time: $deleteTime</p>";
                         echo "</div>";
-                        echo "<button id='download-button' onclick='downloadFile(\"$dir$file\")'><i class='fas fa-download-alt'></i></button>";
-                        echo "<button class='delete' id='delete-button' onclick='confirmDelete(\"$dir$file\")'><i class='fas fa-trash-alt'></i></button>";
+                        echo "<button id='download-button' onclick='downloadFile(\"$file\")'><i class='fas fa-download-alt'></i></button>";
+                        echo "<button class='delete' id='delete-button' onclick='confirmDelete(\"$$file\")'><i class='fas fa-trash-alt'></i></button>";
                         echo "</div>";
                         echo "</div>";
                         $count++;
@@ -277,7 +269,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                         }
                     }
                 }
-                closedir($dir);
+                closedir($handler);
             }
             $pdo = null;
             ?>
