@@ -10,10 +10,13 @@ function confirmDelete(file) {
     window.location.href = "php/download-delete.php?file=" + file;
   }
 }
+
 function downloadFile(filename) {
+  var folderPath = "../uploads/";
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "php/download.php");
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.responseType = "blob";
   xhr.onload = function () {
     if (xhr.status === 200) {
       var blob = new Blob([xhr.response]);
@@ -23,5 +26,5 @@ function downloadFile(filename) {
       link.click();
     }
   };
-  xhr.send("filename=" + filename);
+  xhr.send("filename=" + folderPath + filename);
 }

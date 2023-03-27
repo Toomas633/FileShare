@@ -29,7 +29,7 @@ def deleteFiles():
         delete_time = file[2]
         delete_time_local = delete_time + (local_tz_offset * 1000)
         upload_time_local = upload_time + (local_tz_offset * 1000)
-        if current_time > delete_time_local and delete_time_local != upload_time_local and file.get('deleteTime'):
+        if current_time > delete_time_local and delete_time_local != upload_time_local and delete_time:
             file_path = os.path.join('uploads/', name)
             if os.path.exists(file_path):
                 os.remove(file_path)
