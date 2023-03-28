@@ -108,29 +108,24 @@ That's it! Your Python script should now run in the background on system start i
 
 ### Docker
 
-* Make sure you have Docker installed on your machine. You can download and install Docker from the official Docker website.
-* Pull the image usin `docker pull ghcr.io/toomas633/fileshare:latest`. 
-* Then run `docker run -d --restart always -p 8080:80 -e TZ=Europe/Tallinn -e MAX_FILESIZE=5M -v /host/path1:/var/www/html/uploads/ -v /host/path2:/var/www/html/db/ fileshare` to start the container. This command will run the "fileshare" Docker image in the background, map port 80 from the container to port 8080 on your host machine. Be sure to replace the `Europe/Tallinn` with your correct timezone, change the `MAX_FILESIZE=` to a desired ammount and point `/host/path1` to the folder you want the uploaded files to be saved and `/host/path2` to database folder so they are not lost on container update.
-* Once the container is running, you can access the file sharing service by opening a web browser and navigating to `http://localhost:8080`.
-
-Alternativelly create a `docker-compose.yml`, copy the contents under here and run it with `docker-compose up -d`.
+Create a `docker-compose.yml`, copy the contents under here and run it with `docker-compose up -d`.
 ```
 version: '3.9'
 services:
   fileshare:
-    image: ghcr.io/toomas633/fileshare:latest
-    container_name: fileshare
+    image: ghcr.io/toomas633/fileshare:latest #or version number instead of latest
+    container_name: fileshare #container name, can be set different
     ports:
-      - "8080:80"
+      - "8080:80" #map port 8080 from host to 80 on container
     environment:
-      - TZ=Europe/Tallinn
-      - MAX_FILESIZE=5M
+      - TZ=Europe/Tallinn #default timezone for the container and on first database creation
+      - MAX_FILESIZE=5M #allowed uploaded file size
+      - PASSWORD=Password.123 #password for settings page login, set your own or change it on the page
     volumes:
       - /host/path1:/var/www/html/uploads/
       - /host/path2:/var/www/html/db/
     restart: always
 ```
-
 
 ## Suggestions
 
