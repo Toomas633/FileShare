@@ -1,4 +1,7 @@
 FROM ubuntu:20.04
+LABEL org.opencontainers.image.source=https://github.com/Toomas633/FileShare
+LABEL org.opencontainers.image.description="File share website"
+LABEL org.opencontainers.image.licenses=GPL-3.0
 ENV MAX_FILESIZE 5M
 ENV TZ=Europe/Tallinn
 ENV PASSWORD=Password.123
