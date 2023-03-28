@@ -3,17 +3,13 @@ name: Build and push Docker image
 on:
   push:
     branches:
-      - main
-  pull_request:
-    branches:
-      - main
+      - update
   release:
     types: [created]
 
 jobs:
   GHCR:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -33,18 +29,12 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/toomas633/fileshare:${{ github.event.release.tag_name }}
-
-      - name: Build and push latest image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: ghcr.io/toomas633/fileshare:latest
+          tags: | 
+            ghcr.io/toomas633/fileshare:${{ github.event.release.tag_name }}
+            ghcr.io/toomas633/fileshare:latest
   
   Docker-Hub:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -64,11 +54,38 @@ jobs:
         with:
           context: .
           push: true
-          tags: docker.io/toomas633/fileshare:${{ github.event.release.tag_name }}
+          tags: | 
+            docker.io/toomas633/fileshare:${{ github.event.release.tag_name }}
+            docker.io/toomas633/fileshare:latest
+  
+  Dev-Image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: update
 
-      - name: Build and push latest Docker image
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          registry: docker.io
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Login to GHCR
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push latest Release
         uses: docker/build-push-action@v2
         with:
           context: .
           push: true
-          tags: docker.io/toomas633/fileshare:latest
+          tags: |
+            docker.io/toomas633/fileshare:dev
+            ghcr.io/toomas633/fileshare:dev
+  
