@@ -1,10 +1,14 @@
 FROM ubuntu:20.04
+LABEL org.opencontainers.image.source=https://github.com/Toomas633/FileShare
+LABEL org.opencontainers.image.description="File share website"
+LABEL org.opencontainers.image.licenses=GPL-3.0
 ENV MAX_FILESIZE 5M
 ENV TZ=Europe/Tallinn
+ENV PASSWORD=Password.123
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 VOLUME /var/www/html/uploads/
 VOLUME /var/www/html/db/
-RUN apt update && apt upgrade -y
+RUN apt update
 RUN apt install -y \
     php \
     php-cli \
