@@ -5,7 +5,7 @@ chdir($current_file_dir);
 define('DIR_PATH', $current_file_dir . '/');
 define('DB_FILE', $current_file_dir . '/db/database.db');
 error_reporting(E_ALL & ~E_WARNING & ~E_DEPRECATED & ~E_NOTICE);
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
 
 $folderName = "uploads/";
 if (!file_exists($folderName)) {
