@@ -8,7 +8,7 @@ ENV PASSWORD=Password.123
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 VOLUME /var/www/html/uploads/
 VOLUME /var/www/html/db/
-RUN apt update && apt upgrade -y
+RUN apt update
 RUN apt install -y \
     php \
     php-cli \
