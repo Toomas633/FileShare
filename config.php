@@ -8,10 +8,10 @@ if (!file_exists($folderName)) {
     mkdir($folderName, 0777, true);
 }
 
-$password = password_hash(getenv('PASSWORD'), PASSWORD_BCRYPT);
-$tz = getenv('TZ');
 $db = 'db/database.db';
 if (!file_exists($db)) {
+    $password = password_hash(getenv('PASSWORD'), PASSWORD_BCRYPT);
+    $tz = getenv('TZ');
     $db = new SQLite3($db);
     $db->exec('CREATE TABLE files (name TEXT NOT NULL, uploadTime INT NOT NULL, deleteTime INT NOT NULL)');
     $db->exec('CREATE TABLE settings (setting TEXT NOT NULL, value TEXT NOT NULL)');
