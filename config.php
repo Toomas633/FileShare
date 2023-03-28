@@ -8,13 +8,8 @@ if (!file_exists($folderName)) {
     mkdir($folderName, 0777, true);
 }
 
-$password = getenv('PASSWORD');
-if ($password) {
-    $password = password_hash($password, PASSWORD_BCRYPT);
-} else {
-    $password = '$2y$10$Wd3nh6Kg6bRv6TpKz0E5eOrvONkObd7JhQmkeFV2QbVOHZqDSfkkK';
-}
-$tz = getenv('TZ') ?: 'Europe/Tallinn';
+$password = password_hash(getenv('PASSWORD'), PASSWORD_BCRYPT);
+$tz = getenv('TZ');
 $db = 'db/database.db';
 if (!file_exists($db)) {
     $db = new SQLite3($db);

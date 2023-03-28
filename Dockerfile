@@ -1,6 +1,7 @@
 FROM ubuntu:20.04
 ENV MAX_FILESIZE 5M
 ENV TZ=Europe/Tallinn
+ENV PASSWORD=Password.123
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 VOLUME /var/www/html/uploads/
 VOLUME /var/www/html/db/

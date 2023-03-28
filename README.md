@@ -122,8 +122,8 @@ services:
       - MAX_FILESIZE=5M #allowed uploaded file size
       - PASSWORD=Password.123 #password for settings page login, set your own or change it on the page
     volumes:
-      - /host/path1:/var/www/html/uploads/
-      - /host/path2:/var/www/html/db/
+      - /host/path1:/var/www/html/uploads/ # volume or host dir to a folder where uploads will be held
+      - /host/path2:/var/www/html/db/ # volume or host dir to a folder where the database will be held 
     restart: always
 ```
 
