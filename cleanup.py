@@ -41,7 +41,6 @@ def deleteFiles():
 
 if __name__ == '__main__':
     while True:
-        os.chdir(os.path.dirname(os.path.abspath("cleanup.py")))
         deleteFiles()
         deleteEntries()
         time.sleep(60)

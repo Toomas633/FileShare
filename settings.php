@@ -95,7 +95,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <option value="America/St_Johns">(GMT-03:30) Newfoundland</option>
             <option value="America/Sao_Paulo">(GMT-03:00) Brasilia</option>
             <option value="America/Argentina/Buenos_Aires">(GMT-03:00) Buenos Aires, Georgetown</option>
-            <option value="America/Godthab">(GMT-03:00) Greenland</option>
             <option value="America/Montevideo">(GMT-03:00) Montevideo</option>
             <option value="America/Noronha">(GMT-02:00) Mid-Atlantic</option>
             <option value="Atlantic/Cape_Verde">(GMT-01:00) Cape Verde Is.</option>
@@ -127,12 +126,9 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <option value="Asia/Kabul">(GMT+04:30) Kabul</option>
             <option value="Asia/Yekaterinburg">(GMT+05:00) Ekaterinburg</option>
             <option value="Asia/Karachi">(GMT+05:00) Karachi, Tashkent</option>
-            <option value="Asia/Calcutta">(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</option>
             <option value="Asia/Colombo">(GMT+05:30) Sri Jayawardenapura</option>
-            <option value="Asia/Katmandu">(GMT+05:45) Kathmandu</option>
             <option value="Asia/Almaty">(GMT+06:00) Almaty, Novosibirsk</option>
             <option value="Asia/Dhaka">(GMT+06:00) Astana, Dhaka</option>
-            <option value="Asia/Rangoon">(GMT+06:30) Yangon (Rangoon)</option>
             <option value="Asia/Bangkok">(GMT+07:00) Bangkok, Hanoi, Jakarta</option>
             <option value="Asia/Krasnoyarsk">(GMT+07:00) Krasnoyarsk</option>
             <option value="Asia/Hong_Kong">(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi</option>
@@ -148,12 +144,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <option value="Australia/Hobart">(GMT+10:00) Hobart</option>
             <option value="Asia/Vladivostok">(GMT+10:00) Vladivostok</option>
             <option value="Australia/Lord_Howe">(GMT+10:30) Lord Howe Island</option>
-            <option value="Etc/GMT-11">(GMT+11:00) Solomon Is., New Caledonia</option>
             <option value="Asia/Magadan">(GMT+11:00) Magadan</option>
             <option value="Pacific/Norfolk">(GMT+11:30) Norfolk Island</option>
             <option value="Asia/Anadyr">(GMT+12:00) Anadyr, Kamchatka</option>
             <option value="Pacific/Auckland">(GMT+12:00) Auckland, Wellington</option>
-            <option value="Etc/GMT-12">(GMT+12:00) Fiji, Kamchatka, Marshall Is.</option>
             <option value="Pacific/Chatham">(GMT+12:45) Chatham Islands</option>
             <option value="Pacific/Tongatapu">(GMT+13:00) Nuku'alofa</option>
             <option value="Pacific/Kiritimati">(GMT+14:00) Kiritimati</option>
