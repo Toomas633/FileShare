@@ -16,9 +16,9 @@ if (!file_exists(DB_FILE)) {
     $password = password_hash(getenv('PASSWORD'), PASSWORD_BCRYPT);
     $tz = getenv('TZ');
     $db = new SQLite3(DB_FILE);
-    $db->exec('CREATE TABLE files (name TEXT NOT NULL, uploadTime INT NOT NULL, deleteTime INT NOT NULL)');
-    $db->exec('CREATE TABLE settings (setting TEXT NOT NULL, value TEXT NOT NULL)');
-    $db->exec('CREATE TABLE settings (setting TEXT NOT NULL, value TEXT NOT NULL)');
+    $db->exec('CREATE TABLE files (name TEXT, uploadTime INT, deleteTime INT)');
+    $db->exec('CREATE TABLE settings (setting TEXT, value TEXT)');
+    $db->exec('CREATE TABLE settings (setting TEXT, value TEXT)');
     $db->exec("INSERT INTO settings (setting, value) VALUES ('password', '$password')");
     $db->exec("INSERT INTO settings (setting, value) VALUES ('timezone', '$tz')");
     $db->exec("INSERT INTO settings (setting, value) VALUES ('url', 'http://localhost:8000/')");
