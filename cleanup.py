@@ -35,7 +35,7 @@ def deleteFiles():
             file_path = os.path.join('uploads/', name)
             if os.path.exists(file_path):
                 os.remove(file_path)
-                logging.info(f"Deleted file: {name} \t Delete time(tz): {delete_time_local} \t Delete time(utc): {delete_time}")
+                logging.info(f"Deleted file: {name}")
     cursor.close()
     conn.close()
 
