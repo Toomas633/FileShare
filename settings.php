@@ -75,7 +75,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         </form>
         <label id="timezone-label" for="timezone">Select Timezone:</label>
         <select id="timezone" name="timezone">
-            <option value="">(GMT-12:00) International Date Line West</option>
             <option value="Pacific/Midway">(GMT-11:00) Midway Island, Samoa</option>
             <option value="Pacific/Honolulu">(GMT-10:00) Hawaii</option>
             <option value="America/Anchorage">(GMT-09:00) Alaska</option>
