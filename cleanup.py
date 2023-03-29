@@ -13,7 +13,6 @@ def deleteEntries():
     for filename in files_in_database:
         if filename not in files_in_folder:
             cursor.execute("DELETE FROM files WHERE name =?", (filename,))
-            logging.info(f"Deleted entry for file: {filename}")
             conn.commit()
     cursor.close()
     conn.close()
@@ -35,7 +34,6 @@ def deleteFiles():
             file_path = os.path.join('uploads/', name)
             if os.path.exists(file_path):
                 os.remove(file_path)
-                logging.info(f"Deleted file: {name}")
     cursor.close()
     conn.close()
 
