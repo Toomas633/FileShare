@@ -1,5 +1,6 @@
 <?php
 require_once('config.php');
+changePathOnFirstRun();
 ?>
 <!DOCTYPE html>
 <html>

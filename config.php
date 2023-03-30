@@ -1,7 +1,15 @@
 <?php
-$current_file_path = __FILE__;
-$current_file_dir = dirname($current_file_path);
-chdir($current_file_dir);
+function changePathOnFirstRun() {
+    static $firstRun = true;
+    if ($firstRun) {
+        $current_file_path = __FILE__;
+        $current_file_dir = dirname($
+        $current_file_path);
+        chdir($current_file_dir);
+        $firstRun = false;
+    }
+}
+
 define('DEFAULT_PASS', '$2y$10$Wd3nh6Kg6bRv6TpKz0E5eOrvONkObd7JhQmkeFV2QbVOHZqDSfkkK');
 define('DEFAULT_TZ', 'Europe/London');
 define('DIR_PATH', $current_file_dir . '/');
@@ -27,11 +35,47 @@ if (!file_exists(DB_FILE)) {
     } else {
         $tz = DEFAULT_TZ;
     }
-    $pdo = new PDO('sqlite:' . DB_FILE);
-    $pdo->exec("CREATE TABLE files (name TEXT, uploadTime INT, deleteTime INT)");
-    $pdo->exec("CREATE TABLE settings (setting TEXT, value TEXT)");
-    $pdo->exec("INSERT INTO settings (setting, value) VALUES ('password', '$password')");
-    $pdo->exec("INSERT INTO settings (setting, value) VALUES ('timezone', '$tz')");
-    $pdo->exec("INSERT INTO settings (setting, value) VALUES ('url', 'http://localhost:8000/')");
-    $pdo = null;
+    try {
+        $db = new PDO('sqlite:' . DB_FILE);
+        $query=$db->prepare("CREATE TABLE files (name TEXT, uploadTime INT, deleteTime INT)");
+        $query->execute();
+        $db = $query = null;
+    } catch (PDOException $e){
+        echo 'Error: Unable to create table files';
+    }
+    try {
+        $db = new PDO('sqlite:' . DB_FILE);
+        $query=$db->prepare("CREATE TABLE settings (setting TEXT, value TEXT)");
+        $query->execute();
+        $db = $query = null;
+    } catch (PDOException $e){
+        echo 'Error: Unable to create table settings';
+    }
+    try {
+        $db = new PDO('sqlite:' . DB_FILE);
+        $query=$db->prepare("INSERT INTO settings (setting, value) VALUES ('password', :password)");
+        $query->bindValue(':password', $password, PDO::PARAM_STR);
+        $query->execute();
+        $db = $query = null;
+    } catch (PDOException $e){
+        echo 'Error: Unable to insert password to table settings';
+    }
+    try {
+        $db = new PDO('sqlite:' . DB_FILE);
+        $query=$db->prepare("INSERT INTO settings (setting, value) VALUES ('timezone', :tz)");
+        $query->bindValue(':tz', $tz, PDO::PARAM_STR);
+        $query->execute();
+        $db = $query = null;
+    } catch (PDOException $e){
+        echo 'Error: Unable to insert timezone to table settings';
+    }
+    try {
+        $db = new PDO('sqlite:' . DB_FILE);
+        $query=$db->prepare("INSERT INTO settings (setting, value) VALUES ('url', :url)");
+        $query->bindValue(':url', 'http://localhost:8000/', PDO::PARAM_STR);
+        $query->execute();
+        $db = $query = null;
+    } catch (PDOException $e){
+        echo 'Error: Unable to insert url to table settings';
+    }
 }
