@@ -35,6 +35,7 @@ COPY docker/php.ini /usr/local/etc/php/conf.d/php.ini
 COPY . /var/www/html
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN chmod +x /var/www/html/cleanup.py
+RUN chmod 777 /var/www/html/db/ /var/www/html/uploads/
 WORKDIR /var/www/html
 EXPOSE 80
 CMD ["/usr/bin/supervisord", "-n"]
