@@ -19,18 +19,16 @@ function changePathOnFirstRun() {
 }
 
 function createDB() {
-    define('DEFAULT_PASS', '$2y$10$Wd3nh6Kg6bRv6TpKz0E5eOrvONkObd7JhQmkeFV2QbVOHZqDSfkkK');
-    define('DEFAULT_TZ', 'Europe/London');
     if (!file_exists(DIR_PATH . '/db/database.db')) {
         if (getenv('PASSWORD') !== false) {
             $password = password_hash(getenv('PASSWORD'), PASSWORD_BCRYPT);
         } else {
-            $password = DEFAULT_PASS;
+            $password = '$2y$10$Wd3nh6Kg6bRv6TpKz0E5eOrvONkObd7JhQmkeFV2QbVOHZqDSfkkK';
         }
         if (getenv('TZ') !== false) {
             $tz = getenv('TZ');
         } else {
-            $tz = DEFAULT_TZ;
+            $tz = 'Europe/London';
         }
         try {
             $db = new PDO('sqlite:' . DIR_PATH . '/db/database.db');
