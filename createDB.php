@@ -1,4 +1,5 @@
 <?php
+sleep(10);
 require_once('config.php');
 if (!file_exists(DB_FILE)) {
         if (getenv('PASSWORD') !== false) {
