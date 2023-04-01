@@ -41,6 +41,7 @@ def deleteFiles():
 
 if __name__ == '__main__':
     while True:
+        logging.info(f"Started cleanup")
         deleteFiles()
         deleteEntries()
         time.sleep(60)
