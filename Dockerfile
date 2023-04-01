@@ -29,7 +29,8 @@ RUN apt install -y \
     libfreetype6-dev \ 
     libpq-dev \
     libonig-dev \
-    supervisor
+    supervisor \
+    nano
 RUN pip install datetime
 COPY docker/php.ini /usr/local/etc/php/conf.d/php.ini
 COPY . /var/www/html
