@@ -7,12 +7,6 @@ function changePathOnFirstRun() {
     static $firstRun = true;
     if ($firstRun) {
         chdir(DIR_PATH);
-        if (!file_exists("uploads/")) {
-            mkdir("uploads/", 0777, true);
-        }
-        if (!file_exists("db/")) {
-            mkdir("db/", 0777, true);
-        }
         createDB();
         $firstRun = false;
     }
