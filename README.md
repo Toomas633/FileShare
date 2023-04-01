@@ -1,5 +1,4 @@
 # FileShare;
-<img src = "https://github.com/Toomas633/FileShare/actions/workflows/docker.yml/badge.svg" align="right">
 
 - [Requirements](#requirements)
 - [Running instructions](#running-instructions)
