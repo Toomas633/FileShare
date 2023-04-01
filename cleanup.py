@@ -2,7 +2,6 @@ import os
 import sqlite3
 import time
 from datetime import datetime, timezone
-import logging
 
 def deleteEntries():
     conn = sqlite3.connect('db/database.db')
@@ -13,7 +12,7 @@ def deleteEntries():
     for filename in files_in_database:
         if filename not in files_in_folder:
             cursor.execute("DELETE FROM files WHERE name =?", (filename,))
-            logging.info(f"Deleted entry for file: {filename}")
+            print(f"Deleted entry for file: {filename}")
             conn.commit()
     cursor.close()
     conn.close()
@@ -35,13 +34,13 @@ def deleteFiles():
             file_path = os.path.join('uploads/', name)
             if os.path.exists(file_path):
                 os.remove(file_path)
-                logging.info(f"Deleted file: {name} \t Delete time(tz): {delete_time_local} \t Delete time(utc): {delete_time}")
+                print(f"Deleted file: {name} \t Delete time(tz): {delete_time_local} \t Delete time(utc): {delete_time}")
     cursor.close()
     conn.close()
 
 if __name__ == '__main__':
     while True:
-        logging.info(f"Started cleanup")
+        print(f"Started cleanup")
         deleteFiles()
         deleteEntries()
         time.sleep(60)
