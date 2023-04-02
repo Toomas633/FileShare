@@ -2,7 +2,7 @@ import logging
 import os
 import sqlite3
 import time
-from datetime import datetime, timezone
+from datetime import datetime
 
 logging.basicConfig(level=logging.DEBUG, filename='cleanup.log', filemode='w', format='%(asctime)s %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 
@@ -25,19 +25,16 @@ def deleteFiles():
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM files')
     files = cursor.fetchall()
-    local_tz_offset = datetime.now(timezone.utc).astimezone().utcoffset().total_seconds()
-    current_time = int(time.time() * 1000)
+    current_time = int(datetime.utcnow())
     for file in files:
         name = file[0]
         upload_time=file[1]
         delete_time = file[2]
-        delete_time_local = delete_time + (local_tz_offset * 1000)
-        upload_time_local = upload_time + (local_tz_offset * 1000)
-        if current_time > delete_time_local and delete_time_local != upload_time_local and delete_time:
+        if current_time > delete_time and delete_time != upload_time and delete_time:
             file_path = os.path.join('uploads/', name)
             if os.path.exists(file_path):
-                logging.info(file_path)
-                print(f"Deleted file: {name} \t Delete time(tz): {delete_time_local} \t Delete time(utc): {delete_time}")
+                logging.info(f"Deleted file: {name} \t Delete time in db(utc): {delete_time}")
+                os.remove(file_path)
     cursor.close()
     conn.close()
 
