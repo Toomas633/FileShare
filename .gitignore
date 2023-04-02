@@ -19,3 +19,4 @@
 # Ignore test upload files
 uploads/*
 db/*
+*.log

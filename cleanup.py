@@ -25,7 +25,7 @@ def deleteFiles():
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM files')
     files = cursor.fetchall()
-    current_time = int(datetime.utcnow())
+    current_time = int(datetime.utcnow().timestamp())
     for file in files:
         name = file[0]
         upload_time=file[1]
