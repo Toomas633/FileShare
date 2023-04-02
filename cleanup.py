@@ -4,6 +4,8 @@ import sqlite3
 import time
 from datetime import datetime
 
+import pytz
+
 logging.basicConfig(level=logging.DEBUG, filename='cleanup.log', filemode='w', format='%(asctime)s %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 
 def deleteEntries():
@@ -25,7 +27,8 @@ def deleteFiles():
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM files')
     files = cursor.fetchall()
-    current_time = int(datetime.utcnow().timestamp())
+    current_time = int(datetime.now(pytz.timezone('UTC')).timestamp())
+    print(current_time)
     for file in files:
         name = file[0]
         upload_time=file[1]
