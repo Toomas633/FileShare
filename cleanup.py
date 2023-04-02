@@ -27,13 +27,12 @@ def deleteFiles():
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM files')
     files = cursor.fetchall()
-    current_time = int(datetime.now(pytz.timezone('UTC')).timestamp())
-    print(current_time)
+    current_time = int(datetime.now(pytz.timezone('UTC')).timestamp() * 1000)
     for file in files:
         name = file[0]
         upload_time=file[1]
         delete_time = file[2]
-        if current_time > delete_time and delete_time != upload_time and delete_time:
+        if current_time > delete_time and delete_time != upload_time:
             file_path = os.path.join('uploads/', name)
             if os.path.exists(file_path):
                 logging.info(f"Deleted file: {name} \t Delete time in db(utc): {delete_time}")
