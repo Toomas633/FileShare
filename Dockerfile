@@ -4,7 +4,7 @@ LABEL org.opencontainers.image.description="File share website"
 LABEL org.opencontainers.image.licenses=GPL-3.0
 LABEL org.opencontainers.image.authors=Toomas633
 ENV MAX_FILESIZE 5M
-ENV TZ=Europe/Tallinn
+ENV TZ=Europe/London
 ENV PASSWORD=Password.123
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 VOLUME /var/www/html/uploads/
