@@ -1,24 +1,16 @@
 <?php
 sleep(10);
-
-$current_file_path = __FILE__;
-$current_file_dir = dirname($current_file_path);
-$db_path = $current_file_dir . '/db/database.db';
-
-error_reporting(E_ALL & ~E_WARNING & ~E_DEPRECATED & ~E_NOTICE);
-ini_set('display_errors', 0);
-ini_set('log_errors', 1);
-ini_set('error_log', $path . '/FileShare.log');
-
 if (!file_exists('uploads/')) {
     mkdir('uploads/', 0777, true);
 }
-
 if (!file_exists('db/')) {
     mkdir('db/', 0777, true);
 }
-
-if (!file_exists($db_path)) {
+error_reporting(E_ALL & ~E_WARNING & ~E_DEPRECATED & ~E_NOTICE);
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+ini_set('error_log', DEFAULT_PATH . '/FileShare.log');
+if (!file_exists(DB_FILE)) {
     if (getenv('PASSWORD') !== false) {
         $password = password_hash(getenv('PASSWORD'), PASSWORD_BCRYPT);
     } else {
@@ -30,7 +22,7 @@ if (!file_exists($db_path)) {
         $tz = 'Europe/London';
     }
     try {
-        $db = new PDO('sqlite:' . $db_path);
+        $db = new PDO('sqlite:' . DB_FILE);
         $query = $db->prepare("CREATE TABLE files (name TEXT, uploadTime INT, deleteTime INT)");
         $query->execute();
         $db = $query = null;
@@ -38,7 +30,7 @@ if (!file_exists($db_path)) {
         echo 'Error: Unable to create table files';
     }
     try {
-        $db = new PDO('sqlite:' . $db_path);
+        $db = new PDO('sqlite:' . DB_FILE);
         $query = $db->prepare("CREATE TABLE settings (setting TEXT, value TEXT)");
         $query->execute();
         $db = $query = null;
@@ -46,7 +38,7 @@ if (!file_exists($db_path)) {
         echo 'Error: Unable to create table settings';
     }
     try {
-        $db = new PDO('sqlite:' . $db_path);
+        $db = new PDO('sqlite:' . DB_FILE);
         $query = $db->prepare("INSERT INTO settings (setting, value) VALUES ('password', :password)");
         $query->bindValue(':password', $password, PDO::PARAM_STR);
         $query->execute();
@@ -55,7 +47,7 @@ if (!file_exists($db_path)) {
         echo 'Error: Unable to insert password to table settings';
     }
     try {
-        $db = new PDO('sqlite:' . $db_path);
+        $db = new PDO('sqlite:' . DB_FILE);
         $query = $db->prepare("INSERT INTO settings (setting, value) VALUES ('timezone', :tz)");
         $query->bindValue(':tz', $tz, PDO::PARAM_STR);
         $query->execute();
@@ -73,7 +65,7 @@ if (!file_exists($db_path)) {
         echo 'Error: Unable to insert url to table settings';
     }
     try {
-        $db = new PDO('sqlite:' . $db_path);
+        $db = new PDO('sqlite:' . DB_FILE);
         $query = $db->prepare("INSERT INTO settings (setting, value) VALUES ('path', :path)");
         $query->bindValue(':path', $current_file_dir, PDO::PARAM_STR);
         $query->execute();
