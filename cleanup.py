@@ -44,14 +44,6 @@ def deleteFiles():
 
 if __name__ == '__main__':
     logging.debug('Started cleanup.py')
-    
-    # Log some messages
-    logging.debug('This is a debug message')
-    logging.info('This is an info message')
-    logging.warning('This is a warning message')
-    logging.error('This is an error message')
-    logging.critical('This is a critical message')
-
     while True:
         try:
             deleteFiles()
