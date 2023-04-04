@@ -1,5 +1,5 @@
 <?php
-$pdo = new PDO('sqlite:' . DB_FILE);
+$pdo = new PDO('sqlite: db/database.db');
 $query = $pdo->prepare('SELECT value FROM settings WHERE setting = :setting');
 $query->bindValue(':setting', 'path', PDO::PARAM_STR);
 $query->execute();
