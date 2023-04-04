@@ -5,7 +5,6 @@ $query->bindValue(':setting', 'path', PDO::PARAM_STR);
 $query->execute();
 $row = $query->fetch(PDO::FETCH_ASSOC);
 $path = $row['value'];
-
 define('DB_FILE', $path . '/db/database.db');
 define('DIR_PATH', $path . '/');
 error_reporting(E_ALL & ~E_WARNING & ~E_DEPRECATED & ~E_NOTICE);
