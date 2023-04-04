@@ -21,7 +21,6 @@ def deleteEntries():
     cursor.close()
     conn.close()
 
-
 def deleteFiles():
     conn = sqlite3.connect('db/database.db')
     cursor = conn.cursor()
@@ -40,7 +39,6 @@ def deleteFiles():
                 os.remove(file_path)
     cursor.close()
     conn.close()
-
 
 if __name__ == '__main__':
     logging.debug('Started cleanup.py')
