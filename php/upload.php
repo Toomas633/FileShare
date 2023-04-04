@@ -4,7 +4,7 @@ $targetDir = DIR_PATH . "uploads/";
 $extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 $random = intval($_POST['random']);
 $direct = intval($_POST['direct']);
-if ($_FILES['file']['name'] === "") {
+if ($_FILES['file']['name'] != "") {
     if ($random == 0) {
         $fileName = pathinfo($_FILES['file']['name'], PATHINFO_BASENAME);
     } else {
@@ -40,5 +40,5 @@ if ($_FILES['file']['name'] === "") {
         }
     }
 } else {
-    echo "ERROR: No file selected.";
+    echo "ERROR: No file selected." . $_FILES['file']['name'];
 }
