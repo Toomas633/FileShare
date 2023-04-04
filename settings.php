@@ -9,13 +9,11 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Settings</title>
     <link rel="stylesheet" type="text/css" href="css/settings.css" />
     <link rel="icon" type="icons/png" href="icons/fav.png">
 </head>
-
 <body>
     <header id="top-bar">
         <h1 id="page-name"><a href="index.php" style="text-decoration: none;" id="page-name">FileShare</a></h1>
@@ -75,82 +73,31 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         </form>
         <label id="timezone-label" for="timezone">Select Timezone:</label>
         <select id="timezone" name="timezone">
-            <option value="Pacific/Midway">(GMT-11:00) Midway Island, Samoa</option>
-            <option value="Pacific/Honolulu">(GMT-10:00) Hawaii</option>
-            <option value="America/Anchorage">(GMT-09:00) Alaska</option>
-            <option value="America/Los_Angeles">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
-            <option value="America/Denver">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
-            <option value="America/Chihuahua">(GMT-07:00) Chihuahua, La Paz, Mazatlan</option>
-            <option value="America/Phoenix">(GMT-07:00) Arizona</option>
-            <option value="America/Chicago">(GMT-06:00) Central Time (US &amp; Canada)</option>
-            <option value="America/Mexico_City">(GMT-06:00) Mexico City, Tegucigalpa</option>
-            <option value="America/Regina">(GMT-06:00) Saskatchewan</option>
-            <option value="America/Bogota">(GMT-05:00) Bogota, Lima, Quito, Rio Branco</option>
-            <option value="America/New_York">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
-            <option value="America/Indiana/Indianapolis">(GMT-05:00) Indiana (East)</option>
-            <option value="America/Halifax">(GMT-04:00) Atlantic Time (Canada)</option>
-            <option value="America/Caracas">(GMT-04:00) Caracas, La Paz</option>
-            <option value="America/Guyana">(GMT-04:00) Guyana</option>
-            <option value="America/Santiago">(GMT-04:00) Santiago</option>
-            <option value="America/St_Johns">(GMT-03:30) Newfoundland</option>
-            <option value="America/Sao_Paulo">(GMT-03:00) Brasilia</option>
-            <option value="America/Argentina/Buenos_Aires">(GMT-03:00) Buenos Aires, Georgetown</option>
-            <option value="America/Montevideo">(GMT-03:00) Montevideo</option>
-            <option value="America/Noronha">(GMT-02:00) Mid-Atlantic</option>
-            <option value="Atlantic/Cape_Verde">(GMT-01:00) Cape Verde Is.</option>
-            <option value="Atlantic/Azores">(GMT-01:00) Azores</option>
-            <option value="Europe/London">(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London</option>
-            <option value="Africa/Casablanca">(GMT) Casablanca, Monrovia</option>
-            <option value="Europe/Amsterdam">(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option>
-            <option value="Europe/Belgrade">(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague</option>
-            <option value="Europe/Brussels">(GMT+01:00) Brussels, Copenhagen, Madrid, Paris</option>
-            <option value="Africa/Algiers">(GMT+01:00) West Central Africa</option>
-            <option value="Europe/Sarajevo">(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb</option>
-            <option value="Africa/Lagos">(GMT+01:00) Lagos</option>
-            <option value="Asia/Amman">(GMT+02:00) Amman</option>
-            <option value="Europe/Athens">(GMT+02:00) Athens, Bucharest, Istanbul</option>
-            <option value="Asia/Beirut">(GMT+02:00) Beirut</option>
-            <option value="Africa/Cairo">(GMT+02:00) Cairo</option>
-            <option value="Africa/Harare">(GMT+02:00) Harare, Pretoria</option>
-            <option value="Europe/Helsinki">(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius</option>
-            <option value="Asia/Jerusalem">(GMT+02:00) Jerusalem</option>
-            <option value="Europe/Minsk">(GMT+03:00) Minsk</option>
-            <option value="Africa/Johannesburg">(GMT+03:00) Johannesburg</option>
-            <option value="Europe/Moscow">(GMT+03:00) Moscow, St. Petersburg, Volgograd</option>
-            <option value="Asia/Kuwait">(GMT+03:00) Kuwait, Riyadh, Baghdad</option>
-            <option value="Asia/Tehran">(GMT+03:30) Tehran</option>
-            <option value="Asia/Muscat">(GMT+04:00) Muscat</option>
-            <option value="Asia/Baku">(GMT+04:00) Baku</option>
-            <option value="Asia/Yerevan">(GMT+04:00) Yerevan</option>
-            <option value="Asia/Tbilisi">(GMT+04:00) Tbilisi</option>
-            <option value="Asia/Kabul">(GMT+04:30) Kabul</option>
-            <option value="Asia/Yekaterinburg">(GMT+05:00) Ekaterinburg</option>
-            <option value="Asia/Karachi">(GMT+05:00) Karachi, Tashkent</option>
-            <option value="Asia/Colombo">(GMT+05:30) Sri Jayawardenapura</option>
-            <option value="Asia/Almaty">(GMT+06:00) Almaty, Novosibirsk</option>
-            <option value="Asia/Dhaka">(GMT+06:00) Astana, Dhaka</option>
-            <option value="Asia/Bangkok">(GMT+07:00) Bangkok, Hanoi, Jakarta</option>
-            <option value="Asia/Krasnoyarsk">(GMT+07:00) Krasnoyarsk</option>
-            <option value="Asia/Hong_Kong">(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi</option>
-            <option value="Asia/Irkutsk">(GMT+08:00) Irkutsk, Ulaan Bataar</option>
-            <option value="Australia/Perth">(GMT+08:00) Perth</option>
-            <option value="Australia/Eucla">(GMT+08:45) Eucla</option>
-            <option value="Asia/Tokyo">(GMT+09:00) Osaka, Sapporo, Tokyo</option>
-            <option value="Asia/Seoul">(GMT+09:00) Seoul</option>
-            <option value="Asia/Yakutsk">(GMT+09:00) Yakutsk</option>
-            <option value="Australia/Adelaide">(GMT+09:30) Adelaide</option>
-            <option value="Australia/Darwin">(GMT+09:30) Darwin</option>
-            <option value="Australia/Brisbane">(GMT+10:00) Brisbane</option>
-            <option value="Australia/Hobart">(GMT+10:00) Hobart</option>
-            <option value="Asia/Vladivostok">(GMT+10:00) Vladivostok</option>
-            <option value="Australia/Lord_Howe">(GMT+10:30) Lord Howe Island</option>
-            <option value="Asia/Magadan">(GMT+11:00) Magadan</option>
-            <option value="Pacific/Norfolk">(GMT+11:30) Norfolk Island</option>
-            <option value="Asia/Anadyr">(GMT+12:00) Anadyr, Kamchatka</option>
-            <option value="Pacific/Auckland">(GMT+12:00) Auckland, Wellington</option>
-            <option value="Pacific/Chatham">(GMT+12:45) Chatham Islands</option>
-            <option value="Pacific/Tongatapu">(GMT+13:00) Nuku'alofa</option>
-            <option value="Pacific/Kiritimati">(GMT+14:00) Kiritimati</option>
+            <option value='UTC'>UTC</option>
+            <option value='GMT-12'>UTC-12:00 International Date Line West (IDLW)</option>
+            <option value='GMT-11'>UTC-11:00 Samoa Standard Time (SST)</option>
+            <option value='GMT-10'>UTC-10:00 Hawaii-Aleutian Standard Time (HST)</option>
+            <option value='GMT-9'>UTC-9:00 Alaska Standard Time (AKST)</option>
+            <option value='GMT-8'>UTC-8:00 Pacific Standard Time (PST)</option>
+            <option value='GMT-7'>UTC-7:00 Mountain Standard Time (MST)</option>
+            <option value='GMT-6'>UTC-6:00 Central Standard Time (CST)</option>
+            <option value='GMT-5'>UTC-5:00 Eastern Standard Time (EST) </option>
+            <option value='GMT-4'>UTC-4:00 Atlantic Standard Time (AST)</option>
+            <option value='GMT-3'>UTC-3:00 Brasilia Time (BRT)</option>
+            <option value='GMT-2'>UTC-2:00 South Georgia Time (GST)</option>
+            <option value='GMT-1'>UTC-1:00 Azores Time (AZOT)</option>
+            <option value='GMT 1'>UTC+1:00</option>
+            <option value='GMT 2'>UTC+2:00</option>
+            <option value='GMT 3'>UTC+3:00</option>
+            <option value='GMT 4'>UTC+4:00</option>
+            <option value='GMT 5'>UTC+5:00</option>
+            <option value='GMT 6'>UTC+6:00</option>
+            <option value='GMT 7'>UTC+7:00</option>
+            <option value='GMT 8'>UTC+8:00</option>
+            <option value='GMT 9'>UTC+9:00</option>
+            <option value='GMT 10'>UTC+10:00</option>
+            <option value='GMT 11'>UTC+11:00</option>
+            <option value='GMT 12'>UTC+12:00</option>
         </select>
         <button id="refresh-btn" onclick="location.reload()">Refresh</button>
     </div>
@@ -273,5 +220,4 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <script type="text/javascript" src="js/settings.js"></script>
     <script type="text/javascript" src="js/logout.js"></script>
 </body>
-
 </html>
