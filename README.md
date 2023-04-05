@@ -1,5 +1,4 @@
-# FileShare;
-
+# FileShare
 - [Requirements](#requirements)
 - [Running instructions](#running-instructions)
   - [Debian service](#debian)
@@ -79,6 +78,7 @@ Default password: Password.123
   Make sure to replace "My PHP Website" with a descriptive name for your website, "/path/to/website" and "/path/to/cleanup.py" with the path to the website files on your server leaving "cleanup.py" in place, and "localhost:8000" with the appropriate URL for your website.
 * Save and close the file by pressing `CTRL+X`, then `Y`, then `ENTER`.
 * Reload the systemd daemon to recognize the new service by running the command `sudo systemctl daemon-reload`.
+* Run `php createDB.php` once to create the required database,folders and prefill it with settings.
 * Start the new service by running the command `sudo systemctl start mywebsite`.
 * Verify that the service is running properly by checking the status with the command `sudo systemctl status mywebsite`.
 * If the service is running correctly, enable it to start at boot time by running the command `sudo systemctl enable mywebsite`.
@@ -86,7 +86,7 @@ Default password: Password.123
 ### Windows
 
 #### Web server
-
+* Install PHP and run `php createDB.php` to create the required database, folders and pre-fill settings.
 * Install XAMPP or WAMP server on your Windows machine. Both XAMPP and WAMP provide Apache and PHP pre-configured, making it easy to get a PHP website up and running quickly.
 * Copy your PHP website files to the appropriate directory in the web server's document root folder. For example, if you are using XAMPP, copy your website files to the `C:\xampp\htdocs` folder.
 * Open a web browser and navigate to your PHP website by entering the appropriate URL. For example, if you are using XAMPP, enter [http://localhost:8000](http://localhost:8000) in the browser address bar.
@@ -109,6 +109,7 @@ That's it! Your Python script should now run in the background on system start i
 ### Docker
 
 Create a `docker-compose.yml`, copy the contents under here and run it with `docker-compose up -d`.
+
 ```
 version: '3.9'
 services:
@@ -118,7 +119,7 @@ services:
     ports:
       - "8080:80" #map port 8080 from host to 80 on container
     environment:
-      - TZ=Europe/Tallinn #default timezone for the container and on first database creation
+      - TZ=Europe/London #default timezone for the container and on first database creation
       - MAX_FILESIZE=5M #allowed uploaded file size
       - PASSWORD=Password.123 #password for settings page login, set your own or change it on the page
     volumes:
