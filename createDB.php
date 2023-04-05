@@ -64,22 +64,4 @@ if (!file_exists(DB_FILE)) {
     } catch (PDOException $e) {
         echo 'Error: Unable to insert url to table settings';
     }
-    try {
-        $db = new PDO('sqlite:' . DB_FILE);
-        $query = $db->prepare("INSERT INTO settings (setting, value) VALUES ('path', :path)");
-        $query->bindValue(':path', $current_file_dir, PDO::PARAM_STR);
-        $query->execute();
-        $db = $query = null;
-    } catch (PDOException $e) {
-        echo 'Error: Unable to insert path to table settings';
-    }
-    try {
-        $db = new PDO('sqlite:' . DB_FILE);
-        $query = $db->prepare("INSERT INTO settings (setting, value) VALUES ('dst', :dst)");
-        $query->bindValue(':dst', 'off', PDO::PARAM_STR);
-        $query->execute();
-        $db = $query = null;
-    } catch (PDOException $e) {
-        echo 'Error: Unable to insert summer time setting  to table settings';
-    }
 }
