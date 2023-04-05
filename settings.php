@@ -73,31 +73,40 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         </form>
         <label id="timezone-label" for="timezone">Select Timezone:</label>
         <select id="timezone" name="timezone">
-            <option value='UTC'>UTC</option>
-            <option value='GMT-12'>UTC-12:00 International Date Line West (IDLW)</option>
-            <option value='GMT-11'>UTC-11:00 Samoa Standard Time (SST)</option>
-            <option value='GMT-10'>UTC-10:00 Hawaii-Aleutian Standard Time (HST)</option>
-            <option value='GMT-9'>UTC-9:00 Alaska Standard Time (AKST)</option>
-            <option value='GMT-8'>UTC-8:00 Pacific Standard Time (PST)</option>
-            <option value='GMT-7'>UTC-7:00 Mountain Standard Time (MST)</option>
-            <option value='GMT-6'>UTC-6:00 Central Standard Time (CST)</option>
-            <option value='GMT-5'>UTC-5:00 Eastern Standard Time (EST) </option>
-            <option value='GMT-4'>UTC-4:00 Atlantic Standard Time (AST)</option>
-            <option value='GMT-3'>UTC-3:00 Brasilia Time (BRT)</option>
-            <option value='GMT-2'>UTC-2:00 South Georgia Time (GST)</option>
-            <option value='GMT-1'>UTC-1:00 Azores Time (AZOT)</option>
-            <option value='GMT 1'>UTC+1:00</option>
-            <option value='GMT 2'>UTC+2:00</option>
-            <option value='GMT 3'>UTC+3:00</option>
-            <option value='GMT 4'>UTC+4:00</option>
-            <option value='GMT 5'>UTC+5:00</option>
-            <option value='GMT 6'>UTC+6:00</option>
-            <option value='GMT 7'>UTC+7:00</option>
-            <option value='GMT 8'>UTC+8:00</option>
-            <option value='GMT 9'>UTC+9:00</option>
-            <option value='GMT 10'>UTC+10:00</option>
-            <option value='GMT 11'>UTC+11:00</option>
-            <option value='GMT 12'>UTC+12:00</option>
+        <option value="Pacific/Midway">SST (Samoa Standard Time)</option>
+            <option value="Pacific/Honolulu">HST (Hawaii Standard Time)</option>
+            <option value="America/Anchorage">AKST (Alaska Standard Time)</option>
+            <option value="America/Los_Angeles">PST (Pacific Standard Time)</option>
+            <option value="America/Denver"> MST (Mountain Standard Time)</option>
+            <option value="America/Chicago">CST (Central Standard Time)</option>
+            <option value="America/New_York">EST (Eastern Standard Time)</option>
+            <option value="America/Halifax">AST (Atlantic Standard Time)</option>
+            <option value="America/St_Johns">NST (Newfoundland Standard Time)</option>
+            <option value="America/Sao_Paulo">BRT (Brasilia Time)</option>
+            <option value="America/Noronha">GST (South Georgia Time Zone)</option>
+            <option value="Atlantic/Azores">AZOST (Azores Summer Time)</option>
+            <option value="Europe/London">GMT/UTC (Greenwich Mean Time / Universal Time Coordinated)</option>
+            <option value="Europe/Amsterdam">CET (Central European Time)</option>
+            <option value="Europe/Helsinki">EET (Eastern European Time)</option>
+            <option value="Europe/Moscow">MSK (Moscow Standard Time)</option>
+            <option value="Asia/Tehran">IRST (Iran Standard Time)</option>
+            <option value="Asia/Tbilisi">GST (Gulf Standard Time)</option>
+            <option value="Asia/Kabul">AFT (Afghanistan Time)</option>
+            <option value="Asia/Karachi">PKT (Pakistan Standard Time)</option>
+            <option value="Asia/Colombo"> IST (Indian Standard Time)</option>
+            <option value="Asia/Almaty">ALMT (Almaty Time)</option>
+            <option value="Asia/Bangkok">ICT (Indochina Time)</option>
+            <option value="Asia/Hong_Kong">AWST (Australian Western Standard Time)</option>
+            <option value="Australia/Eucla">ACWST (Australian Central Western Standard Time)</option>
+            <option value="Asia/Tokyo">JST (Japan Standard Time)</option>
+            <option value="Australia/Adelaide">ACST (Australian Central Standard Time)</option>
+            <option value="Australia/Brisbane">AEST (Australian Eastern Standard Time)</option>
+            <option value="Australia/Lord_Howe">ACDT (Australian Central Daylight Time)</option>
+            <option value="Asia/Magadan">AEDT (Australian Eastern Daylight Time)</option>
+            <option value="Pacific/Norfolk">NFT (Norfolk Island Time)</option>
+            <option value="Asia/Anadyr">FJT (Fiji Time)</option>
+            <option value="Pacific/Auckland">NZST (New Zealand Standard Time)</option>
+            <option value="Pacific/Chatham">CHAST (Chatham Island Standard Time)</option>
         </select>
         <button id="refresh-btn" onclick="location.reload()">Refresh</button>
     </div>
