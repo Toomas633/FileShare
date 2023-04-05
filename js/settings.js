@@ -2,8 +2,6 @@ const changePasswordModal = document.getElementById("password-change-modal");
 const changePasswordForm = document.querySelector(
   "#password-change-modal form"
 );
-const successPopup = document.getElementById("success-popup");
-const errorPopup = document.getElementById("error-popup");
 const changePasswordBtn = document.getElementById("change-password-btn");
 changePasswordBtn.addEventListener("click", () => {
   changePasswordModal.style.display = "block";

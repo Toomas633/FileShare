@@ -15,7 +15,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <link rel="icon" type="icons/png" href="icons/fav.png">
 </head>
 <body>
+    <div id="success-popup"></div>
+    <div id="error-popup"></div>
     <header id="top-bar">
+        <script type="text/javascript" src="js/deletestatus.js"></script>
         <h1 id="page-name"><a href="index.php" style="text-decoration: none;" id="page-name">FileShare</a></h1>
         <button id="change-password-btn">Change Password</button>
         <?php
@@ -45,6 +48,14 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             $row = $query->fetch(PDO::FETCH_ASSOC);
             $link_address = $row['value'];
             $pdo = null;
+        }
+        if (isset($_GET['status'])) {
+            $status = htmlspecialchars($_GET['status']);
+            if (!empty($status)) {
+                echo '<script>';
+                echo 'DisplayDeleteStatus("' . $status . '");';
+                echo '</script>';
+            }
         }
         ?>
         </div>
@@ -113,11 +124,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <div id="file-list">
         <h2>List of Files</h2>
         <div class="warning"></div>
-        <?php
-        if (isset($_GET['status'])) {
-            echo "<p class='warning'>" . htmlspecialchars($_GET['status']) . "</p>";
-        }
-        ?>
         <div class="row">
             <?php
             $dir = DIR_PATH . "uploads/";
@@ -224,8 +230,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             ?>
         </div>
     </div>
-    <div id="success-popup"></div>
-    <div id="error-popup"></div>
     <script type="text/javascript" src="js/settings.js"></script>
     <script type="text/javascript" src="js/logout.js"></script>
 </body>

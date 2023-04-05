@@ -347,20 +347,6 @@ h2 {
   margin-bottom: 20px;
 }
 
-.warning {
-  color: #ffae00;
-  animation: fadeOut 3s forwards;
-}
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
 #timezone {
   width: 200px;
   padding: 0.5rem;

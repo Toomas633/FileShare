@@ -31,23 +31,26 @@ body {
 }
 
 #error-popup {
-  top: 60px;
-  right: 10px;
   display: block;
-  position: absolute;
-  background-color: #282828;
-  border: 1px solid red;
-  border-radius: 5px;
-  width: 250px;
-  height: 50px;
-  padding: 10px;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  z-index: 9999;
+}
+
+#error-popup {
+  background-color: #dc3545;
+  color: #fff;
 }
 
 #link-error {
-  color: red;
-  top: 60px;
+  color: #fff;
+  font-weight: bold;
   text-align: center;
-  padding-top: 5px;
 }
 
 #found-file {
