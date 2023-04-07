@@ -120,6 +120,25 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <option value="Pacific/Chatham">CHAST (Chatham Island Standard Time)</option>
         </select>
         <button id="refresh-btn" onclick="location.reload()">Refresh</button>
+        <?php
+            $repo = 'Toomas633/FileShare';
+            $filepath = DIR_PATH . 'version';
+            $raw_url = "https://raw.githubusercontent.com/{$repo}/main/version";
+            $update_url = "https://github.com/Toomas633/FileShare/releases";
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $raw_url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $result = curl_exec($ch);
+            curl_close($ch);
+            $github_float = floatval($result);
+            $file_contents = file_get_contents($filepath);
+            $local_float = floatval($file_contents);
+            if ($github_float > $local_float) {
+                echo "<a href='{$update_url}' id='update'>Update required! Current version {$local_float}, latest {$github_float}</a>";
+            } else {
+                echo "<p id='version'>v{$local_float}</p>";
+            }
+            ?>
     </div>
     <div id="file-list">
         <h2>List of Files</h2>

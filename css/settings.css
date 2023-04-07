@@ -378,3 +378,28 @@ h2 {
 #refresh-btn:hover {
   background-color: #1976d2;
 }
+
+#version {
+  position: absolute;
+  bottom: 10px;
+  color: #fff;
+  font-size: 16px;
+}
+
+#update, #update:visited {
+  text-decoration: none;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  padding: 0px 10px 0px 10px;
+  font-size: 16px;
+  animation: rainbow 2s linear infinite;
+}
+
+@keyframes rainbow {
+  0% {color:red;}
+  25% {color: orange;}
+  50% {color: yellow;}
+  75% {color: orange;}
+  100% {color: red;}
+}
