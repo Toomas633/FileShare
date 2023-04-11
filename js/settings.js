@@ -113,3 +113,46 @@ function downloadFile(filename) {
   };
   xhr.send("filename=" + folderPath + filename);
 }
+
+
+
+
+
+
+const phpmodal = document.getElementById("php-log-modal");
+const phpbtn = document.getElementById("phpModal-btn");
+const phplogContent = document.getElementById("php-log-content");
+function openPHPModal() {
+  phpmodal.style.display = "block";
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      phplogContent.innerHTML = this.responseText;
+    }
+  };
+  xhr.open("GET", "FileShare.log", true);
+  xhr.send();
+}
+const closePHPModal = document.getElementById("close-php-log-modal");
+closePHPModal.addEventListener("click", () => {
+  phpmodal.style.display = "none";
+});
+
+const cleanupmodal = document.getElementById("cleanup-log-modal");
+const cleanupbtn = document.getElementById("cleanupModal-btn");
+const cleanuplogContent = document.getElementById("cleanup-log-content");
+function openCleanupModal() {
+  cleanupmodal.style.display = "block";
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      cleanuplogContent.innerHTML = this.responseText;
+    }
+  };
+  xhr.open("GET", "cleanup.log", true);
+  xhr.send();
+}
+const closeCleanupModal = document.getElementById("close-cleanup-log-modal");
+closeCleanupModal.addEventListener("click", () => {
+  cleanupmodal.style.display = "none";
+});

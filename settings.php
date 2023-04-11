@@ -9,11 +9,13 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Settings</title>
     <link rel="stylesheet" type="text/css" href="css/settings.css" />
     <link rel="icon" type="icons/png" href="icons/fav.png">
 </head>
+
 <body>
     <div id="success-popup"></div>
     <div id="error-popup"></div>
@@ -60,7 +62,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         ?>
         </div>
     </header>
-    <div id="password-change-modal">
+    <div id="password-change-modal" class="modal">
         <div id="password-change-modal-content">
             <button class="close" id="close-password-modal">X</button>
             <h2>Change Password</h2>
@@ -75,6 +77,20 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             </form>
         </div>
     </div>
+    <div id="cleanup-log-modal" class="modal">
+        <div id="cleanup-log-modal-content">
+            <button class="close" id="close-cleanup-log-modal">X</button>
+            <h2>Cleanup.log</h2>
+            <pre id="cleanup-log-content"></pre>
+        </div>
+    </div>
+    <div id="php-log-modal" class="modal">
+        <div id="php-log-modal-content">
+            <button class="close" id="close-php-log-modal">X</button>
+            <h2>FileShare.log</h2>
+            <pre id="php-log-content"></pre>
+        </div>
+    </div>
     <div id="sidebar">
         <h1>Settings</h1>
         <form method="post">
@@ -84,7 +100,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         </form>
         <label id="timezone-label" for="timezone">Select Timezone:</label>
         <select id="timezone" name="timezone">
-        <option value="Pacific/Midway">SST (Samoa Standard Time)</option>
+            <option value="Pacific/Midway">SST (Samoa Standard Time)</option>
             <option value="Pacific/Honolulu">HST (Hawaii Standard Time)</option>
             <option value="America/Anchorage">AKST (Alaska Standard Time)</option>
             <option value="America/Los_Angeles">PST (Pacific Standard Time)</option>
@@ -120,25 +136,27 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <option value="Pacific/Chatham">CHAST (Chatham Island Standard Time)</option>
         </select>
         <button id="refresh-btn" onclick="location.reload()">Refresh</button>
+        <button id="phpModal-btn" onclick="openPHPModal()">FileShare.log</button>
+        <button id="cleanupModal-btn" onclick="openCleanupModal()">Cleanup.log</button>
         <?php
-            $repo = 'Toomas633/FileShare';
-            $filepath = DIR_PATH . 'version';
-            $raw_url = "https://raw.githubusercontent.com/{$repo}/main/version";
-            $update_url = "https://github.com/Toomas633/FileShare/releases";
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $raw_url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            $result = curl_exec($ch);
-            curl_close($ch);
-            $github_float = floatval($result);
-            $file_contents = file_get_contents($filepath);
-            $local_float = floatval($file_contents);
-            if ($github_float > $local_float) {
-                echo "<a href='{$update_url}' id='update'>Update required! Current version {$local_float}, latest {$github_float}</a>";
-            } else {
-                echo "<p id='version'>v{$local_float}</p>";
-            }
-            ?>
+        $repo = 'Toomas633/FileShare';
+        $filepath = DIR_PATH . 'version';
+        $raw_url = "https://raw.githubusercontent.com/{$repo}/main/version";
+        $update_url = "https://github.com/Toomas633/FileShare/releases";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $raw_url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        $github_float = floatval($result);
+        $file_contents = file_get_contents($filepath);
+        $local_float = floatval($file_contents);
+        if ($github_float > $local_float) {
+            echo "<a href='{$update_url}' id='update'>Update required! Current version {$local_float}, latest {$github_float}</a>";
+        } else {
+            echo "<p id='version'>v{$local_float}</p>";
+        }
+        ?>
     </div>
     <div id="file-list">
         <h2>List of Files</h2>
@@ -221,7 +239,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                                         break;
                                     } else {
                                         $deleteTime = (float) intval($fileToDelete['deleteTime']) / 1000;
-                                        $deleteTime = DateTime::createFromFormat('U.u', sprintf('%.6f', $deleteTime ));
+                                        $deleteTime = DateTime::createFromFormat('U.u', sprintf('%.6f', $deleteTime));
                                         $deleteTime->setTimezone(new DateTimeZone($timezone));
                                         $deleteTime = $deleteTime->format('H:i:s d-M-Y');
                                         break;
@@ -252,4 +270,5 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <script type="text/javascript" src="js/settings.js"></script>
     <script type="text/javascript" src="js/logout.js"></script>
 </body>
+
 </html>

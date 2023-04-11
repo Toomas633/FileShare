@@ -253,14 +253,14 @@ body {
 
 .close {
   background-color: #282828;
-  position: absolute;
-  top: 0;
   padding: 10px;
   border: none;
   right: 10px;
   font-size: 1.5rem;
   color: #dc3545;
   cursor: pointer;
+  position: absolute;
+  top: 0;
 }
 
 .close:hover {
@@ -402,4 +402,70 @@ h2 {
   50% {color: yellow;}
   75% {color: orange;}
   100% {color: red;}
+}
+
+#cleanup-log-modal, #php-log-modal {
+  display: none;
+  width: 80%;
+  height: 60%;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+}
+
+#cleanup-log-modal-content, #php-log-modal-content {
+  background-color: #282828;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #535353;
+  transform: translate(-0%, -0%);
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#phpModal-btn, #cleanupModal-btn {
+  width: 200px;
+  left: 20px;
+  background-color: #dc3545;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+#phpModal-btn:hover, #cleanupModal-btn:hover {
+  background-color: #c82333;
+}
+
+#phpModal-btn {
+  position: absolute;
+  bottom: 110px;
+}
+
+#cleanupModal-btn {
+  position: absolute;
+  bottom: 55px;
+}
+
+#cleanup-log-content, #php-log-content {
+  padding: 10px;
+  height: 85%;
+  position: relative;
+  background-color: #535353;
+  color: #fff;
+  overflow-y: scroll;
+  max-height: 85%;
+}
+
+#php-log-modal h2, #cleanup-log-modal h2 {
+  margin-top: 0px;
+  color: #2196f3;
+  padding: 10px;
 }
