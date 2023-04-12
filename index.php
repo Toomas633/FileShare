@@ -7,7 +7,7 @@ require_once('config.php');
 <head>
   <meta charset="UTF-8" />
   <title>FileShare</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
   <link rel="icon" type="icons/png" href="icons/fav.png" />
 </head>
 
@@ -61,7 +61,11 @@ require_once('config.php');
     <h2>File Upload Error</h2>
     <input type="text" id="error" readonly />
   </div>
-  <script type="text/javascript" src="js/script.js"></script>
+  <div id="upload-status" style="display:none;">
+    <div id="progress-bar"></div>
+    <div id="status-message"></div>
+  </div>
+  <script type="text/javascript" src="js/index.js"></script>
   <script type="text/javascript" src="js/logout.js"></script>
 </body>
 
