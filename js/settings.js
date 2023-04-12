@@ -113,12 +113,6 @@ function downloadFile(filename) {
   };
   xhr.send("filename=" + folderPath + filename);
 }
-
-
-
-
-
-
 const phpmodal = document.getElementById("php-log-modal");
 const phpbtn = document.getElementById("phpModal-btn");
 const phplogContent = document.getElementById("php-log-content");
