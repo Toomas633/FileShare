@@ -160,17 +160,18 @@ body {
 }
 
 #logout-btn {
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  font-size: 16px;
+  background-color: #121212;
   cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#logout-btn:hover {
-  background-color: #c82333;
+  border: none;
+  padding: 0;
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-image: url("../icons/logout.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 5px;
 }
 
 #password-change-modal {
