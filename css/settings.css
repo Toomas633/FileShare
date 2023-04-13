@@ -158,21 +158,6 @@ body {
   text-decoration: none;
   color: #2196f3;
 }
-#change-password-btn {
-  background-color: #2196f3;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  margin-right: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  border-radius: 5px;
-}
-
-#change-password-btn:hover {
-  background-color: #1976d2;
-}
 
 #logout-btn {
   background-color: #dc3545;
@@ -425,6 +410,25 @@ h2 {
   transform: translate(-0%, -0%);
   border-radius: 5px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#change-password-btn {
+  position: absolute;
+  background-color: #2196f3;
+  width: 200px;
+  left: 20px;
+  bottom: 165px;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 5px;
+}
+
+#change-password-btn:hover {
+  background-color: #1976d2;
 }
 
 #phpModal-btn, #cleanupModal-btn {
