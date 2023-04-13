@@ -11,8 +11,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 <html>
 
 <head>
+    <meta charset="UTF-8">
     <title>Settings</title>
-    <link rel="stylesheet" type="text/css" href="css/settings.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/settings.css">
     <link rel="icon" type="icons/png" href="icons/fav.png">
 </head>
 
@@ -22,11 +24,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <header id="top-bar">
         <script type="text/javascript" src="js/deletestatus.js"></script>
         <h1 id="page-name"><a href="index.php" style="text-decoration: none;" id="page-name">FileShare</a></h1>
-        <button id="change-password-btn">Change Password</button>
         <?php
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
             echo '<form action="php/logout.php" method="post">';
-            echo '<input type="submit" id="logout-btn" value="Logout">';
+            echo '<button type="submit" id="logout-btn"></button>';
             echo '</form>';
         } else {
             header('Location: login.php');
@@ -135,6 +136,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <option value="Pacific/Auckland">NZST (New Zealand Standard Time)</option>
             <option value="Pacific/Chatham">CHAST (Chatham Island Standard Time)</option>
         </select>
+        <button id="change-password-btn">Change Password</button>
         <button id="refresh-btn" onclick="location.reload()">Refresh</button>
         <button id="phpModal-btn" onclick="openPHPModal()">FileShare.log</button>
         <button id="cleanupModal-btn" onclick="openCleanupModal()">Cleanup.log</button>
@@ -158,6 +160,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         }
         ?>
     </div>
+    <button id="toggle-sidebar"></button>
     <div id="file-list">
         <h2>List of Files</h2>
         <div class="warning"></div>

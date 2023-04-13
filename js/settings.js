@@ -150,3 +150,11 @@ const closeCleanupModal = document.getElementById("close-cleanup-log-modal");
 closeCleanupModal.addEventListener("click", () => {
   cleanupmodal.style.display = "none";
 });
+
+
+const toggleButton = document.getElementById('toggle-sidebar');
+const sidebar = document.getElementById('sidebar');
+
+toggleButton.addEventListener('click', () => {
+  sidebar.classList.toggle('visible');
+});

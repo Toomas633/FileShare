@@ -294,7 +294,7 @@ input:checked + #random-switch-value:before {
   transform: translateX(20px);
 }
 
-#random-lable  {
+#random-lable {
   height: 40px;
   position: relative;
   bottom: 5px;
@@ -305,7 +305,7 @@ input:checked + #random-switch-value:before {
   margin-top: 60px;
 }
 
-#direct{
+#direct {
   float: right;
   margin-right: 60px;
 }
@@ -361,7 +361,7 @@ input:checked + #direct-switch-value:before {
   transform: translateX(20px);
 }
 
-#direct-lable  {
+#direct-lable {
   height: 40px;
   position: relative;
   bottom: 5px;
@@ -375,11 +375,11 @@ input:checked + #direct-switch-value:before {
   margin: 10px 10px 0px 10px;
   border-radius: 10px;
 }
-
+  
 #status-message {
   margin-top: 5px;
 }
-
+  
 #upload-status {
   position: absolute;
   bottom: 20px;
@@ -392,4 +392,27 @@ input:checked + #direct-switch-value:before {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+@media only screen and (max-width: 768px) {
+  #login-button {
+    font-size: 16px;
+  }
+
+  #random {
+    margin-left: 20px;
+  }
+
+  #direct {
+    margin-right: 20px;
+  }
+
+  #link-popup {
+    width: 90%
+  }
+  
+  #error-popup {
+    width: 90%;
+  }
+
 }

@@ -474,3 +474,92 @@ h2 {
   color: #2196f3;
   padding: 10px;
 }
+
+.toggle-sidebar {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  #password-change-modal {
+    z-index: 3;
+  }
+
+  #password-change-modal-content {
+    width: 95%;
+  }
+
+  #cleanup-log-modal, #php-log-modal {
+    width: 95%;
+    z-index: 3;
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  #sidebar.visible {
+    display: inline-block;
+    z-index: 1;
+  }
+
+  #toggle-sidebar {
+    position: absolute;
+    background-color: transparent;
+    bottom: 20px;
+    left: 0px;
+    display: inline-block;
+    z-index: 2;
+    border: none;
+    content: "";
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    background-image: url("../icons/menu.png");
+    background-repeat: no-repeat;
+    background-color: none;
+    background-size: contain;
+  }
+
+  #file-list {
+    left: 0;
+    width: 100%;
+  }
+
+  .col {
+    width: 100%;
+  }
+
+  .fa-download-alt, .fa-trash-alt {
+    padding: 0;
+  }
+  
+  #download-button {
+    position: fixed;
+    left: auto;
+    right: 80px;
+    margin-top: 10px;
+    width: 60px;
+    height: 60px;
+  }
+
+  #delete-button {
+    position: fixed;
+    left: auto;
+    right: 20px;
+    margin-top: 10px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .text-container {
+    width: 50%;
+  }
+
+  .file-preview {
+    padding: 0;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 60px;
+    height: 60px;
+  }
+}

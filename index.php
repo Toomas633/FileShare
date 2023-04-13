@@ -5,10 +5,11 @@ require_once('config.php');
 <html>
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>FileShare</title>
-  <link rel="stylesheet" type="text/css" href="css/index.css" />
-  <link rel="icon" type="icons/png" href="icons/fav.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="icon" type="icons/png" href="icons/fav.png">
 </head>
 
 <body>

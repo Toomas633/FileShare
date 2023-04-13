@@ -145,3 +145,37 @@ body {
   background-color: none;
   background-size: contain;
 }
+
+@media only screen and (max-width: 768px) {
+  #found-file {
+    left: 5%;
+    width: 90%;
+  }
+  
+  .file-preview {
+    margin-top: 5%;
+    width: 60px;
+    height: 60px;
+    padding: 5px;
+  }
+  
+  .text-container {
+    left: 60px;
+    width: calc(100% - 120px);
+    padding: 0px;
+  }
+  
+  #delete-button,
+  #download-button {
+    width: 60px;
+    height: 60px;
+    padding: 0px;
+  }
+  
+  .fa-trash-alt,
+  .fa-download-alt {
+    width: 60px;
+    height: 60px;
+    padding: 0px;
+  }
+}
