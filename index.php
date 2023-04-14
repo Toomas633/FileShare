@@ -24,7 +24,8 @@ require_once('config.php');
     <form id="upload-form" enctype="multipart/form-data">
       <div id="drop-area">
         <p>Drag and drop a file here or click to select a file</p>
-        <input type="file" id="file-input" name="file-input" accept="*" />
+        <input id="file-upload" type="file"/>
+        <div id="file-name"></div>
       </div>
       <div id="random">
         <label id="random-lable" for="random-toggle-switch">Random name:</label>
