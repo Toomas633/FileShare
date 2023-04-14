@@ -76,7 +76,7 @@ body {
 
 #link-popup {
   border: 1px solid #282828;
-  width: 25%;
+  width: 90%;
   background-color: #121212;
   color: #fff;
   border-radius: 4px;
@@ -173,7 +173,7 @@ body {
 
 #error-popup {
   border: 1px solid #282828;
-  width: 25%;
+  width: 90%;
   background-color: #121212;
   color: #fff;
   border-radius: 4px;
@@ -240,7 +240,7 @@ h1 {
 
 #random {
   float: left;
-  margin-left: 60px;
+  margin-left: 20px;
 }
 
 .random-switch {
@@ -307,7 +307,7 @@ input:checked + #random-switch-value:before {
 
 #direct {
   float: right;
-  margin-right: 60px;
+  margin-right: 20px;
 }
 
 .direct-switch {
@@ -392,27 +392,4 @@ input:checked + #direct-switch-value:before {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-@media only screen and (max-width: 768px) {
-  #login-button {
-    font-size: 16px;
-  }
-
-  #random {
-    margin-left: 20px;
-  }
-
-  #direct {
-    margin-right: 20px;
-  }
-
-  #link-popup {
-    width: 90%
-  }
-  
-  #error-popup {
-    width: 90%;
-  }
-
 }

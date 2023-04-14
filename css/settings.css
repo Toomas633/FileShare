@@ -31,6 +31,7 @@ body {
   left: 0;
   height: calc(100% - 60px);
   box-sizing: border-box;
+  border-right: 1px solid #121212;
 }
 
 #file-list {
@@ -66,16 +67,18 @@ body {
 
 .file-preview {
   float: left;
-  padding: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
   box-sizing: border-box;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
 }
 
 .text-container {
   float: left;
   left: 90px;
-  width: calc(100% - 240px);
+  width: calc(100% - 195px);
   text-align: left;
 }
 
@@ -98,12 +101,13 @@ body {
 
 #delete-button {
   box-sizing: border-box;
-  float: right;
+  position: relative;
+  margin-top: 10px;
   border: none;
   background-color: #282828;
   cursor: pointer;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 10px;
 }
 
@@ -113,9 +117,6 @@ body {
   display: inline-block;
   width: 60px;
   height: 60px;
-  padding: 10px;
-  padding-top: 20px;
-  padding-left: 20px;
   background-image: url("../icons/trash.png");
   background-repeat: no-repeat;
   background-color: none;
@@ -124,13 +125,13 @@ body {
 
 #download-button {
   box-sizing: border-box;
-  left: 80px;
   border: none;
-  position: inherit;
+  position: relative;
+  margin-top: 10xp;
   background-color: #282828;
   cursor: pointer;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 10px;
 }
 
@@ -140,9 +141,6 @@ body {
   display: inline-block;
   width: 60px;
   height: 60px;
-  padding: 10px;
-  padding-top: 20px;
-  padding-left: 20px;
   background-image: url("../icons/download-button.png");
   background-repeat: no-repeat;
   background-color: none;
@@ -479,17 +477,8 @@ h2 {
   display: none;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1477px) {
   #password-change-modal {
-    z-index: 3;
-  }
-
-  #password-change-modal-content {
-    width: 95%;
-  }
-
-  #cleanup-log-modal, #php-log-modal {
-    width: 95%;
     z-index: 3;
   }
 
@@ -504,6 +493,7 @@ h2 {
 
   #toggle-sidebar {
     position: absolute;
+    cursor: pointer;
     background-color: transparent;
     bottom: 20px;
     left: 0px;
@@ -524,42 +514,37 @@ h2 {
     left: 0;
     width: 100%;
   }
+  #cleanup-log-modal, #php-log-modal {
+    z-index: 3;
+  }
+}
+
+@media only screen and (max-width: 1226px) {
+  #password-change-modal-content {
+    width: 75%;
+  }
+
+  #cleanup-log-modal, #php-log-modal {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 1140px) {
+  .col {
+    width: calc(100%/2);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #password-change-modal-content {
+    width: 95%;
+  }
+
+  #cleanup-log-modal, #php-log-modal {
+    width: 95%;
+  }
 
   .col {
     width: 100%;
-  }
-
-  .fa-download-alt, .fa-trash-alt {
-    padding: 0;
-  }
-  
-  #download-button {
-    position: fixed;
-    left: auto;
-    right: 80px;
-    margin-top: 10px;
-    width: 60px;
-    height: 60px;
-  }
-
-  #delete-button {
-    position: fixed;
-    left: auto;
-    right: 20px;
-    margin-top: 10px;
-    width: 60px;
-    height: 60px;
-  }
-
-  .text-container {
-    width: 50%;
-  }
-
-  .file-preview {
-    padding: 0;
-    margin-left: 10px;
-    margin-top: 10px;
-    width: 60px;
-    height: 60px;
   }
 }

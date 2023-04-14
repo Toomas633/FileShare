@@ -58,8 +58,8 @@ body {
   padding: 10px;
   position: absolute;
   top: 80px;
-  left: 25%;
-  width: 50%;
+  left: 5%;
+  width: 90%;
   height: fit-content;
   border: none;
   border-radius: 5px;
@@ -67,16 +67,18 @@ body {
 
 .file-preview {
   float: left;
-  padding: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
   box-sizing: border-box;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
 }
 
 .text-container {
   float: left;
-  left: 90px;
-  width: calc(100% - 240px);
+  left: 60px;
+  width: calc(100% - 200px);
   text-align: left;
 }
 
@@ -95,13 +97,13 @@ body {
 
 #delete-button {
   box-sizing: border-box;
-  float: right;
+  position: relative;
+  margin-top: 10px;
   border: none;
   background-color: #535353;
   cursor: pointer;
-  width: 80px;
-  height: 80px;
-  padding: 10px;
+  width: 60px;
+  height: 60px;
   border-radius: 10px;
 }
 
@@ -111,9 +113,6 @@ body {
   display: inline-block;
   width: 60px;
   height: 60px;
-  padding: 10px;
-  padding-top: 20px;
-  padding-left: 20px;
   background-image: url("../icons/trash.png");
   background-repeat: no-repeat;
   background-color: none;
@@ -123,11 +122,12 @@ body {
 #download-button {
   box-sizing: border-box;
   border: none;
-  float: right;
+  position: relative;
+  margin-top: 10xp;
   background-color: #535353;
   cursor: pointer;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 10px;
 }
 
@@ -137,45 +137,14 @@ body {
   display: inline-block;
   width: 60px;
   height: 60px;
-  padding: 10px;
-  padding-top: 20px;
-  padding-left: 20px;
   background-image: url("../icons/download-button.png");
   background-repeat: no-repeat;
   background-color: none;
   background-size: contain;
 }
 
-@media only screen and (max-width: 768px) {
-  #found-file {
-    left: 5%;
-    width: 90%;
-  }
-  
-  .file-preview {
-    margin-top: 5%;
-    width: 60px;
-    height: 60px;
-    padding: 5px;
-  }
-  
-  .text-container {
-    left: 60px;
-    width: calc(100% - 120px);
-    padding: 0px;
-  }
-  
-  #delete-button,
-  #download-button {
-    width: 60px;
-    height: 60px;
-    padding: 0px;
-  }
-  
-  .fa-trash-alt,
-  .fa-download-alt {
-    width: 60px;
-    height: 60px;
-    padding: 0px;
+@media only screen and (max-width: 682px) {
+  .file-preview, #delete-button, #download-button {
+    margin-top: 20px;
   }
 }
