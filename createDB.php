@@ -64,4 +64,13 @@ if (!file_exists(DB_FILE)) {
     } catch (PDOException $e) {
         echo 'Error: Unable to insert url to table settings';
     }
+    try {
+        $db = new PDO('sqlite:' . $db_path);
+        $query = $db->prepare("INSERT INTO settings (setting, value) VALUES ('max-size', :size)");
+        $query->bindValue(':size', getenv('MAX_FILESIZE'), PDO::PARAM_STR);
+        $query->execute();
+        $db = $query = null;
+    } catch (PDOException $e) {
+        echo 'Error: Unable to insert url to table settings';
+    }
 }

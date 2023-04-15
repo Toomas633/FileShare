@@ -53,7 +53,7 @@ body {
   border-radius: 5px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   margin: 50px auto;
-  max-width: 500px;
+  width: 500px;
   height: 400px;
   padding: 20px;
   text-align: center;
@@ -62,12 +62,20 @@ body {
 #file-name {
   color: #fff;
   padding-top: 20px;
+  padding-bottom: 10px;
   font-size: 16px;
   font-style: italic;
 }
 
 input[type="file"] {
   display: none;
+}
+
+#max-file-size {
+  position: absolute;
+  margin-left: 320px;
+  top: 275px;
+  font-size: 14px;
 }
 
 #drop-area {
@@ -410,4 +418,25 @@ input:checked + #direct-switch-value:before {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+@media only screen and (max-width: 499px) {
+  #file-upload-form {
+    width: 95%;
+  }
+
+  #file-name {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+  }
+
+  #max-file-size {
+    margin-left: 210px;
+    top: 290px;
+  }
+
+  #drop-area p {
+    margin-top: 10px;
+  }
 }
