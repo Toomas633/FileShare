@@ -19,11 +19,9 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 </head>
 
 <body>
-    <div id="success-popup"></div>
-    <div id="error-popup"></div>
     <header id="top-bar">
         <script type="text/javascript" src="js/deletestatus.js"></script>
-        <h1 id="page-name"><a href="index.php" style="text-decoration: none;" id="page-name">FileShare</a></h1>
+        <h1 id="page-name"><a href="index.php" style="text-decoration: none;" id="page-name"><i class='fas fa-icon'></i>FileShare</a></h1>
         <?php
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
             echo '<form action="php/logout.php" method="post">';
@@ -92,6 +90,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <pre id="php-log-content"></pre>
         </div>
     </div>
+    <div id="success-popup"></div>
+    <div id="error-popup"></div>
     <div id="sidebar">
         <h1>Settings</h1>
         <form method="post">

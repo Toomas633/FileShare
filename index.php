@@ -15,7 +15,7 @@ require_once('config.php');
 <body>
   <header id="top-bar">
     <h1 id="page-name">
-      <a href="index.php" style="text-decoration: none" id="page-name">FileShare</a>
+      <a href="index.php" style="text-decoration: none" id="page-name"><i class='fas fa-icon'></i>FileShare</a>
     </h1>
     <a href="login.php" id="login-button"><i class="fa-settings"></i></a>
   </header>

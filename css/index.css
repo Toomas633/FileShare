@@ -22,23 +22,41 @@ body {
 
 #page-name,
 #page-name:visited {
+  position: fixed;
   font-size: 24px;
-  margin: 0;
   flex-grow: 1;
+  left: 47px;
+  top: 15px;
   font-weight: bold;
   text-decoration: none;
   color: #2196f3;
 }
 
+.fa-icon {
+  position: fixed;
+  left: 10px;
+  border: none;
+  content: "";
+  display: block;
+  width: 27px;
+  height: 27px;
+  background-image: url("../icons/fav.png");
+  background-repeat: no-repeat;
+  background-color: none;
+  background-size: contain;
+}
+
 #login-button,
 #login-button:visited {
   background-color: transparent;
+  position: fixed;
+  right: 20px;
+  top: 15px;
   border: none;
   text-decoration: none;
   color: #2196f3;
   cursor: pointer;
   font-size: 20px;
-  margin-right: 10px;
   text-decoration: none;
   font-weight: bold;
 }

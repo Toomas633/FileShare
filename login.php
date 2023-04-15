@@ -20,7 +20,7 @@ if (isset($_SESSION['logged_in']) || $_SESSION['logged_in'] === true) {
 
 <body>
 	<div id="top-bar">
-		<h1 id="page-name"><a href="index.php" style="text-decoration: none;" id="page-name">FileShare</a></h1>
+		<h1 id="page-name"><a href="index.php" style="text-decoration: none;" id="page-name"><i class='fas fa-icon'></i>FileShare</a></h1>
 	</div>
 	<div class="container">
 		<div class="card">
