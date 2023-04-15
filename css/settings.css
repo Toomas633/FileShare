@@ -32,6 +32,7 @@ body {
   height: calc(100% - 60px);
   box-sizing: border-box;
   border-right: 1px solid #121212;
+  overflow-y: auto;
 }
 
 #file-list {
@@ -510,6 +511,10 @@ h2 {
     background-size: contain;
   }
 
+  #toggle-sidebar.visible {
+    background-image: url("../icons/menu-open.png");
+  }
+
   #file-list {
     left: 0;
     width: 100%;
@@ -546,5 +551,35 @@ h2 {
 
   .col {
     width: 100%;
+  }
+}
+
+@media only screen and (max-height: 619px) {
+  #change-password-btn {
+    position: relative;
+    bottom: auto;
+    left: 0px;
+    top: 20px;
+  }
+
+  #phpModal-btn {
+    position: relative;
+    bottom: auto;
+    left: 0px;
+    top: 40px;
+  }
+
+  #cleanupModal-btn {
+    position: relative;
+    bottom: auto;
+    left: 0px;
+    top: 60px;
+  }
+
+  #version {
+    position: relative;
+    bottom: auto;
+    left: 0px;
+    top: 80px;
   }
 }

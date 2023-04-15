@@ -136,8 +136,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <option value="Pacific/Auckland">NZST (New Zealand Standard Time)</option>
             <option value="Pacific/Chatham">CHAST (Chatham Island Standard Time)</option>
         </select>
-        <button id="change-password-btn">Change Password</button>
         <button id="refresh-btn" onclick="location.reload()">Refresh</button>
+        <button id="change-password-btn">Change Password</button>
         <button id="phpModal-btn" onclick="openPHPModal()">FileShare.log</button>
         <button id="cleanupModal-btn" onclick="openCleanupModal()">Cleanup.log</button>
         <?php

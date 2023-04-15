@@ -2,14 +2,17 @@ const changePasswordModal = document.getElementById("password-change-modal");
 const changePasswordForm = document.querySelector(
   "#password-change-modal form"
 );
+
 const changePasswordBtn = document.getElementById("change-password-btn");
 changePasswordBtn.addEventListener("click", () => {
   changePasswordModal.style.display = "block";
 });
+
 const closePasswordModal = document.getElementById("close-password-modal");
 closePasswordModal.addEventListener("click", () => {
   changePasswordModal.style.display = "none";
 });
+
 changePasswordForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const currentPasswordInput = document.getElementById("current-password");
@@ -53,11 +56,13 @@ changePasswordForm.addEventListener("submit", (event) => {
   const data = `current_password=${currentPassword}&new_password=${newPassword}&confirm_password=${confirmPassword}`;
   xhr.send(data);
 });
+
 function confirmDelete(file) {
   if (confirm("Are you sure you want to delete this file? "+file)) {
     window.location.href = "php/delete.php?file=" + file;
   }
 }
+
 const selectElement = document.querySelector('select[name="timezone"]');
 window.addEventListener("load", () => {
   const xhr = new XMLHttpRequest();
@@ -76,6 +81,7 @@ window.addEventListener("load", () => {
   });
   xhr.send();
 });
+
 selectElement.addEventListener("change", (event) => {
   const timezone = event.target.value;
   const xhr = new XMLHttpRequest();
@@ -96,6 +102,7 @@ selectElement.addEventListener("change", (event) => {
   });
   xhr.send(data);
 });
+
 function downloadFile(filename) {
   var folderPath = "../uploads/";
   var xhr = new XMLHttpRequest();
@@ -113,6 +120,7 @@ function downloadFile(filename) {
   };
   xhr.send("filename=" + folderPath + filename);
 }
+
 const phpmodal = document.getElementById("php-log-modal");
 const phpbtn = document.getElementById("phpModal-btn");
 const phplogContent = document.getElementById("php-log-content");
@@ -127,6 +135,7 @@ function openPHPModal() {
   xhr.open("GET", "FileShare.log", true);
   xhr.send();
 }
+
 const closePHPModal = document.getElementById("close-php-log-modal");
 closePHPModal.addEventListener("click", () => {
   phpmodal.style.display = "none";
@@ -146,15 +155,15 @@ function openCleanupModal() {
   xhr.open("GET", "cleanup.log", true);
   xhr.send();
 }
+
 const closeCleanupModal = document.getElementById("close-cleanup-log-modal");
 closeCleanupModal.addEventListener("click", () => {
   cleanupmodal.style.display = "none";
 });
 
-
 const toggleButton = document.getElementById('toggle-sidebar');
 const sidebar = document.getElementById('sidebar');
-
 toggleButton.addEventListener('click', () => {
   sidebar.classList.toggle('visible');
+  toggleButton.classList.toggle('visible');
 });
