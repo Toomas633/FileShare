@@ -1,4 +1,4 @@
-# FileShare;
+# FileShare
 
 - [Requirements](#requirements)
 - [Running instructions](#running-instructions)
