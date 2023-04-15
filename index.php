@@ -27,18 +27,8 @@ require_once('config.php');
         <input id="file-upload" type="file"/>
         <div id="file-name"></div>
         <?php
-        try {
-          $pdo = new PDO('sqlite:' . DB_FILE);
-          $query = $pdo->prepare('SELECT value FROM settings WHERE setting = :setting');
-          $query->bindValue(':setting', 'max-size', PDO::PARAM_STR);
-          $query->execute();
-          $row = $query->fetch(PDO::FETCH_ASSOC);
-          $size = $row['value'];
-          $pdo = null;
-          echo '<p id="max-file-size">(Max size: ' . $size . ')</p>';
-        } catch (PDOException $e) {
-          echo 'Error: Unable to get max file size';
-        }
+        $size = ini_get('upload_max_filesize');
+        echo '<p id="max-file-size">(Max size: ' . $size . ')</p>';
         ?>
       </div>
       <div id="random">
