@@ -1,4 +1,5 @@
 #!/bin/bash
+cd "$(dirname "$0")"
 function cleanup {
   echo "Cleaning up child processes"
   pkill -P $$
