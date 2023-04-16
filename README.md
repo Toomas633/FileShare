@@ -56,18 +56,17 @@ Default password: Password.123
 
 ### Debian
 
-* Create a new systemd service file for your PHP website by running the command sudo nano /etc/systemd/system/mywebsite.service. Replace "mywebsite" with a descriptive name for your service.
-* In the editor, paste the following code to define the service:
+* Create a new systemd service file for your PHP website by running the command `sudo nano /etc/systemd/system/FileShare.service`.
+* In the editor, paste the following code to define the service or run `sudo wget https://raw.githubusercontent.com/Toomas633/FileShare/main/examples/FileShare.service` in `cd /etc/systemd/system/`:
 
   ```
   [Unit]
-  Description=My PHP Website
+  Description=FileShare Website
   After=network.target
 
   [Service]
   Type=simple
-  ExecStart=/usr/bin/php -S localhost:8000 -t /path/to/website
-  ExecStartPost=/usr/bin/python /path/to/cleanup.py
+  ExecStart=/path/to/start.sh
   Restart=always
   User=www-data
   Group=www-data
@@ -76,13 +75,12 @@ Default password: Password.123
   WantedBy=multi-user.target
   ```
 
-  Make sure to replace "My PHP Website" with a descriptive name for your website, "/path/to/website" and "/path/to/cleanup.py" with the path to the website files on your server leaving "cleanup.py" in place, and "localhost:8000" with the appropriate URL for your website.
-* Save and close the file by pressing `CTRL+X`, then `Y`, then `ENTER`.
+  Make sure to replace "/path/to/start.sh" with the path to the FileShare website folder that contains the start.sh file on your server.
+  Save and close the file by pressing `CTRL+X`, then `Y`, then `ENTER`.
 * Reload the systemd daemon to recognize the new service by running the command `sudo systemctl daemon-reload`.
-* Run `php createDB.php` once to create the required database,folders and prefill it with settings.
 * Start the new service by running the command `sudo systemctl start mywebsite`.
-* Verify that the service is running properly by checking the status with the command `sudo systemctl status mywebsite`.
-* If the service is running correctly, enable it to start at boot time by running the command `sudo systemctl enable mywebsite`.
+* Verify that the service is running properly by checking the status with the command `sudo systemctl status FileShare.service`.
+* If the service is running correctly, enable it to start at boot time by running the command `sudo systemctl enable FileShare.service`.
 
 ### Windows
 
@@ -110,7 +108,7 @@ That's it! Your Python script should now run in the background on system start i
 
 ### Docker
 
-Create a `docker-compose.yml`, copy the contents under here and run it with `docker-compose up -d`.
+Create a `docker-compose.yml`, copy the contents under here and run it with `docker-compose up -d` (or download the .yml from `https://raw.githubusercontent.com/Toomas633/FileShare/main/examples/docker-compose.yml` and edit it).
 
 ```
 version: '3.9'
