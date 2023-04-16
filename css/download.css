@@ -87,6 +87,8 @@ body {
   margin-right: 5px;
   margin-top: 10px;
   box-sizing: border-box;
+  border-radius: 5px;
+  object-fit: cover;
   width: 60px;
   height: 60px;
 }

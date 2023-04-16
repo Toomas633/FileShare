@@ -44,7 +44,7 @@
                 case "gif":
                 case "bmp":
                 case "webp":
-                    echo "<img src='icons/image-icon.png' class='file-preview'>";
+                    echo "<img src='uploads/$file' class='file-preview'>";
                     break;
                 case "pdf":
                     echo "<img src='icons/pdf-icon.png' class='file-preview'>";
