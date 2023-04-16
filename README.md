@@ -29,6 +29,7 @@ Features:
   * Generated link beginning for hosting behind a domain.
 * Download page with download and delete buttons.
 * Status messages and popups
+* Responsive css
 
 Default password: Password.123
 
