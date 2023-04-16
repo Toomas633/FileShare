@@ -1,0 +1,13 @@
+[Unit]
+Description=FileShare Website
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/path/to/start.sh
+Restart=always
+User=www-data
+Group=www-data
+
+[Install]
+WantedBy=multi-user.target
