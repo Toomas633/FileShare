@@ -1,5 +1,5 @@
 const dropArea = document.getElementById("drop-area");
-const fileInput = document.getElementById("file-input");
+const fileInput = document.getElementById("file-upload");
 const linkPopup = document.getElementById("link-popup");
 const errorPopup = document.getElementById("error-popup");
 const errorText = document.getElementById("error");
@@ -7,6 +7,7 @@ const linkInput = document.getElementById("link");
 const copyLinkButton = document.getElementById("copy-link-button");
 const deleteTimeSlider = document.getElementById("delete-time-slider");
 const deleteTimeDisplay = document.getElementById("slider-value");
+const xhr = new XMLHttpRequest();
 dropArea.addEventListener("dragover", (e) => {
   e.preventDefault();
   dropArea.classList.add("dragover");
@@ -19,6 +20,14 @@ dropArea.addEventListener("drop", (e) => {
   e.preventDefault();
   dropArea.classList.remove("dragover");
   fileInput.files = e.dataTransfer.files;
+});
+dropArea.addEventListener("click", () => {
+  fileInput.click();
+});
+fileInput.addEventListener('change', (e) => {
+  const fileName = document.getElementById('file-name');
+  const file = e.target.files[0];
+  fileName.textContent = file.name;
 });
 deleteTimeSlider.addEventListener("input", () => {
   const sliderValue = parseInt(deleteTimeSlider.value);
@@ -33,6 +42,15 @@ deleteTimeSlider.addEventListener("input", () => {
     deleteTimeDisplayValue = "Never";
   }
   deleteTimeDisplay.innerHTML = deleteTimeDisplayValue;
+});
+xhr.upload.addEventListener("progress", (e) => {
+  if (e.lengthComputable) {
+    const percentComplete = Math.round((e.loaded / e.total) * 100);
+    document.getElementById('progress-bar').style.width = 1.8 * percentComplete + 'px';
+    document.getElementById('status-message').innerText = `Uploading...${percentComplete}%`;
+    document.getElementById('status-message').style.color = '#fff';
+    document.getElementById('upload-status').style.backgroundColor = '#121212';
+  }
 });
 const form = document.querySelector("form");
 form.addEventListener("submit", (e) => {
@@ -65,6 +83,13 @@ form.addEventListener("submit", (e) => {
       if (linkEnding.startsWith("ERROR: ")) {
         errorText.value = linkEnding.substring(7);
         errorPopup.style.display = "block";
+        document.getElementById('upload-status').style.display = 'flex';
+        document.getElementById('status-message').innerText = 'Upload failed!';
+        document.getElementById('upload-status').style.backgroundColor = '#dc3545';
+        document.getElementById('status-message').style.color = '#fff';
+        setTimeout(function() {
+          document.getElementById('upload-status').style.display = 'none';
+        }, 3000);
       } else {
         if (deleteTimeSlider.value <= 12) {
           var deleteDate = Date.now() + deleteTimeSlider.value * 60 * 60 * 1000;
@@ -84,9 +109,24 @@ form.addEventListener("submit", (e) => {
           deleteTime: deleteDate,
         };
         var json_data = JSON.stringify(fileData);
-        var xhr = new XMLHttpRequest();
         var url = "php/write.php";
         xhr.open("POST", url, true);
+        xhr.onload = function() {
+          document.getElementById('status-message').innerText = 'Upload complete!';
+          document.getElementById('upload-status').style.backgroundColor = '#28a745';
+          document.getElementById('status-message').style.color = '#fff';
+          setTimeout(function() {
+            document.getElementById('upload-status').style.display = 'none';
+          }, 3000);
+        };
+        xhr.onerror = function() {
+          document.getElementById('status-message').innerText = 'Upload failed!';
+          document.getElementById('status-message').style.color = '#fff'
+          document.getElementById('upload-status').style.backgroundColor = '#dc3545';
+          setTimeout(function() {
+            document.getElementById('upload-status').style.display = 'none';
+          }, 3000);
+        };
         xhr.setRequestHeader(
           "Content-type",
           "application/x-www-form-urlencoded"
@@ -97,6 +137,7 @@ form.addEventListener("submit", (e) => {
           }
         };
         xhr.send("data=" + json_data);
+        document.getElementById('upload-status').style.display = 'flex';
         linkInput.value = linkEnding;
         linkPopup.style.display = "block";
       }

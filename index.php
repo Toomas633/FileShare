@@ -5,16 +5,17 @@ require_once('config.php');
 <html>
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>FileShare</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <link rel="icon" type="icons/png" href="icons/fav.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="icon" type="icons/png" href="icons/fav.png">
 </head>
 
 <body>
   <header id="top-bar">
     <h1 id="page-name">
-      <a href="index.php" style="text-decoration: none" id="page-name">FileShare</a>
+      <a href="index.php" style="text-decoration: none" id="page-name"><i class='fas fa-icon'></i>FileShare</a>
     </h1>
     <a href="login.php" id="login-button"><i class="fa-settings"></i></a>
   </header>
@@ -23,7 +24,12 @@ require_once('config.php');
     <form id="upload-form" enctype="multipart/form-data">
       <div id="drop-area">
         <p>Drag and drop a file here or click to select a file</p>
-        <input type="file" id="file-input" name="file-input" accept="*" />
+        <input id="file-upload" type="file"/>
+        <div id="file-name"></div>
+        <?php
+        $size = ini_get('upload_max_filesize');
+        echo '<p id="max-file-size">(Max size: ' . $size . ')</p>';
+        ?>
       </div>
       <div id="random">
         <label id="random-lable" for="random-toggle-switch">Random name:</label>
@@ -61,7 +67,11 @@ require_once('config.php');
     <h2>File Upload Error</h2>
     <input type="text" id="error" readonly />
   </div>
-  <script type="text/javascript" src="js/script.js"></script>
+  <div id="upload-status" style="display:none;">
+    <div id="progress-bar"></div>
+    <div id="status-message"></div>
+  </div>
+  <script type="text/javascript" src="js/index.js"></script>
   <script type="text/javascript" src="js/logout.js"></script>
 </body>
 

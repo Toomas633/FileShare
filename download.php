@@ -2,15 +2,16 @@
 <html>
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download</title>
-    <link rel="stylesheet" type="text/css" href="css/download.css" />
+    <link rel="stylesheet" type="text/css" href="css/download.css">
     <link rel="icon" type="icons/png" href="icons/fav.png">
 </head>
 
 <body>
     <header id="top-bar">
-        <h1 id="page-name"><a href="index.php" style="text-decoration: none;" id="page-name">FileShare</a></h1>
+        <h1 id="page-name"><a href="index.php" style="text-decoration: none;" id="page-name"><i class='fas fa-icon'></i>FileShare</a></h1>
         <a href="login.php" id="login-button"><i class="fa-settings"></i></a>
     </header>
     <?php
@@ -43,7 +44,7 @@
                 case "gif":
                 case "bmp":
                 case "webp":
-                    echo "<img src='icons/image-icon.png' class='file-preview'>";
+                    echo "<img src='uploads/$file' class='file-preview'>";
                     break;
                 case "pdf":
                     echo "<img src='icons/pdf-icon.png' class='file-preview'>";

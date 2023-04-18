@@ -1,17 +1,21 @@
+var errorPopup = document.getElementById("error-popup");
+var successPopup = document.getElementById("success-popup");
+
 const changePasswordModal = document.getElementById("password-change-modal");
 const changePasswordForm = document.querySelector(
   "#password-change-modal form"
 );
-const successPopup = document.getElementById("success-popup");
-const errorPopup = document.getElementById("error-popup");
+
 const changePasswordBtn = document.getElementById("change-password-btn");
 changePasswordBtn.addEventListener("click", () => {
   changePasswordModal.style.display = "block";
 });
+
 const closePasswordModal = document.getElementById("close-password-modal");
 closePasswordModal.addEventListener("click", () => {
   changePasswordModal.style.display = "none";
 });
+
 changePasswordForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const currentPasswordInput = document.getElementById("current-password");
@@ -55,11 +59,13 @@ changePasswordForm.addEventListener("submit", (event) => {
   const data = `current_password=${currentPassword}&new_password=${newPassword}&confirm_password=${confirmPassword}`;
   xhr.send(data);
 });
+
 function confirmDelete(file) {
   if (confirm("Are you sure you want to delete this file? "+file)) {
     window.location.href = "php/delete.php?file=" + file;
   }
 }
+
 const selectElement = document.querySelector('select[name="timezone"]');
 window.addEventListener("load", () => {
   const xhr = new XMLHttpRequest();
@@ -78,6 +84,7 @@ window.addEventListener("load", () => {
   });
   xhr.send();
 });
+
 selectElement.addEventListener("change", (event) => {
   const timezone = event.target.value;
   const xhr = new XMLHttpRequest();
@@ -98,6 +105,7 @@ selectElement.addEventListener("change", (event) => {
   });
   xhr.send(data);
 });
+
 function downloadFile(filename) {
   var folderPath = "../uploads/";
   var xhr = new XMLHttpRequest();
@@ -115,3 +123,50 @@ function downloadFile(filename) {
   };
   xhr.send("filename=" + folderPath + filename);
 }
+
+const phpmodal = document.getElementById("php-log-modal");
+const phpbtn = document.getElementById("phpModal-btn");
+const phplogContent = document.getElementById("php-log-content");
+function openPHPModal() {
+  phpmodal.style.display = "block";
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      phplogContent.innerHTML = this.responseText;
+    }
+  };
+  xhr.open("GET", "FileShare.log", true);
+  xhr.send();
+}
+
+const closePHPModal = document.getElementById("close-php-log-modal");
+closePHPModal.addEventListener("click", () => {
+  phpmodal.style.display = "none";
+});
+
+const cleanupmodal = document.getElementById("cleanup-log-modal");
+const cleanupbtn = document.getElementById("cleanupModal-btn");
+const cleanuplogContent = document.getElementById("cleanup-log-content");
+function openCleanupModal() {
+  cleanupmodal.style.display = "block";
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      cleanuplogContent.innerHTML = this.responseText;
+    }
+  };
+  xhr.open("GET", "cleanup.log", true);
+  xhr.send();
+}
+
+const closeCleanupModal = document.getElementById("close-cleanup-log-modal");
+closeCleanupModal.addEventListener("click", () => {
+  cleanupmodal.style.display = "none";
+});
+
+const toggleButton = document.getElementById('toggle-sidebar');
+const sidebar = document.getElementById('sidebar');
+toggleButton.addEventListener('click', () => {
+  sidebar.classList.toggle('visible');
+  toggleButton.classList.toggle('visible');
+});

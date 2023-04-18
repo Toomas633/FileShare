@@ -31,6 +31,8 @@ body {
   left: 0;
   height: calc(100% - 60px);
   box-sizing: border-box;
+  border-right: 1px solid #121212;
+  overflow-y: auto;
 }
 
 #file-list {
@@ -66,16 +68,20 @@ body {
 
 .file-preview {
   float: left;
-  padding: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
   box-sizing: border-box;
-  width: 80px;
-  height: 80px;
+  border-radius: 5px;
+  object-fit: cover;
+  width: 60px;
+  height: 60px;
 }
 
 .text-container {
   float: left;
   left: 90px;
-  width: calc(100% - 240px);
+  width: calc(100% - 195px);
   text-align: left;
 }
 
@@ -98,12 +104,13 @@ body {
 
 #delete-button {
   box-sizing: border-box;
-  float: right;
+  position: relative;
+  margin-top: 10px;
   border: none;
   background-color: #282828;
   cursor: pointer;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 10px;
 }
 
@@ -113,9 +120,6 @@ body {
   display: inline-block;
   width: 60px;
   height: 60px;
-  padding: 10px;
-  padding-top: 20px;
-  padding-left: 20px;
   background-image: url("../icons/trash.png");
   background-repeat: no-repeat;
   background-color: none;
@@ -124,13 +128,13 @@ body {
 
 #download-button {
   box-sizing: border-box;
-  left: 80px;
   border: none;
-  position: inherit;
+  position: relative;
+  margin-top: 10xp;
   background-color: #282828;
   cursor: pointer;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 10px;
 }
 
@@ -140,9 +144,6 @@ body {
   display: inline-block;
   width: 60px;
   height: 60px;
-  padding: 10px;
-  padding-top: 20px;
-  padding-left: 20px;
   background-image: url("../icons/download-button.png");
   background-repeat: no-repeat;
   background-color: none;
@@ -151,40 +152,46 @@ body {
 
 #page-name,
 #page-name:visited {
+  position: fixed;
   font-size: 24px;
-  margin: 0;
   flex-grow: 1;
+  left: 47px;
+  top: 15px;
   font-weight: bold;
   text-decoration: none;
   color: #2196f3;
 }
-#change-password-btn {
-  background-color: #2196f3;
-  color: #fff;
+
+.fa-icon {
+  position: fixed;
+  left: 10px;
   border: none;
-  padding: 5px 10px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  border-radius: 4px;
+  content: "";
+  display: block;
+  width: 27px;
+  height: 27px;
+  background-image: url("../icons/fav.png");
+  background-repeat: no-repeat;
+  background-color: none;
+  background-size: contain;
 }
 
-#change-password-btn:hover {
-  background-color: #1976d2;
-}
 
 #logout-btn {
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  font-size: 16px;
+  background-color: #121212;
+  position: absolute;
   cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#logout-btn:hover {
-  background-color: #c82333;
+  border: none;
+  padding: 0;
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-image: url("../icons/logout.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  top: 15px;
+  right: 20px;
 }
 
 #password-change-modal {
@@ -220,7 +227,7 @@ body {
   width: 75%;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
   margin: 10px;
   font-size: 16px;
   display: block;
@@ -252,14 +259,14 @@ body {
 
 .close {
   background-color: #282828;
-  position: absolute;
-  top: 0;
   padding: 10px;
   border: none;
   right: 10px;
   font-size: 1.5rem;
   color: #dc3545;
   cursor: pointer;
+  position: absolute;
+  top: 0;
 }
 
 .close:hover {
@@ -290,14 +297,14 @@ input[type="text"] {
   padding: 0.5rem;
   border: none;
   font-size: 16px;
-  border-radius: 4px;
+  border-radius: 5px;
   margin-bottom: 1rem;
 }
 
 input[type="submit"] {
   background-color: #2196f3;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   color: #fff;
   cursor: pointer;
   font-size: 16px;
@@ -316,7 +323,7 @@ input[type="submit"]:hover {
   top: 1rem;
   right: 1rem;
   padding: 1rem;
-  border-radius: 4px;
+  border-radius: 5px;
   font-size: 1rem;
   font-weight: bold;
   z-index: 9999;
@@ -346,26 +353,12 @@ h2 {
   margin-bottom: 20px;
 }
 
-.warning {
-  color: #ffae00;
-  animation: fadeOut 3s forwards;
-}
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
 #timezone {
   width: 200px;
   padding: 0.5rem;
   border: none;
   font-size: 16px;
-  border-radius: 4px;
+  border-radius: 5px;
   margin-bottom: 1rem;
 }
 
@@ -380,7 +373,7 @@ h2 {
 #refresh-btn {
   background-color: #2196f3;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   color: #fff;
   cursor: pointer;
   font-size: 16px;
@@ -390,4 +383,224 @@ h2 {
 
 #refresh-btn:hover {
   background-color: #1976d2;
+}
+
+#version {
+  position: absolute;
+  bottom: 10px;
+  color: #fff;
+  font-size: 16px;
+}
+
+#update, #update:visited {
+  text-decoration: none;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  padding: 0px 10px 0px 10px;
+  font-size: 16px;
+  animation: rainbow 2s linear infinite;
+}
+
+@keyframes rainbow {
+  0% {color:red;}
+  25% {color: orange;}
+  50% {color: yellow;}
+  75% {color: orange;}
+  100% {color: red;}
+}
+
+#cleanup-log-modal, #php-log-modal {
+  display: none;
+  width: 80%;
+  height: 60%;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+}
+
+#cleanup-log-modal-content, #php-log-modal-content {
+  background-color: #282828;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #535353;
+  transform: translate(-0%, -0%);
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#change-password-btn {
+  position: absolute;
+  background-color: #2196f3;
+  width: 200px;
+  left: 20px;
+  bottom: 165px;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 5px;
+}
+
+#change-password-btn:hover {
+  background-color: #1976d2;
+}
+
+#phpModal-btn, #cleanupModal-btn {
+  width: 200px;
+  left: 20px;
+  background-color: #dc3545;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+#phpModal-btn:hover, #cleanupModal-btn:hover {
+  background-color: #c82333;
+}
+
+#phpModal-btn {
+  position: absolute;
+  bottom: 110px;
+}
+
+#cleanupModal-btn {
+  position: absolute;
+  bottom: 55px;
+}
+
+#cleanup-log-content, #php-log-content {
+  padding: 10px;
+  height: 85%;
+  position: relative;
+  background-color: #535353;
+  color: #fff;
+  overflow-y: scroll;
+  max-height: 85%;
+}
+
+#php-log-modal h2, #cleanup-log-modal h2 {
+  margin-top: 0px;
+  color: #2196f3;
+  padding: 10px;
+}
+
+.toggle-sidebar {
+  display: none;
+}
+
+@media only screen and (max-width: 1477px) {
+  #password-change-modal {
+    z-index: 3;
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  #sidebar.visible {
+    display: inline-block;
+    z-index: 1;
+  }
+
+  #toggle-sidebar {
+    position: absolute;
+    cursor: pointer;
+    background-color: transparent;
+    bottom: 20px;
+    left: 0px;
+    display: inline-block;
+    z-index: 2;
+    border: none;
+    content: "";
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    background-image: url("../icons/menu.png");
+    background-repeat: no-repeat;
+    background-color: none;
+    background-size: contain;
+  }
+
+  #toggle-sidebar.visible {
+    background-image: url("../icons/menu-open.png");
+  }
+
+  #file-list {
+    left: 0;
+    width: 100%;
+  }
+  #cleanup-log-modal, #php-log-modal {
+    z-index: 3;
+  }
+}
+
+@media only screen and (max-width: 1226px) {
+  #password-change-modal-content {
+    width: 75%;
+  }
+
+  #cleanup-log-modal, #php-log-modal {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 1140px) {
+  .col {
+    width: calc(100%/2);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #password-change-modal-content {
+    width: 95%;
+  }
+
+  #cleanup-log-modal, #php-log-modal {
+    width: 95%;
+  }
+
+  .col {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-height: 619px) {
+  #change-password-btn {
+    position: relative;
+    bottom: auto;
+    left: 0px;
+    top: 20px;
+  }
+
+  #phpModal-btn {
+    position: relative;
+    bottom: auto;
+    left: 0px;
+    top: 40px;
+  }
+
+  #cleanupModal-btn {
+    position: relative;
+    bottom: auto;
+    left: 0px;
+    top: 60px;
+  }
+
+  #version {
+    position: relative;
+    bottom: auto;
+    left: 0px;
+    top: 80px;
+  }
 }

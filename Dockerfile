@@ -3,10 +3,10 @@ LABEL org.opencontainers.image.source=https://github.com/Toomas633/FileShare
 LABEL org.opencontainers.image.description="File share website"
 LABEL org.opencontainers.image.licenses=GPL-3.0
 LABEL org.opencontainers.image.authors=Toomas633
-ENV MAX_FILESIZE 5M
+ENV MAX_FILESIZE 100M
 ENV TZ=Europe/London
 ENV PASSWORD=Password.123
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo 'Europe/London' > /etc/timezone
 VOLUME /var/www/html/uploads/
 VOLUME /var/www/html/db/
 RUN apt update
@@ -15,6 +15,7 @@ RUN apt install -y \
     php-cli \
     php-fpm \
     php-sqlite3 \ 
+    php-curl \
     sqlite3 \
     libsqlite3-dev \
     python3 \
@@ -31,7 +32,7 @@ RUN apt install -y \
     libonig-dev \
     supervisor \
     nano
-RUN pip install datetime
+RUN pip install datetime pytz
 COPY docker/php.ini /usr/local/etc/php/conf.d/php.ini
 COPY . /var/www/html
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf

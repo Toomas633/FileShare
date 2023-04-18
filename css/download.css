@@ -22,32 +22,51 @@ body {
 
 #page-name,
 #page-name:visited {
+  position: fixed;
   font-size: 24px;
-  margin: 0;
   flex-grow: 1;
+  left: 47px;
+  top: 15px;
   font-weight: bold;
   text-decoration: none;
   color: #2196f3;
 }
 
-#error-popup {
-  top: 60px;
-  right: 10px;
+.fa-icon {
+  position: fixed;
+  left: 10px;
+  border: none;
+  content: "";
   display: block;
-  position: absolute;
-  background-color: #282828;
-  border: 1px solid red;
+  width: 27px;
+  height: 27px;
+  background-image: url("../icons/fav.png");
+  background-repeat: no-repeat;
+  background-color: none;
+  background-size: contain;
+}
+
+#error-popup {
+  display: block;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 1rem;
   border-radius: 5px;
-  width: 250px;
-  height: 50px;
-  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  z-index: 9999;
+}
+
+#error-popup {
+  background-color: #dc3545;
+  color: #fff;
 }
 
 #link-error {
-  color: red;
-  top: 60px;
+  color: #fff;
+  font-weight: bold;
   text-align: center;
-  padding-top: 5px;
 }
 
 #found-file {
@@ -55,8 +74,8 @@ body {
   padding: 10px;
   position: absolute;
   top: 80px;
-  left: 25%;
-  width: 50%;
+  left: 5%;
+  width: 90%;
   height: fit-content;
   border: none;
   border-radius: 5px;
@@ -64,16 +83,20 @@ body {
 
 .file-preview {
   float: left;
-  padding: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
   box-sizing: border-box;
-  width: 80px;
-  height: 80px;
+  border-radius: 5px;
+  object-fit: cover;
+  width: 60px;
+  height: 60px;
 }
 
 .text-container {
   float: left;
-  left: 90px;
-  width: calc(100% - 240px);
+  left: 60px;
+  width: calc(100% - 200px);
   text-align: left;
 }
 
@@ -92,13 +115,13 @@ body {
 
 #delete-button {
   box-sizing: border-box;
-  float: right;
+  position: relative;
+  margin-top: 10px;
   border: none;
   background-color: #535353;
   cursor: pointer;
-  width: 80px;
-  height: 80px;
-  padding: 10px;
+  width: 60px;
+  height: 60px;
   border-radius: 10px;
 }
 
@@ -108,9 +131,6 @@ body {
   display: inline-block;
   width: 60px;
   height: 60px;
-  padding: 10px;
-  padding-top: 20px;
-  padding-left: 20px;
   background-image: url("../icons/trash.png");
   background-repeat: no-repeat;
   background-color: none;
@@ -120,11 +140,12 @@ body {
 #download-button {
   box-sizing: border-box;
   border: none;
-  float: right;
+  position: relative;
+  margin-top: 10xp;
   background-color: #535353;
   cursor: pointer;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 10px;
 }
 
@@ -134,11 +155,14 @@ body {
   display: inline-block;
   width: 60px;
   height: 60px;
-  padding: 10px;
-  padding-top: 20px;
-  padding-left: 20px;
   background-image: url("../icons/download-button.png");
   background-repeat: no-repeat;
   background-color: none;
   background-size: contain;
+}
+
+@media only screen and (max-width: 682px) {
+  .file-preview, #delete-button, #download-button {
+    margin-top: 20px;
+  }
 }

@@ -65,7 +65,7 @@ button[type="submit"] {
   background-color: #2196f3;
   color: white;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
   width: 100%;
@@ -103,10 +103,26 @@ button[type="submit"]:hover {
 
 #page-name,
 #page-name:visited {
+  position: fixed;
   font-size: 24px;
-  margin: 0;
   flex-grow: 1;
+  left: 47px;
+  top: 15px;
   font-weight: bold;
   text-decoration: none;
   color: #2196f3;
+}
+
+.fa-icon {
+  position: fixed;
+  left: 10px;
+  border: none;
+  content: "";
+  display: block;
+  width: 27px;
+  height: 27px;
+  background-image: url("../icons/fav.png");
+  background-repeat: no-repeat;
+  background-color: none;
+  background-size: contain;
 }
