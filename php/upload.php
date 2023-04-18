@@ -40,5 +40,5 @@ if ($_FILES['file']['name'] != "") {
         }
     }
 } else {
-    echo "ERROR: No file selected." . $_FILES['file']['name'];
+    echo "ERROR: No file selected.";
 }
