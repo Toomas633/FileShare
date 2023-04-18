@@ -32,7 +32,8 @@ RUN apt install -y \
     libonig-dev \
     supervisor \
     nano
-RUN pip install datetime
+RUN python pip install --upgrade pip
+RUN pip install datetime pytz logging
 COPY docker/php.ini /usr/local/etc/php/conf.d/php.ini
 COPY . /var/www/html
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
