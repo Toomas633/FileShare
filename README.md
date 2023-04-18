@@ -1,5 +1,8 @@
 # FileShare
 
+<img align="right" src="https://sonarcloud.io/api/project_badges/quality_gate?project=Toomas633_FileShare">
+<img align="right" src="https://github.com/Toomas633/FileShare/actions/workflows/docker.yml/badge.svg">
+
 - [Requirements](#requirements)
 - [Running instructions](#running-instructions)
   - [Debian service](#debian)
