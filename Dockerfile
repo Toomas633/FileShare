@@ -6,7 +6,7 @@ LABEL org.opencontainers.image.authors=Toomas633
 ENV MAX_FILESIZE 5M
 ENV TZ=Europe/London
 ENV PASSWORD=Password.123
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo Europe/London > /etc/timezone
 VOLUME /var/www/html/uploads/
 VOLUME /var/www/html/db/
 RUN apt update
