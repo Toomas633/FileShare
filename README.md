@@ -127,7 +127,7 @@ Suggestions are welcome and can be posted under the issues. Anything is welcome,
 
 ## Donate
 
-Monero: `8Ajf5M6meNpL9TaHuDRbXjAH31LcQ9ge5BEiwMZjLaoiMDZRxaVy19FgbP4tbUKpKoeq1kqCvjyaTdmCMQGhekWoQ2KgVeV`
+Monero: `46b9jWCbtfDEGibADKG5uqL12r8RDohm1ZjkSK2ZW3T3gTsUYSPGpvu5fvhJZjuBGRbN8HnKWc8T6RFvzuUxTQjFF5osdeP`
 
 Bitcoin: `3NPFV9ivECdSgyCXeNk4h5Gm3q1xiDRnPV`
 
