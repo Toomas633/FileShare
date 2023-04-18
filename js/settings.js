@@ -1,3 +1,6 @@
+var errorPopup = document.getElementById("error-popup");
+var successPopup = document.getElementById("success-popup");
+
 const changePasswordModal = document.getElementById("password-change-modal");
 const changePasswordForm = document.querySelector(
   "#password-change-modal form"
