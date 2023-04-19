@@ -17,4 +17,3 @@ if (isset($_POST['filename'])) {
 } else {
     echo "ERROR: Filename not provided.";
 }
-?>

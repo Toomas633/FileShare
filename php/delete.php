@@ -13,4 +13,3 @@ if (file_exists($dir . $file)) {
 }
 header("Location: ../settings.php?status=" . urlencode($status));
 exit();
-?>

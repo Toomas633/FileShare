@@ -8,11 +8,3 @@ ini_set('log_errors', 1);
 ini_set('error_log', DEFAULT_PATH . '/FileShare.log');
 ini_set('upload_max_filesize', getenv('MAX_FILESIZE'));
 ini_set('post_max_size', getenv('MAX_FILESIZE'));
-
-// $pdo = new PDO('sqlite:' . DB_FILE);
-// $query = $pdo->prepare('UPDATE settings SET value = :new_value WHERE setting = :setting');
-// $query->bindValue(':new_value', 'UTC', PDO::PARAM_STR);
-// $query->bindValue(':setting', 'timezone', PDO::PARAM_STR);
-// $query->execute();
-// $pdo = null;
-// http_response_code(200);
