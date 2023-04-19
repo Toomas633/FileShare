@@ -60,18 +60,8 @@ form.addEventListener("submit", (e) => {
   const file = fileInput.files[0];
   const formData = new FormData();
   formData.append("file", file);
-  if (randomToggleSwitch.checked) {
-    var random = 1;
-  } else {
-    var random = 0;
-  }
-  formData.append("random", random);
-  if (directToggleSwitch.checked) {
-    var direct = 1;
-  } else {
-    var direct = 0;
-  }
-  formData.append("direct", direct)
+  formData.append("random", randomToggleSwitch.checked ? 1 : 0);
+  formData.append("direct", directToggleSwitch.checked ? 1 : 0);
   fetch("php/upload.php", {
     method: "POST",
     body: formData,

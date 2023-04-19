@@ -33,7 +33,7 @@ if (!file_exists(DB_FILE)) {
         write('password', $password);
     }
     if (!check('timezone')) {
-        write('timezone' ,$tz);
+        write('timezone', $tz);
     }
     if (!check('url')) {
         write('url', 'http://localhost:8000');

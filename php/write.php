@@ -8,4 +8,4 @@ $query->bindValue(':uploadtime', $data['uploadTime'], PDO::PARAM_INT);
 $query->bindValue(':deletetime', $data['deleteTime'], PDO::PARAM_INT);
 $query->execute();
 $pdo = null;
-echo ("Data successfully added to database.");
+echo "Data successfully added to database.";

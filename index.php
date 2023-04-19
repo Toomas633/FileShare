@@ -2,7 +2,7 @@
 require_once('config.php');
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="eng">
 
 <head>
   <meta charset="UTF-8">
