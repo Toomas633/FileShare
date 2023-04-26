@@ -88,7 +88,7 @@ Default password: Password.123
 
 * Install PHP and Python and add them to your windows system path.
 * Copy your PHP website files to the appropriate directory.
-* Enable running it in the background (or just doubleklick to run once in a dialog box)
+* Enable running it in the background (or just doubleclick to run once in a dialog box)
   * Open the Task Scheduler by pressing the Windows key + R, typing "taskschd.msc" and hitting Enter.
   * Click on the "Create Task" option in the Actions pane on the right-hand side of the window.
   * In the "General" tab of the "Create Task" dialog box, enter a name for the task in the "Name" field.
@@ -129,4 +129,5 @@ services:
 Suggestions are welcome and can be posted under the issues. Anything is welcome, including extra functionality, extra preview icons etc.
 
 ## Donate
+
 [toomas633.com/donate](https://toomas633.com/donate/)
