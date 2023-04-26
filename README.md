@@ -129,4 +129,4 @@ services:
 Suggestions are welcome and can be posted under the issues. Anything is welcome, including extra functionality, extra preview icons etc.
 
 ## Donate
-[https://toomas633.com/donate/](https://toomas633.com/donate/)
+[toomas633.com/donate](https://toomas633.com/donate/)
