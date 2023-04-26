@@ -129,9 +129,4 @@ services:
 Suggestions are welcome and can be posted under the issues. Anything is welcome, including extra functionality, extra preview icons etc.
 
 ## Donate
-
-Monero: `46b9jWCbtfDEGibADKG5uqL12r8RDohm1ZjkSK2ZW3T3gTsUYSPGpvu5fvhJZjuBGRbN8HnKWc8T6RFvzuUxTQjFF5osdeP`
-
-Bitcoin: `3NPFV9ivECdSgyCXeNk4h5Gm3q1xiDRnPV`
-
-More options on [https://toomas633.com/donate/](https://toomas633.com/donate/)
+[https://toomas633.com/donate/](https://toomas633.com/donate/)
