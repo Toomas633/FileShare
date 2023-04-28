@@ -211,17 +211,14 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                                 $imageData = ob_get_clean();
                                 echo "<img src='data:image/png;base64," . base64_encode($imageData) . "' class='file-preview'>";
                                 break;
-                            case "xlsx":
-                            case "csv":
-                                echo "<img src='icons/excel-icon.png' class='file-preview'>";
-                                break;
-                            case "pptx":
-                                echo "<img src='icons/powerpoint-icon.png' class='file-preview'>";
-                                break;
                             case "zip":
+                            case "7z":
                                 echo "<img src='icons/zip-icon.png' class='file-preview'>";
                                 break;
                             case "rar":
+                            case "tgz":
+                            case "gz":
+                            case "bz2":
                                 echo "<img src='icons/rar-icon.png' class='file-preview'>";
                                 break;
                             case "mp4":
@@ -233,6 +230,23 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                             case "wav":
                             case "mp3":
                                 echo "<img src='icons/audio-icon.png' class='file-preview'>";
+                                break;
+                            case "xlsx":
+                            case "csv":
+                                echo "<img src='icons/excel-icon.png' class='file-preview'>";
+                                break;
+                            case "pptx":
+                                echo "<img src='icons/powerpoint-icon.png' class='file-preview'>";
+                                break;
+                            case "exe":
+                            case "com":
+                            case "sys":
+                            case "ovl":
+                            case "msi":
+                                echo "<img src='icons/exe.png' class='file-preview'>";
+                                break;
+                            case "dll":
+                                echo "<img src='icons/dll.png' class='file-preview'>";
                                 break;
                             default:
                                 echo "<img src='icons/file-icon.png' class='file-preview'>";

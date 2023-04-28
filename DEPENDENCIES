@@ -2,8 +2,9 @@ php:
     php-sqlite3 
     php-curl 
     pdo_sqlite
-    !php-gd
-
+    #!php-gd
 
 python:
     pytz datetime
+
+# word excel powerpoint  code 3d cad vector gis web
