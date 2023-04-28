@@ -39,9 +39,9 @@ Default password: Password.123
 * Make sure you have PHP installed on your local machine. You can check this by running the command `php -v` in your terminal. If you don't have PHP installed, you can download it from the [official PHP website](https://www.php.net/).
 * Install Python on your Windows machine if it is not already installed. You can download the latest version of Python from the official website at [https://www.python.org/downloads/](https://www.python.org/downloads/).
 * Change the values of `post_max_size` and  `upload_max_filesize` in `php.ini` to a desired size amount, or bigger files can't be uploaded (defaults are 8M and 2M in the file, so the uploaded file can only be of size 2MB and less)
-* Check that you have php-sqlite3 and php-curl installed and enabled.
-  * On debian run `sudo apt install php-sqlite3 php-curl`, windows should have the .dll files included in the php folder.
-  * Edit `php.ini` and uncomment `extension=pdo_sqlite`, `extension=sqlite3`, `extension=curl` and assign the php installation dir path to `sqlite3.extension_dir =`, for example `sqlite3.extension_dir = C:\php` on windows.
+* Check that you have php-sqlite3, php-curl and gd installed and enabled.
+  * On debian run `sudo apt install libgd-dev php-sqlite3 php-curl php-gd`, windows should have the .dll files included in the php folder.
+  * On windows you can skip this step.
 * Check that you have pytz and datetime install for python by running `pip install pytz datetime`.
 
 ## Running instructions
