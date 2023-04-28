@@ -107,6 +107,9 @@ switch ($extension) {
     case "php":
         echo "<img src='icons/code.svg' class='file-preview'>";
         break;
+    case "py":
+        echo "<img src='icons/python.png' class='file-preview'>";
+        break;
     case "xlsx":
     case "csv":
         echo "<img src='icons/excel-icon.png' class='file-preview'>";
