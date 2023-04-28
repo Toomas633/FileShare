@@ -35,53 +35,8 @@
             }
         }
         if ($file_found) {
-            $extension = pathinfo($file, PATHINFO_EXTENSION);
             echo '<div id="found-file">';
-            switch ($extension) {
-                case "jpg":
-                case "jpeg":
-                case "png":
-                case "gif":
-                case "bmp":
-                case "webp":
-                    echo "<img src='uploads/$file' class='file-preview'>";
-                    break;
-                case "pdf":
-                    echo "<img src='icons/pdf-icon.png' class='file-preview'>";
-                    break;
-                case "doc":
-                case "docx":
-                    echo "<img src='icons/doc-icon.png' class='file-preview'>";
-                    break;
-                case "txt":
-                    echo "<img src='icons/txt-icon.png' class='file-preview'>";
-                    break;
-                case "xlsx":
-                case "csv":
-                    echo "<img src='icons/excel-icon.png' class='file-preview'>";
-                    break;
-                case "pptx":
-                    echo "<img src='icons/powerpoint-icon.png' class='file-preview'>";
-                    break;
-                case "zip":
-                    echo "<img src='icons/zip-icon.png' class='file-preview'>";
-                    break;
-                case "rar":
-                    echo "<img src='icons/rar-icon.png' class='file-preview'>";
-                    break;
-                case "mp4 webm ogg":
-                case "webm":
-                case "ogg":
-                case "mkv":
-                    echo "<img src='icons/video-icon.png' class='file-preview'>";
-                    break;
-                case "wav":
-                case "mp3":
-                    echo "<img src='icons/audio-icon.png' class='file-preview'>";
-                    break;
-                default:
-                    echo "<img src='icons/file-icon.png' class='file-preview'>";
-            }
+            include "php/icons.php";
             echo "<div class='text-container'>";
             echo "<p id='file-name'>$file</p>";
             $pdo = new PDO('sqlite:' . DB_FILE);
