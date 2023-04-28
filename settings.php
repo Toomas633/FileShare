@@ -191,7 +191,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                                 echo "<img src='icons/doc-icon.png' class='file-preview'>";
                                 break;
                             case 'txt':
-                                $txtFilePath = 'uploads/' . $file;
+                                $txtFilePath = DIR_PATH . 'uploads/' . $file;
                                 $txtContent = file_get_contents($txtFilePath);
                                 $image = imagecreatetruecolor(60, 60);
                                 $white = imagecolorallocate($image, 255, 255, 255);
@@ -224,7 +224,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                             case "rar":
                                 echo "<img src='icons/rar-icon.png' class='file-preview'>";
                                 break;
-                            case "mp4 webm ogg":
+                            case "mp4":
                             case "webm":
                             case "ogg":
                             case "mkv":
