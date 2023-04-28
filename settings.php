@@ -231,13 +231,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                             case "mp3":
                                 echo "<img src='icons/audio-icon.png' class='file-preview'>";
                                 break;
-                            case "xlsx":
-                            case "csv":
-                                echo "<img src='icons/excel-icon.png' class='file-preview'>";
-                                break;
-                            case "pptx":
-                                echo "<img src='icons/powerpoint-icon.png' class='file-preview'>";
-                                break;
                             case "exe":
                             case "com":
                             case "sys":
@@ -247,6 +240,22 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                                 break;
                             case "dll":
                                 echo "<img src='icons/dll.png' class='file-preview'>";
+                                break;
+                            case "svg":
+                                $filepath = DIR_PATH . 'uploads/' . $file;
+                                $file_contents = file_get_contents($filepath);
+                                echo "<img src='data:image/svg+xml;base64," . base64_encode($file_contents) . "' class='file-preview'>";
+                                break;
+                            case "html":
+                            case "htm":
+                                echo "<img src='icons/web.png' class='file-preview'>";
+                                break;
+                            case "xlsx":
+                            case "csv":
+                                echo "<img src='icons/excel-icon.png' class='file-preview'>";
+                                break;
+                            case "pptx":
+                                echo "<img src='icons/powerpoint-icon.png' class='file-preview'>";
                                 break;
                             default:
                                 echo "<img src='icons/file-icon.png' class='file-preview'>";
