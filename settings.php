@@ -190,8 +190,26 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                             case "docx":
                                 echo "<img src='icons/doc-icon.png' class='file-preview'>";
                                 break;
-                            case "txt":
-                                echo "<img src='icons/txt-icon.png' class='file-preview'>";
+                            case 'txt':
+                                $txtFilePath = 'uploads/' . $file;
+                                $txtContent = file_get_contents($txtFilePath);
+                                $image = imagecreatetruecolor(60, 60);
+                                $white = imagecolorallocate($image, 255, 255, 255);
+                                imagefill($image, 0, 0, $white);
+                                $text = file_get_contents($txtFilePath);
+                                $black = imagecolorallocate($image, 0, 0, 0);
+                                $font = 'fonts/arial.ttf';
+                                $fontSize = 4;
+                                $lines = explode("\n", $text);
+                                $y = $fontSize + 10;
+                                foreach ($lines as $line) {
+                                    imagettftext($image, $fontSize, 0, 10, $y, $black, $font, $line);
+                                    $y += $fontSize + 10;
+                                }
+                                ob_start();
+                                imagepng($image);
+                                $imageData = ob_get_clean();
+                                echo "<img src='data:image/png;base64," . base64_encode($imageData) . "' class='file-preview'>";
                                 break;
                             case "xlsx":
                             case "csv":
