@@ -6,6 +6,6 @@ function cleanup {
 }
 trap 'cleanup' SIGTERM
 php createDB.php > FileShare.log &
-php -S 0.0.0.0:8000 > FileShare.log &
+php -c FileShare.ini -S 0.0.0.0:8000 > FileShare.log &
 python3 cleanup.py > cleanup.log &
 wait
