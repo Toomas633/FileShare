@@ -250,6 +250,20 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                             case "htm":
                                 echo "<img src='icons/web.png' class='file-preview'>";
                                 break;
+                            case "stl":
+                                echo "<img src='icons/stl.png' class='file-preview'>";
+                                break;
+                            case "blend":
+                                echo "<img src='icons/blender.png' class='file-preview'>";
+                                break;
+                            case "fbx":
+                            case "3ds":
+                            case "dae":
+                            case "obj":
+                            case "u3d":
+                            case "x3d":
+                                echo "<img src='icons/3d.png' class='file-preview'>";
+                                break;
                             case "xlsx":
                             case "csv":
                                 echo "<img src='icons/excel-icon.png' class='file-preview'>";
