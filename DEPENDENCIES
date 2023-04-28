@@ -1,1 +1,9 @@
-apt install php-gd
+php:
+    php-sqlite3 
+    php-curl 
+    pdo_sqlite
+    !php-gd
+
+
+python:
+    pytz datetime
