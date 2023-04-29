@@ -1,7 +1,7 @@
 # FileShare
 
 <img align="right" src="https://sonarcloud.io/api/project_badges/quality_gate?project=Toomas633_FileShare">
-<img align="right" src="https://github.com/Toomas633/FileShare/actions/workflows/docker.yml/badge.svg">
+<img align="left" src="https://github.com/Toomas633/FileShare/actions/workflows/docker.yml/badge.svg">
 
 - [Requirements](#requirements)
 - [Running instructions](#running-instructions)
@@ -52,7 +52,7 @@ Default password: Password.123
 
 * Install PHP and Python (and add to system path on windows).
 * Clone the GitHub repository to your local machine using the command `git clone https://github.com/Toomas633/FileShare.git` or download the zip from releases and unpack it to desired destination.
-* Start a local server to access the website in your browser. You can do this by running the command `php -S localhost:8000` (or a different port number) in your terminal from the project directory.
+* Start a local server to access the website in your browser. You can do this by running the command `php -c FileShare.ini -S localhost:8000` (or a different port number) in your terminal from the project directory.
 * For timed file delete also run `cleanup.py` on the backround.
 * Access the website in your browser. Once the server is running, you can access the website by navigating to [http://localhost:8000](http://localhost:8000) (or the appropriate URL) in your web browser.
 
@@ -80,7 +80,7 @@ Default password: Password.123
   Make sure to replace "/path/to/start.sh" with the path to the FileShare website folder that contains the start.sh file on your server.
   Save and close the file by pressing `CTRL+X`, then `Y`, then `ENTER`.
 * Reload the systemd daemon to recognize the new service by running the command `sudo systemctl daemon-reload`.
-* Start the new service by running the command `sudo systemctl start mywebsite`.
+* Start the new service by running the command `sudo systemctl start FileShare.service`.
 * Verify that the service is running properly by checking the status with the command `sudo systemctl status FileShare.service`.
 * If the service is running correctly, enable it to start at boot time by running the command `sudo systemctl enable FileShare.service`.
 
@@ -88,7 +88,7 @@ Default password: Password.123
 
 * Install PHP and Python and add them to your windows system path.
 * Copy your PHP website files to the appropriate directory.
-* Enable running it in the background (or just doubleclick to run once in a dialog box)
+* Enable running it in the background (or just double click to run once in a dialog box)
   * Open the Task Scheduler by pressing the Windows key + R, typing "taskschd.msc" and hitting Enter.
   * Click on the "Create Task" option in the Actions pane on the right-hand side of the window.
   * In the "General" tab of the "Create Task" dialog box, enter a name for the task in the "Name" field.
