@@ -17,9 +17,10 @@ switch ($extension) {
         echo "<img src='icons/doc-icon.png' class='file-preview'>";
         break;
     case 'txt':
+    case 'log':
         $txtFilePath = DIR_PATH . 'uploads/' . $file;
         $txtContent = file_get_contents($txtFilePath);
-        $image = imagecreatetruecolor(60, 60);
+        $image = imagecreatetruecolor(120, 120);
         $white = imagecolorallocate($image, 255, 255, 255);
         imagefill($image, 0, 0, $white);
         $text = file_get_contents($txtFilePath);
