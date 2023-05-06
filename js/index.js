@@ -152,3 +152,13 @@ closeButtons.forEach((button) => {
     location.reload();
   });
 });
+
+const min = deleteTimeSlider.min;
+const max = deleteTimeSlider.max;
+const value = deleteTimeSlider.value;
+deleteTimeSlider.style.setProperty('--min', min);
+deleteTimeSlider.style.setProperty('--max', max);
+deleteTimeSlider.style.setProperty('--value', value);
+deleteTimeSlider.addEventListener('input', function() {
+  deleteTimeSlider.style.setProperty('--value', deleteTimeSlider.value);
+});

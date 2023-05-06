@@ -347,6 +347,35 @@ input:checked + #random-switch-value:before {
   margin-top: 60px;
 }
 
+#delete-time-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 10px;
+  height: 10px;
+  background: linear-gradient(to right, #1976d2 0%, #1976d2 calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%), #535353 calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%));
+  outline: none;
+}
+
+#delete-time-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 10px;
+  width: 20px;
+  height: 20px;
+  background: #2196f3;
+  border: none;
+  cursor: pointer;
+}
+
+#delete-time-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 10px;
+  background: #2196f3;
+  cursor: pointer;
+}
+
 #direct {
   float: right;
   margin-right: 20px;
