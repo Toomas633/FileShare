@@ -2,8 +2,8 @@ php:
     php-sqlite3 
     php-curl 
     pdo_sqlite
-    #!php-gd
-    #!libgd-dev
+    php-gd
+    libgd-dev
 
 python:
     pytz datetime

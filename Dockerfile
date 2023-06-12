@@ -17,6 +17,7 @@ RUN apt install -y \
     php-fpm \
     php-sqlite3 \ 
     php-curl \
+    libgd-dev \
     sqlite3 \
     libsqlite3-dev \
     python3 \
