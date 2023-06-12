@@ -80,24 +80,21 @@ form.addEventListener("submit", async (e) => {
         document.getElementById('upload-status').style.display = 'none';
       }, 3000);
     } else {
+      let deleteDate = Date.now() + 24 * 60 * 60 * 1000;
       if (deleteTimeSlider.value <= 12) {
-        var deleteDate = Date.now() + deleteTimeSlider.value * 60 * 60 * 1000;
-      } else {
-        var deleteDate = Date.now() + 24 * 60 * 60 * 1000;
+        deleteDate = Date.now() + deleteTimeSlider.value * 60 * 60 * 1000;
       }
+      let fileName = linkEnding.substring(linkEnding.lastIndexOf("=") + 1);
       if (direct === 1) {
-        var fileName = linkEnding.substring(linkEnding.lastIndexOf("/") + 1);
-      }
-      else {
-        var fileName = linkEnding.substring(linkEnding.lastIndexOf("=") + 1);
+        fileName = linkEnding.substring(linkEnding.lastIndexOf("/") + 1);
       }
       const fileData = {
         name: fileName,
         uploadTime: Date.now(),
         deleteTime: deleteDate,
       };
-      var json_data = JSON.stringify(fileData);
-      var url = "php/write.php";
+      let json_data = JSON.stringify(fileData);
+      let url = "php/write.php";
       const xhr = new XMLHttpRequest();
       xhr.open("POST", url, true);
       xhr.upload.onprogress = function(event) {
