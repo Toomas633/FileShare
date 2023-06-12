@@ -33,9 +33,8 @@ RUN apt install -y \
     supervisor \
     nano
 RUN pip install datetime pytz
-COPY docker/php.ini /usr/local/etc/php/conf.d/php.ini
 COPY . /var/www/html
-COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN chmod +x /var/www/html/cleanup.py
 RUN mkdir /var/www/html/db /var/www/html/uploads
 RUN chmod 777 /var/www/html/db /var/www/html/uploads
