@@ -102,7 +102,7 @@ form.addEventListener("submit", async (e) => {
       xhr.open("POST", url, true);
       xhr.upload.onprogress = function(event) {
         if (event.lengthComputable) {
-          var percentage = Math.round((event.loaded / event.total) * 100);
+          let percentage = Math.round((event.loaded / event.total) * 100);
           document.getElementById('status-message').innerText = 'Uploading... ' + percentage + '%';
         }
       };
