@@ -21,5 +21,8 @@
             "email": "toomas.kirsing@gmail.com",
             "homepage": "https://toomas633.com"
         }
-    ]
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^10.2"
+    }
 }
