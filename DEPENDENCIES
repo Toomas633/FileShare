@@ -1,0 +1,11 @@
+php:
+    php-sqlite3 
+    php-curl 
+    pdo_sqlite
+    php-gd
+    libgd-dev
+
+python:
+    pytz datetime
+
+office

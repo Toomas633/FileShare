@@ -12,10 +12,12 @@ VOLUME /var/www/html/db/
 RUN apt update
 RUN apt install -y \
     php \
+    php-gd \
     php-cli \
     php-fpm \
     php-sqlite3 \ 
     php-curl \
+    libgd-dev \
     sqlite3 \
     libsqlite3-dev \
     python3 \
@@ -33,9 +35,8 @@ RUN apt install -y \
     supervisor \
     nano
 RUN pip install datetime pytz
-COPY docker/php.ini /usr/local/etc/php/conf.d/php.ini
 COPY . /var/www/html
-COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN chmod +x /var/www/html/cleanup.py
 RUN mkdir /var/www/html/db /var/www/html/uploads
 RUN chmod 777 /var/www/html/db /var/www/html/uploads

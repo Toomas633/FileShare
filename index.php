@@ -68,7 +68,20 @@ require_once('config.php');
     <input type="text" id="error" readonly />
   </div>
   <div id="upload-status" style="display:none;">
-    <div id="progress-bar"></div>
+    <div id="progress-bar">
+      <div class="loading-bar">
+        <div class="segment"></div>
+        <div class="segment"></div>
+        <div class="segment"></div>
+        <div class="segment"></div>
+        <div class="segment"></div>
+        <div class="segment"></div>
+        <div class="segment"></div>
+        <div class="segment"></div>
+        <div class="segment"></div>
+        <div class="segment"></div>
+      </div>
+    </div>
     <div id="status-message"></div>
   </div>
   <script type="text/javascript" src="js/index.js"></script>
