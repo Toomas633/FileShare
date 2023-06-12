@@ -12,6 +12,7 @@ VOLUME /var/www/html/db/
 RUN apt update
 RUN apt install -y \
     php \
+    php-gd \
     php-cli \
     php-fpm \
     php-sqlite3 \ 
