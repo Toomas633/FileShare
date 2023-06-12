@@ -1,7 +1,8 @@
-# FileShare
-
 <img align="right" src="https://sonarcloud.io/api/project_badges/quality_gate?project=Toomas633_FileShare">
 <img align="left" src="https://github.com/Toomas633/FileShare/actions/workflows/docker.yml/badge.svg">
+<br>
+
+# FileShare
 
 - [Requirements](#requirements)
 - [Running instructions](#running-instructions)
