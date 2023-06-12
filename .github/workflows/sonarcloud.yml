@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3
-          
+
       - name: Install tox and any other packages
         run: pip install tox datetime pytz
 
@@ -32,7 +32,7 @@ jobs:
         run: tox -e py
 
       - name: Analyze with SonarCloud
-        uses: SonarSource/sonarcloud-github-action@de2e56b42aa84d0b1c5b622644ac17e505c9a049
+        uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
