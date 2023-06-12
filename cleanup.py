@@ -7,7 +7,7 @@ import pytz
 
 logging.basicConfig(filename='cleanup.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s: %(message)s')
 
-def deleteEntries():
+def delete_entries():
     conn = sqlite3.connect('db/database.db')
     cursor = conn.cursor()
     files_in_folder = os.listdir("uploads/")
@@ -21,7 +21,7 @@ def deleteEntries():
     cursor.close()
     conn.close()
 
-def deleteFiles():
+def delete_files():
     conn = sqlite3.connect('db/database.db')
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM files')
@@ -44,11 +44,11 @@ if __name__ == '__main__':
     logging.debug('Started cleanup.py')
     while True:
         try:
-            deleteFiles()
+            delete_files()
         except Exception as e:
             logging.error(e)
         try:
-            deleteEntries()
+            delete_entries()
         except Exception as e:
             logging.error(e)
         time.sleep(60)

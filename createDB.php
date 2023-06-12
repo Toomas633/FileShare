@@ -20,15 +20,15 @@ if (getenv('TZ') !== false) {
 }
 if (!file_exists(DB_FILE)) {
     $errors = true;
-    create_settings($errors);
-    create_files($errors);
+    createSettings($errors);
+    createFiles($errors);
     write('password', $password);
     write('timezone', $tz);
     write('url', 'http://localhost:8000');
 } else {
     $errors = false;
-    create_files($errors);
-    create_settings($errors);
+    createFiles($errors);
+    createSettings($errors);
     if (!check('password')) {
         write('password', $password);
     }
@@ -40,7 +40,7 @@ if (!file_exists(DB_FILE)) {
     }
 }
 
-function create_settings($errors) {
+function createSettings($errors) {
     try {
         $db = new PDO('sqlite:' . DB_FILE);
         $query = $db->prepare("CREATE TABLE settings (setting TEXT, value TEXT)");
@@ -53,7 +53,7 @@ function create_settings($errors) {
     }
 }
 
-function create_files($errors) {
+function createFiles($errors) {
     try {
         $db = new PDO('sqlite:' . DB_FILE);
         $query = $db->prepare("CREATE TABLE files (name TEXT, uploadTime INT, deleteTime INT)");

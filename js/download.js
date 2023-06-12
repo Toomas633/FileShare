@@ -1,5 +1,5 @@
 function displayError() {
-  var errorPopup = document.getElementById("error-popup");
+  let errorPopup = document.getElementById("error-popup");
   errorPopup.style.display = "block";
   setTimeout(() => {
     errorPopup.style.display = "none";
@@ -12,15 +12,15 @@ function confirmDelete(file) {
 }
 
 function downloadFile(filename) {
-  var folderPath = "../uploads/";
-  var xhr = new XMLHttpRequest();
+  let folderPath = "../uploads/";
+  let xhr = new XMLHttpRequest();
   xhr.open("POST", "php/download.php");
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.responseType = "blob";
   xhr.onload = function () {
     if (xhr.status === 200) {
-      var blob = new Blob([xhr.response]);
-      var link = document.createElement("a");
+      let blob = new Blob([xhr.response]);
+      let link = document.createElement("a");
       link.href = window.URL.createObjectURL(blob);
       link.download = filename;
       link.click();

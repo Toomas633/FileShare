@@ -1,5 +1,5 @@
 <?php
-require_once('path.php');
+require_once 'path.php';
 define('DB_FILE', DEFAULT_PATH . '/db/database.db');
 define('DIR_PATH', DEFAULT_PATH . '/');
 error_reporting(E_ALL & ~E_WARNING & ~E_DEPRECATED & ~E_NOTICE);

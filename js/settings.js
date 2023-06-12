@@ -1,5 +1,5 @@
-var errorPopup = document.getElementById("error-popup");
-var successPopup = document.getElementById("success-popup");
+let errorPopup = document.getElementById("error-popup");
+let successPopup = document.getElementById("success-popup");
 
 const changePasswordModal = document.getElementById("password-change-modal");
 const changePasswordForm = document.querySelector(
@@ -107,15 +107,15 @@ selectElement.addEventListener("change", (event) => {
 });
 
 function downloadFile(filename) {
-  var folderPath = "../uploads/";
-  var xhr = new XMLHttpRequest();
+  let folderPath = "../uploads/";
+  let xhr = new XMLHttpRequest();
   xhr.open("POST", "php/download.php");
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.responseType = "blob";
   xhr.onload = function () {
     if (xhr.status === 200) {
-      var blob = new Blob([xhr.response]);
-      var link = document.createElement("a");
+      let blob = new Blob([xhr.response]);
+      let link = document.createElement("a");
       link.href = window.URL.createObjectURL(blob);
       link.download = filename;
       link.click();
@@ -129,7 +129,7 @@ const phpbtn = document.getElementById("phpModal-btn");
 const phplogContent = document.getElementById("php-log-content");
 function openPHPModal() {
   phpmodal.style.display = "block";
-  var xhr = new XMLHttpRequest();
+  let xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       phplogContent.innerHTML = this.responseText;
@@ -149,7 +149,7 @@ const cleanupbtn = document.getElementById("cleanupModal-btn");
 const cleanuplogContent = document.getElementById("cleanup-log-content");
 function openCleanupModal() {
   cleanupmodal.style.display = "block";
-  var xhr = new XMLHttpRequest();
+  let xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       cleanuplogContent.innerHTML = this.responseText;

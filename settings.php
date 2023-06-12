@@ -173,7 +173,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                     if ($file != "." && $file != "..") {
                         echo "<div class='col'>";
                         echo "<div class='file'>";
-                        include "php/icons.php";
+                        include_once "php/icons.php";
                         echo "<div class='text-container'>";
                         echo "<a href='download.php?file=$file' id='file-name'>$file</a>";
                         $pdo = new PDO('sqlite:' . DB_FILE);

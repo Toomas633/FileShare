@@ -36,7 +36,7 @@
         }
         if ($file_found) {
             echo '<div id="found-file">';
-            include "php/icons.php";
+            include_once "php/icons.php";
             echo "<div class='text-container'>";
             echo "<p id='file-name'>$file</p>";
             $pdo = new PDO('sqlite:' . DB_FILE);
