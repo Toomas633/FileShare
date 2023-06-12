@@ -1,6 +1,4 @@
 <?php
-// download.php
-
 if (isset($_POST['filename'])) {
     $filename = $_POST['filename'];
     if (file_exists($filename)) {

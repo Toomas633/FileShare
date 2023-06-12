@@ -1,5 +1,5 @@
 <?php
-require_once('../config.php');
+require_once '../config.php';
 $targetDir = DIR_PATH . "uploads/";
 $extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 $random = intval($_POST['random']);

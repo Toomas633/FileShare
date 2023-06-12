@@ -1,5 +1,5 @@
 <?php
-require_once('../config.php');
+require_once '../config.php';
 session_set_cookie_params(0);
 session_start();
 $pdo = new PDO('sqlite:' . DB_FILE);

@@ -54,8 +54,8 @@ form.addEventListener("submit", async (e) => {
   formData.append("direct", directToggleSwitch.checked ? 1 : 0);
   document.getElementById('upload-status').style.display = 'flex';
   const segments = document.getElementsByClassName('segment');
-  for (var i = 0; i < segments.length; i++) {
-    segments[i].style.display = 'flex';
+  for (let segment of segments) {
+    segment.style.display = 'flex';
   }
   document.getElementById('status-message').innerText = 'Uploading...';
   document.getElementById('status-message').style.color = '#fff';
@@ -69,8 +69,8 @@ form.addEventListener("submit", async (e) => {
       errorText.value = linkEnding.substring(7);
       errorPopup.style.display = "block";
       document.getElementById('upload-status').style.display = 'none';
-      for (var i = 0; i < segments.length; i++) {
-        segments[i].style.display = 'none';
+      for (let segment of segments) {
+        segment.style.display = 'none';
       }
       document.getElementById('upload-status').style.display = 'flex';
       document.getElementById('status-message').innerText = 'Upload failed!';
@@ -109,8 +109,8 @@ form.addEventListener("submit", async (e) => {
       xhr.onload = function() {
         document.getElementById('upload-status').style.display = 'flex';
         document.getElementById('status-message').innerText = 'Upload complete!';
-        for (var i = 0; i < segments.length; i++) {
-          segments[i].style.display = 'none';
+        for (let segment of segments) {
+          segment.style.display = 'none';
         }
         document.getElementById('progress-bar').style.backgroundColor = '#2196f3';
         document.getElementById('upload-status').style.backgroundColor = '#28a745';
@@ -122,8 +122,8 @@ form.addEventListener("submit", async (e) => {
       xhr.onerror = function() {
         document.getElementById('upload-status').style.display = 'flex';
         document.getElementById('status-message').innerText = 'Upload failed!';
-        for (var i = 0; i < segments.length; i++) {
-          segments[i].style.display = 'none';
+        for (let segment of segments) {
+          segment.style.display = 'none';
         }
         document.getElementById('status-message').style.color = '#fff';
         document.getElementById('upload-status').style.backgroundColor = '#dc3545';        

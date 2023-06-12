@@ -1,5 +1,5 @@
 <?php
-require_once('config.php');
+require_once 'config.php';
 session_set_cookie_params(0);
 session_start();
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {

@@ -1,6 +1,6 @@
 <?php
 sleep(10);
-require_once('config.php');
+require_once 'config.php';
 
 if (!file_exists('uploads/')) {
     mkdir('uploads/', 0777, true);
