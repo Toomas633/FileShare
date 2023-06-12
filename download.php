@@ -15,7 +15,7 @@
         <a href="login.php" id="login-button"><i class="fa-settings"></i></a>
     </header>
     <?php
-    require_once('config.php');
+    require_once 'config.php';
     if (isset($_GET['file'])) {
         $file = $_GET['file'];
         $status = $_GET['status'];

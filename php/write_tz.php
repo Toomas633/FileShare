@@ -1,5 +1,5 @@
 <?php
-require_once('../config.php');
+require_once '../config.php';
 $timezone = $_POST['timezone'];
 $pdo = new PDO('sqlite:' . DB_FILE);
 $query = $pdo->prepare('UPDATE settings SET value = :new_value WHERE setting = :setting');

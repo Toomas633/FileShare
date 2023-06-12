@@ -1,5 +1,5 @@
 <?php
-require_once('../config.php');
+require_once '../config.php';
 $data = json_decode($_POST['data'], true);
 $pdo = new PDO('sqlite:' . DB_FILE);
 $query = $pdo->prepare("INSERT INTO files (name, uploadTime, deleteTime) VALUES (:name, :uploadtime, :deletetime)");
