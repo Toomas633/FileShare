@@ -1,5 +1,5 @@
-let successPopup = document.getElementById("success-popup");
-let errorPopup = document.getElementById("error-popup");
+const successPopup = document.getElementById("success-popup");
+const errorPopup = document.getElementById("error-popup");
 function DisplayDeleteStatus(status) {
   if (status.startsWith('ERROR:')) {
     errorPopup.innerHTML = status.substring(7);
