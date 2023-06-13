@@ -1,7 +1,5 @@
 const changePasswordModal = document.getElementById("password-change-modal");
-const changePasswordForm = document.querySelector(
-  "#password-change-modal form"
-);
+const changePasswordForm = document.querySelector("#password-change-modal form");
 
 const changePasswordBtn = document.getElementById("change-password-btn");
 changePasswordBtn.addEventListener("click", () => {
@@ -31,9 +29,9 @@ changePasswordForm.addEventListener("submit", (event) => {
         if (response.status === "success") {
           successPopup.innerHTML = response.message;
           successPopup.style.display = "block";
+          changePasswordModal.style.display = "none";
           setTimeout(() => {
             successPopup.style.display = "none";
-            changePasswordModal.style.display = "none";
             currentPasswordInput.value = "";
             newPasswordInput.value = "";
             confirmPasswordInput.value = "";
