@@ -14,7 +14,6 @@ RUN apt install -y \
     php \
     php-gd \
     php-cli \
-    php-fpm \
     php-sqlite3 \ 
     php-curl \
     libgd-dev \

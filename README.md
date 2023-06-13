@@ -41,7 +41,7 @@ Default password: Password.123
 * Install Python on your Windows machine if it is not already installed. You can download the latest version of Python from the official website at [https://www.python.org/downloads/](https://www.python.org/downloads/).
 * Change the values of `post_max_size` and  `upload_max_filesize` in `php.ini` to a desired size amount, or bigger files can't be uploaded (defaults are 8M and 2M in the file, so the uploaded file can only be of size 2MB and less)
 * Check that you have php-sqlite3, php-curl and gd installed and enabled.
-* * On debian run `sudo apt install -y php php-gd php-cli php-fpm php-sqlite3 php-curl libgd-dev sqlite3 libsqlite3-dev python3 python3-pip python-is-python3 git zip unzip libzip-dev libpng-dev libjpeg-dev libfreetype6-dev libpq-dev libonig-dev `
+* * On debian run `sudo apt install -y php php-gd php-cli php-sqlite3 php-curl libgd-dev sqlite3 python3 python3-pip python-is-python3 git zip unzip libzip-dev libpng-dev libjpeg-dev libfreetype6-dev libpq-dev libonig-dev `
   * On windows you can skip this step as these .dll-s should already be included in php install.
 * Check that you have pytz and datetime install for python by running `pip install pytz datetime`.
 
