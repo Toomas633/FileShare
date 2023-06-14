@@ -9,3 +9,5 @@ $query->bindValue(':deletetime', $data['deleteTime'], PDO::PARAM_INT);
 $query->execute();
 $pdo = null;
 echo "Data successfully added to database.";
+header("HTTP/1.1 200 OK");
+header("Content-Type: text/plain");

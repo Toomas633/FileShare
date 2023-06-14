@@ -8,3 +8,5 @@ $row = $query->fetch(PDO::FETCH_ASSOC);
 $timezone = $row['value'];
 $pdo = null;
 echo $timezone;
+header("HTTP/1.1 200 OK");
+header("Content-Type: text/plain");
