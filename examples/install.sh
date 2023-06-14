@@ -36,6 +36,7 @@ git clone https://github.com/Toomas633/FileShare.git > /dev/null
 cd FileShare
 
 sudo mv examples/FileShare.service /etc/systemd/system/ > /dev/null
+sudo sed -i "s|ExecStart=/path/to/start.sh|ExecStart=$(pwd)/start.sh|" /etc/systemd/system/FileShare.service
 sudo systemctl daemon-reload > /dev/null
 sudo systemctl start FileShare.service > /dev/null
 sudo systemctl enable FileShare.service > /dev/null
