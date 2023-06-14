@@ -4,9 +4,10 @@
 
 # FileShare
 
-- [Requirements](#requirements)
 - [Running instructions](#running-instructions)
   - [Debian service](#debian)
+    - [Install script](#install-script)
+    - [Manual](#manual)
   - [Windows service](#windows)
   - [Docker](#docker)
 - [Suggestions](#suggestions)
@@ -35,19 +36,11 @@ Features:
 
 Default password: Password.123
 
-## Requirements
-
-* Make sure you have PHP installed on your local machine. You can check this by running the command `php -v` in your terminal. If you don't have PHP installed, you can download it from the [official PHP website](https://www.php.net/).
-* Install Python on your Windows machine if it is not already installed. You can download the latest version of Python from the official website at [https://www.python.org/downloads/](https://www.python.org/downloads/).
-* Change the values of `post_max_size` and  `upload_max_filesize` in `php.ini` to a desired size amount, or bigger files can't be uploaded (defaults are 8M and 2M in the file, so the uploaded file can only be of size 2MB and less)
-* Check that you have php-sqlite3, php-curl and gd installed and enabled.
-* * On debian run `sudo sudo apt install -y php php-gd php-sqlite3 php-curl libfreetype6-dev libjpeg62-turbo-dev libpng-dev libzip-dev zip unzip libsqlite3-dev curl `.
-  * On windows you can skip this step as these .dll-s should already be included in php install.
-* Check that you have pytz and datetime install for python by running `pip install pytz datetime`.
-
 ## Running instructions
 
 - [Debian service](#debian)
+  - [Install script](#install-script)
+  - [Manual](#manual)
 - [Windows service](#windows)
 - [Docker](#docker)
 
@@ -58,6 +51,19 @@ Default password: Password.123
 
 ### Debian
 
+- [Install script](#install-script)
+- [Manual](#manual)
+
+#### Install script
+* Make sure you have wget installed with `sudo apt install wget`.
+* Download the install script to the desired destination folder with `wget https://raw.githubusercontent.com/Toomas633/FileShare/update/examples/install.sh`.
+* Enable running the script with `sudo chmod a+x install.sh`.
+* Run the script and wait for it to finish setting everything up via `./install.sh`.
+* Open a web browser and navigate to your PHP website by entering the appropriate URL. For example [http://localhost:8000](http://localhost:8000) in the browser address bar.
+
+#### Manual
+* Install required packages by running `sudo sudo apt install -y php php-gd php-sqlite3 php-curl libfreetype6-dev libjpeg62-turbo-dev libpng-dev libzip-dev zip unzip libsqlite3-dev curl git`.
+* Clone the GitHub repository to your local machine using the command `git clone https://github.com/Toomas633/FileShare.git` or download the zip from releases and unpack it to desired destination.
 * Create a new systemd service file for your PHP website by running the command `sudo nano /etc/systemd/system/FileShare.service`.
 * In the editor, paste the following code to define the service or run `sudo wget https://raw.githubusercontent.com/Toomas633/FileShare/main/examples/FileShare.service` in `cd /etc/systemd/system/`:
 
@@ -83,12 +89,18 @@ Default password: Password.123
 * Start the new service by running the command `sudo systemctl start FileShare.service`.
 * Verify that the service is running properly by checking the status with the command `sudo systemctl status FileShare.service`.
 * If the service is running correctly, enable it to start at boot time by running the command `sudo systemctl enable FileShare.service`.
+* Open a web browser and navigate to your PHP website by entering the appropriate URL. For example [http://localhost:8000](http://localhost:8000) in the browser address bar.
 
 ### Windows
 
-* Install PHP and Python and add them to your windows system path.
-* Copy your PHP website files to the appropriate directory.
-* Enable running it in the background (or just double click to run once in a dialog box)
+#### Requirements
+* Make sure you have PHP installed on your local machine. You can check this by running the command `php -v` in your terminal. If you don't have PHP installed, you can download it from the [official PHP website](https://www.php.net/).
+* Check that you have php-sqlite3, php-curl and gd installed and enabled.
+
+#### Install
+* Clone the GitHub repository to your local machine or download the zip from releases and unpack it to desired destination.
+* Change the values of `post_max_size` and  `upload_max_filesize` in `FileShare.ini` to a desired size amount, or bigger files can't be uploaded.
+* Run `start.bat` or enable running it in the background.
   * Open the Task Scheduler by pressing the Windows key + R, typing "taskschd.msc" and hitting Enter.
   * Click on the "Create Task" option in the Actions pane on the right-hand side of the window.
   * In the "General" tab of the "Create Task" dialog box, enter a name for the task in the "Name" field.
