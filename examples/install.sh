@@ -1,33 +1,23 @@
 #!/bin/bash
 
-echo "Starting..."
-echo
+echo -n "Installing..."
+terminal_width=$(tput cols)
+padding_length=$((terminal_width - 10))
+printf "%*s" $padding_length ""
+spinner() {
+    local spin='-\|/'
+    local i=0
+    local count=0
+    local limit=50
 
-bar_length=50
-sleep_duration=0.1
-
-progress_bar() {
-    local duration=$1
-    local total_length=$2
-    local elapsed=0
-    local progress=0
-    local bar=""
-
-    while [ $elapsed -lt $duration ]; do
-        elapsed=$((elapsed + 1))
-        progress=$((elapsed * 100 / duration))
-        completed_length=$((progress * total_length / 100))
-        bar=$(printf "[%-${total_length}s] %d%%" $(printf "#%.0s" $(seq 1 $completed_length)) $progress)
-        printf "\r%s" "$bar"
-        sleep $sleep_duration
+    while [ $count -lt $limit ]; do
+        printf "\b${spin:i++%${#spin}:1}"
+        sleep 0.1
+        count=$((count + 1))
     done
-
-    printf "\n\n"
 }
 
-progress_duration=5
-
-progress_bar $progress_duration $bar_length
+spinner &
 
 sudo apt update > /dev/null
 sudo apt install -y php php-curl php-sqlite3 php-gd > /dev/null
@@ -43,7 +33,8 @@ sudo systemctl enable FileShare.service > /dev/null
 
 service_status=$(sudo systemctl is-active FileShare.service)
 
-echo "Done!"
+kill $!
+echo "\rDone!"
 if [[ "$service_status" == "active" ]]; then
     echo -e "\e[32mService is running. \e[0m🟢"
 else
