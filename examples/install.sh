@@ -20,7 +20,7 @@ spinner() {
 spinner &
 
 sudo apt update > /dev/null
-sudo apt install -y php php-curl php-sqlite3 php-gd > /dev/null
+sudo apt install -y php php-gd php-sqlite3 php-curl libfreetype6-dev libjpeg62-turbo-dev libpng-dev libzip-dev zip unzip libsqlite3-dev curl git > /dev/null
 
 git clone https://github.com/Toomas633/FileShare.git > /dev/null
 cd FileShare
