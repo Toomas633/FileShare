@@ -41,7 +41,7 @@ Default password: Password.123
 * Install Python on your Windows machine if it is not already installed. You can download the latest version of Python from the official website at [https://www.python.org/downloads/](https://www.python.org/downloads/).
 * Change the values of `post_max_size` and  `upload_max_filesize` in `php.ini` to a desired size amount, or bigger files can't be uploaded (defaults are 8M and 2M in the file, so the uploaded file can only be of size 2MB and less)
 * Check that you have php-sqlite3, php-curl and gd installed and enabled.
-* * On debian run `sudo apt install -y php php-gd php-cli php-sqlite3 php-curl libgd-dev sqlite3 python3 python3-pip python-is-python3 git zip unzip libzip-dev libpng-dev libjpeg-dev libfreetype6-dev libpq-dev libonig-dev `
+* * On debian run `sudo sudo apt install -y php php-gd php-sqlite3 php-curl `
   * On windows you can skip this step as these .dll-s should already be included in php install.
 * Check that you have pytz and datetime install for python by running `pip install pytz datetime`.
 
@@ -53,8 +53,7 @@ Default password: Password.123
 
 * Install PHP and Python (and add to system path on windows).
 * Clone the GitHub repository to your local machine using the command `git clone https://github.com/Toomas633/FileShare.git` or download the zip from releases and unpack it to desired destination.
-* Start a local server to access the website in your browser. You can do this by running the command `php -c FileShare.ini -S localhost:8000` (or a different port number) in your terminal from the project directory.
-* For timed file delete also run `cleanup.py` on the backround.
+* Start a local server to access the website in your browser. You can do this by running the command `./start.sh` on debian in the terminal or run `start.bat` on windows.
 * Access the website in your browser. Once the server is running, you can access the website by navigating to [http://localhost:8000](http://localhost:8000) (or the appropriate URL) in your web browser.
 
 ### Debian
