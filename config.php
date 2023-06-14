@@ -1,4 +1,7 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST");
+header("Access-Control-Allow-Headers: Content-Type");
 require_once 'path.php';
 define('DB_FILE', DEFAULT_PATH . '/db/database.db');
 define('DIR_PATH', DEFAULT_PATH . '/');
