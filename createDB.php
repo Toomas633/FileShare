@@ -46,10 +46,11 @@ function createSettings($errors) {
         $query = $db->prepare("CREATE TABLE settings (setting TEXT, value TEXT)");
         $query->execute();
         $db = $query = null;
-    } catch (PDOException) {
+    } catch (PDOException $e) {
         if ($errors === true) {
             echo 'Error: Unable to create table "settings"';
         }
+        echo $e;
     }
 }
 
@@ -59,10 +60,11 @@ function createFiles($errors) {
         $query = $db->prepare("CREATE TABLE files (name TEXT, uploadTime INT, deleteTime INT)");
         $query->execute();
         $db = $query = null;
-    } catch (PDOException) {
+    } catch (PDOException $e) {
         if ($errors === true) {
             echo 'Error: Unable to create table "files"';
         }
+        echo $e;
     }
 }
 
@@ -74,8 +76,9 @@ function write($setting, $value) {
         $query->bindValue(':value', $value, PDO::PARAM_STR);
         $query->execute();
         $db = $query = null;
-    } catch (PDOException) {
+    } catch (PDOException $e) {
         echo 'Error: Unable to insert ' . $setting . ' to table "settings"';
+        echo $e;
     }
 }
 
