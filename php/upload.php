@@ -1,5 +1,8 @@
 <?php
 require_once '../config.php';
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Headers: Content-Type");
 $targetDir = DIR_PATH . "uploads/";
 $extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 $random = intval($_POST['random']);
