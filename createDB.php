@@ -18,58 +18,33 @@ if (getenv('TZ') !== false) {
 } else {
     $tz = 'Europe/London';
 }
-if (!file_exists(DB_FILE)) {
-    $errors = true;
-    createSettings($errors);
-    createFiles($errors);
+
+try {
+    $db = new PDO('sqlite:' . DB_FILE);
+    $query = $db->prepare('CREATE TABLE IF NOT EXISTS files (name TEXT, uploadTime INT, deleteTime INT)');
+    $query->execute();
+    $db = $query = null;
+} catch (PDOException $e) { 
+    echo $e;
+}
+
+try {
+    $db = new PDO('sqlite:' . DB_FILE);
+    $query = $db->prepare('CREATE TABLE IF NOT EXISTS settings (setting TEXT, value TEXT)');
+    $query->execute();
+    $db = $query = null;
+} catch (PDOException $e) {
+    echo $e;
+}
+
+if (!check('password')) {
     write('password', $password);
+}
+if (!check('timezone')) {
     write('timezone', $tz);
+}
+if (!check('url')) {
     write('url', 'http://localhost:8000');
-} else {
-    $errors = false;
-    createFiles($errors);
-    createSettings($errors);
-    if (!check('password')) {
-        write('password', $password);
-    }
-    if (!check('timezone')) {
-        write('timezone', $tz);
-    }
-    if (!check('url')) {
-        write('url', 'http://localhost:8000');
-    }
-}
-
-function createSettings($errors) {
-    if ($errors === true) {
-        echo 'Error: Unable to create table "settings"';
-    } else {
-        try {
-            $db = new PDO('sqlite:' . DB_FILE);
-            $query = $db->prepare("CREATE TABLE settings (setting TEXT, value TEXT)");
-            $query->execute();
-            $db = $query = null;
-        } catch (PDOException $e) {
-            echo $e;
-        }
-    }
-    
-}
-
-function createFiles($errors) {
-    if ($errors === true) {
-        echo 'Error: Unable to create table "files"';
-    } else {
-        try {
-            $db = new PDO('sqlite:' . DB_FILE);
-            $query = $db->prepare("CREATE TABLE files (name TEXT, uploadTime INT, deleteTime INT)");
-            $query->execute();
-            $db = $query = null;
-        } catch (PDOException $e) { 
-            echo $e;
-        }
-    }
-    
 }
 
 function write($setting, $value) {
