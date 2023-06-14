@@ -41,31 +41,35 @@ if (!file_exists(DB_FILE)) {
 }
 
 function createSettings($errors) {
-    try {
-        $db = new PDO('sqlite:' . DB_FILE);
-        $query = $db->prepare("CREATE TABLE settings (setting TEXT, value TEXT)");
-        $query->execute();
-        $db = $query = null;
-    } catch (PDOException $e) {
-        if ($errors === true) {
-            echo 'Error: Unable to create table "settings"';
+    if ($errors === true) {
+        echo 'Error: Unable to create table "settings"';
+    } else {
+        try {
+            $db = new PDO('sqlite:' . DB_FILE);
+            $query = $db->prepare("CREATE TABLE settings (setting TEXT, value TEXT)");
+            $query->execute();
+            $db = $query = null;
+        } catch (PDOException $e) {
+            echo $e;
         }
-        echo $e;
     }
+    
 }
 
 function createFiles($errors) {
-    try {
-        $db = new PDO('sqlite:' . DB_FILE);
-        $query = $db->prepare("CREATE TABLE files (name TEXT, uploadTime INT, deleteTime INT)");
-        $query->execute();
-        $db = $query = null;
-    } catch (PDOException $e) {
-        if ($errors === true) {
-            echo 'Error: Unable to create table "files"';
+    if ($errors === true) {
+        echo 'Error: Unable to create table "files"';
+    } else {
+        try {
+            $db = new PDO('sqlite:' . DB_FILE);
+            $query = $db->prepare("CREATE TABLE files (name TEXT, uploadTime INT, deleteTime INT)");
+            $query->execute();
+            $db = $query = null;
+        } catch (PDOException $e) { 
+            echo $e;
         }
-        echo $e;
     }
+    
 }
 
 function write($setting, $value) {
