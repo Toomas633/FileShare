@@ -4,7 +4,7 @@ services:
     image: ghcr.io/toomas633/fileshare:latest #or version number instead of latest
     container_name: fileshare #container name, can be set different
     ports:
-      - "8080:80" #map port 8080 from host to 80 on container
+      - "8080:8000" #map port 8080 from host to 8000 on container
     environment:
       - TZ=Europe/London #default timezone for the container and on first database creation
       - MAX_FILESIZE=5M #allowed uploaded file size

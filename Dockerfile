@@ -40,5 +40,5 @@ RUN chmod +x /var/www/html/cleanup.py
 RUN mkdir /var/www/html/db /var/www/html/uploads
 RUN chmod 777 /var/www/html/db /var/www/html/uploads
 WORKDIR /var/www/html
-EXPOSE 80
+EXPOSE 8000
 CMD ["/usr/bin/supervisord", "-n"]
