@@ -12,12 +12,6 @@ on:
           - update
 
 jobs:
-  Set-Date:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set date
-        run: echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
-        
   Dev-Image:
     runs-on: ubuntu-latest
     steps:
@@ -39,6 +33,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set date
+        run: echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
 
       - name: Build and push dev image
         uses: docker/build-push-action@v2
