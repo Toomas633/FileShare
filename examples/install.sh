@@ -1,9 +1,6 @@
 #!/bin/bash
 
-echo -n "Installing..."
-terminal_width=$(tput cols)
-padding_length=$((terminal_width - 10))
-printf "%*s" $padding_length ""
+echo "Installing... "
 spinner() {
     local spin='-\|/'
     local i=0
@@ -19,11 +16,12 @@ spinner() {
 
 spinner &
 
-sudo apt update > /dev/null
+sudo apt update > /dev/null 2>&1
 sudo apt install -y php php-gd php-sqlite3 php-curl libfreetype6-dev libjpeg-dev libpng-dev libzip-dev zip unzip libsqlite3-dev curl git > /dev/null 2>&1
 
 git clone https://github.com/Toomas633/FileShare.git > /dev/null 2>&1
 cd FileShare
+sudo chmod -R a+rw .
 
 sudo mv examples/FileShare.service /etc/systemd/system/ > /dev/null 2>&1
 sudo sed -i "s|ExecStart=/path/to/start.sh|ExecStart=$(pwd)/start.sh|" /etc/systemd/system/FileShare.service

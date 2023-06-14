@@ -55,6 +55,7 @@ Default password: Password.123
 - [Manual](#manual)
 
 #### Install script
+
 * Make sure you have wget installed with `sudo apt install wget`.
 * Download the install script to the desired destination folder with `wget https://raw.githubusercontent.com/Toomas633/FileShare/update/examples/install.sh`.
 * Enable running the script with `sudo chmod a+x install.sh`.
@@ -62,6 +63,7 @@ Default password: Password.123
 * Open a web browser and navigate to your PHP website by entering the appropriate URL. For example [http://localhost:8000](http://localhost:8000) in the browser address bar.
 
 #### Manual
+
 * Install required packages by running `sudo sudo apt install -y php php-gd php-sqlite3 php-curl libfreetype6-dev libjpeg62-turbo-dev libpng-dev libzip-dev zip unzip libsqlite3-dev curl git`.
 * Clone the GitHub repository to your local machine using the command `git clone https://github.com/Toomas633/FileShare.git` or download the zip from releases and unpack it to desired destination.
 * Create a new systemd service file for your PHP website by running the command `sudo nano /etc/systemd/system/FileShare.service`.
@@ -76,8 +78,8 @@ Default password: Password.123
   Type=simple
   ExecStart=/path/to/start.sh
   Restart=always
-  User=www-data
-  Group=www-data
+  User=root
+  Group=root
 
   [Install]
   WantedBy=multi-user.target
@@ -94,10 +96,12 @@ Default password: Password.123
 ### Windows
 
 #### Requirements
+
 * Make sure you have PHP installed on your local machine. You can check this by running the command `php -v` in your terminal. If you don't have PHP installed, you can download it from the [official PHP website](https://www.php.net/).
 * Check that you have php-sqlite3, php-curl and gd installed and enabled.
 
 #### Install
+
 * Clone the GitHub repository to your local machine or download the zip from releases and unpack it to desired destination.
 * Change the values of `post_max_size` and  `upload_max_filesize` in `FileShare.ini` to a desired size amount, or bigger files can't be uploaded.
 * Run `start.bat` or enable running it in the background.
