@@ -1,14 +1,11 @@
-# Set the upload file size limits
+LoadModule rewrite_module modules/mod_rewrite.so
 php_value upload_max_filesize 50M
 php_value post_max_size 50M
-
-# Settings (change only if you know what you are doing)
-LoadModule rewrite_module modules/mod_rewrite.so
+ErrorLog "FileShare.log"
+php_value error_log "FileShare.log"
 php_value max_execution_time 300
-Options -Indexes
-
-# Redirect all requests to index.php
-# RewriteEngine On
-# RewriteCond %{REQUEST_FILENAME} !-d
-# RewriteCond %{REQUEST_FILENAME}.php -f
-# RewriteRule ^([^\.]+)/?$ $1.php [L]
+Options +Indexes
+RewriteEngine Off
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^\.]+)/?$ $1.php [L]
