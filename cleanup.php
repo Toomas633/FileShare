@@ -41,19 +41,14 @@ function delete_files()
     $conn = null;
 }
 
-echo "Started cleanup.php\n";
+try {
+    delete_files();
+} catch (Exception $e) {
+    error_log($e, 3, DIR_PATH . 'cleanup.log');
+}
 
-while (true) {
-    try {
-        delete_files();
-    } catch (Exception $e) {
-        error_log($e, 3, 'cleanup.log');
-    }
-
-    try {
-        delete_entries();
-    } catch (Exception $e) {
-        error_log($e, 3, 'cleanup.log');
-    }
-    sleep(60);
+try {
+    delete_entries();
+} catch (Exception $e) {
+    error_log($e, 3, DIR_PATH . 'cleanup.log');
 }
