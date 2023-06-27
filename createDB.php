@@ -1,5 +1,4 @@
 <?php
-sleep(10);
 require_once 'config.php';
 
 if (!file_exists('uploads/')) {
