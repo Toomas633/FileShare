@@ -22,7 +22,8 @@ RUN apt update && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-install -j$(nproc) gd pdo pdo_sqlite mysqli zip && \
     apt autoremove && \
-    apt autoclean
+    apt autoclean && \
+    rm -rf /var/lib/apt/lists/*
 COPY . /var/www/html
 RUN mkdir /var/www/html/db /var/www/html/uploads
 RUN php /var/www/html/createDB.php
