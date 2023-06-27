@@ -1,7 +1,7 @@
 <?php
 require_once 'path.php';
 date_default_timezone_set('UTC');
-ini_set('error_log', DIR_PATH . '/cleanup.log');
+ini_set('error_log', 'cleanup.log');
 
 function delete_entries()
 {
@@ -14,8 +14,10 @@ function delete_entries()
     }
     foreach ($files_in_database as $filename) {
         if (!in_array($filename, $files_in_folder)) {
-            $conn->exec("DELETE FROM files WHERE name = '$filename'");
-            error_log("Deleted entry for file: $filename", 3, DIR_PATH . '/cleanup.log');
+            $stmt = $conn->prepare("DELETE FROM files WHERE name = :filename");
+            $stmt->bindParam(':filename', $filename);
+            $stmt->execute();
+            error_log("Deleted entry for file: $filename", 3, 'cleanup.log');
         }
     }
     $conn = null;
@@ -33,7 +35,7 @@ function delete_files()
         if ($current_time > $delete_time && $delete_time != $upload_time) {
             $file_path ='uploads/' . $name;
             if (file_exists($file_path)) {
-                error_log("Deleted file: $name \t Delete time in db(utc): $delete_time", 3, DIR_PATH . '/cleanup.log');
+                error_log("Deleted file: $name \t Delete time in db(utc): $delete_time", 3, 'cleanup.log');
                 unlink($file_path);
             }
         }
@@ -44,11 +46,11 @@ function delete_files()
 try {
     delete_files();
 } catch (Exception $e) {
-    error_log($e, 3, DIR_PATH . 'cleanup.log');
+    error_log($e, 3, 'cleanup.log');
 }
 
 try {
     delete_entries();
 } catch (Exception $e) {
-    error_log($e, 3, DIR_PATH . 'cleanup.log');
+    error_log($e, 3, 'cleanup.log');
 }
