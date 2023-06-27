@@ -26,8 +26,8 @@ RUN apt update && \
     apt-get clean
 RUN a2enmod rewrite
 COPY . /var/www/html
-COPY custom-apache.conf /etc/apache2/conf-available/custom-apache.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY custom-apache.conf /etc/apache2/conf-available/custom-apache.conf
 RUN mkdir /var/www/html/db /var/www/html/uploads
 RUN chmod 777 /var/www/html/db /var/www/html/uploads
 WORKDIR /var/www/html
