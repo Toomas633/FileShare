@@ -42,5 +42,4 @@ jobs:
             docker.io/toomas633/fileshare:${{ github.event.release.tag_name }}
             docker.io/toomas633/fileshare:latest
           labels: |
-            org.opencontainers.image.created=${{ env.DATE }}
             org.opencontainers.image.version=${{ github.event.release.tag_name }}
