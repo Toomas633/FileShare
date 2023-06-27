@@ -34,9 +34,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set date
-        run: echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
-
       - name: Build and push dev image
         uses: docker/build-push-action@v4
         with:
@@ -47,3 +44,4 @@ jobs:
             ghcr.io/toomas633/fileshare:dev
           labels: |
             org.opencontainers.image.version=dev
+            org.opencontainers.image.version=$(date +%Y-%m-%d)
