@@ -25,7 +25,8 @@ RUN apt update && \
 RUN a2enmod rewrite
 COPY . /var/www/html
 RUN mkdir /var/www/html/db /var/www/html/uploads
-RUN chmod 777 /var/www/html/db /var/www/html/uploads
+RUN sudo chown -R www-data:www-data /var/www/html
+RUN chmod 755 -R /var/www/html
 RUN php /var/www/html/createDB.php
 EXPOSE 80
 CMD ["apache2-foreground"]
