@@ -2,9 +2,9 @@
 title FileShare
 cd %~dp0
 
-start /B "setup" php createDB.php -c FileShare.ini
+start /B "setup" php -c FileShare.ini createDB.php
 start /B "server" php -c FileShare.ini -S 0.0.0.0:8000
-start /B "cleanup" python cleanup.py
+start /B "cleanup" php -c FileShare.ini cleanup.php
 
 taskkill /f /im server
 taskkill /f /im cleanup
