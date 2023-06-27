@@ -28,5 +28,6 @@ RUN mkdir /var/www/html/db /var/www/html/uploads
 RUN chown -R www-data:www-data /var/www/html
 RUN chmod 755 -R /var/www/html
 RUN php /var/www/html/createDB.php
+RUN chmod 644 /var/www/html/db/database.db
 EXPOSE 80
 CMD ["apache2-foreground"]
