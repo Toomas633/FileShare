@@ -1,4 +1,4 @@
-FROM php:8.1-apache
+FROM php:8.1
 LABEL org.opencontainers.image.source=https://github.com/Toomas633/FileShare
 LABEL org.opencontainers.image.description="File share website"
 LABEL org.opencontainers.image.licenses=GPL-3.0
