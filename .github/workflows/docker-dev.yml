@@ -15,6 +15,9 @@ jobs:
   Dev-Image:
     runs-on: ubuntu-latest
     steps:
+      - name: Set Date Variable
+        run: echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
+
       - name: Checkout code
         uses: actions/checkout@v3
         with:
@@ -44,4 +47,4 @@ jobs:
             ghcr.io/toomas633/fileshare:dev
           labels: |
             org.opencontainers.image.version=dev
-            org.opencontainers.image.version=$(date +%Y-%m-%d)
+            org.opencontainers.image.version=${{ github.env.DATE }}
