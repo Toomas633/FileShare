@@ -8,13 +8,13 @@ define('DIR_PATH', DEFAULT_PATH . '/');
 error_reporting(E_ALL & ~E_WARNING & ~E_DEPRECATED & ~E_NOTICE);
 ini_set('error_log', DEFAULT_PATH . '/FileShare.log');
 
-if (!file_exists('uploads/')) {
+if (!file_exists(DIR_PATH . 'uploads/')) {
     mkdir(DIR_PATH . 'uploads/', 0777, true);
 }
 if (!file_exists('db/')) {
     mkdir(DIR_PATH . 'db/', 0777, true);
 }
-if (getenv('PASSWORD') !== false) {
+if (getenv(DIR_PATH . 'PASSWORD') !== false) {
     $password = password_hash(getenv('PASSWORD'), PASSWORD_BCRYPT);
 } else {
     $password = '$2y$10$Wd3nh6Kg6bRv6TpKz0E5eOrvONkObd7JhQmkeFV2QbVOHZqDSfkkK';
