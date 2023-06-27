@@ -9,11 +9,11 @@ ENV PASSWORD=Password.123
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo 'Europe/London' > /etc/timezone
 VOLUME /var/www/html/uploads/
 VOLUME /var/www/html/db/
+WORKDIR /var/www/html
 RUN apt update && \
     apt install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
-    supervisor \
     libpng-dev \
     libzip-dev \
     zip \
@@ -26,10 +26,8 @@ RUN apt update && \
     apt-get clean
 RUN a2enmod rewrite
 COPY . /var/www/html
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY custom-apache.conf /etc/apache2/conf-available/custom-apache.conf
 RUN mkdir /var/www/html/db /var/www/html/uploads
 RUN chmod 777 /var/www/html/db /var/www/html/uploads
-WORKDIR /var/www/html
+RUN php /var/www/html/createDB.php
 EXPOSE 80
-CMD ["/usr/bin/supervisord", "-n"]
+CMD ["apache2-foreground"]
