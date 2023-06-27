@@ -49,12 +49,7 @@ Default password: Password.123
 * Start a local server to access the website in your browser. You can do this by running the command `./start.sh` on debian in the terminal or run `start.bat` on windows.
 * Access the website in your browser. Once the server is running, you can access the website by navigating to [http://localhost:8000](http://localhost:8000) (or the appropriate URL) in your web browser.
 
-### Debian
-
-- [Install script](#install-script)
-- [Manual](#manual)
-
-#### Install script
+#### Debian install script
 
 * Make sure you have wget installed with `sudo apt install wget`.
 * Download the install script to the desired destination folder with `wget https://raw.githubusercontent.com/Toomas633/FileShare/update/examples/install.sh`.
@@ -129,10 +124,10 @@ services:
     image: ghcr.io/toomas633/fileshare:latest #or version number instead of latest
     container_name: fileshare #container name, can be set different
     ports:
-      - "8080:8000" #map port 8080 from host to 80 on container
+      - "8080:80" #map port 8080 from host to 80 on container
     environment:
       - TZ=Europe/London #default timezone for the container and on first database creation
-      - MAX_FILESIZE=5M #allowed uploaded file size
+      - MAX_FILESIZE=100M #allowed uploaded file size
       - PASSWORD=Password.123 #password for settings page login, set your own or change it on the page
     volumes:
       - /host/path1:/var/www/html/uploads/ # volume or host dir to a folder where uploads will be held
@@ -152,7 +147,7 @@ server {
     ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem; # managed by Certbot
 
   location / {
-    proxy_pass http://localhost:8000;
+    proxy_pass http://localhost:80;
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-Proto $scheme;
