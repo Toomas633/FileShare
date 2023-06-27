@@ -17,6 +17,4 @@ if (getenv('MAX_FILESIZE') !== false) {
 ini_set('upload_max_filesize', $filesize);
 ini_set('post_max_size', $filesize);
 
-
-include_once 'createDB.php';
 include_once 'cleanup.php';

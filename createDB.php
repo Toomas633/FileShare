@@ -1,4 +1,6 @@
 <?php
+require_once 'config.php';
+
 if (!file_exists(DIR_PATH . 'uploads/')) {
     mkdir(DIR_PATH . 'uploads/', 0777, true);
 }
