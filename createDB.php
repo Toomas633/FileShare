@@ -1,5 +1,9 @@
 <?php
-require_once 'config.php';
+require_once 'path.php';
+define('DIR_PATH', DEFAULT_PATH . '/');
+define('DB_FILE', DIR_PATH . 'db/database.db');
+ini_set('error_log', DIR_PATH . 'FileShare.log');
+error_reporting(E_ALL & ~E_WARNING & ~E_DEPRECATED & ~E_NOTICE);
 
 if (!file_exists(DIR_PATH . 'uploads/')) {
     mkdir(DIR_PATH . 'uploads/', 0777, true);

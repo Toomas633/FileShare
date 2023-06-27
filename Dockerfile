@@ -23,7 +23,8 @@ RUN apt update && \
     curl && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-install -j$(nproc) gd pdo pdo_sqlite mysqli zip && \
-    apt-get clean
+    apt autoremove && \
+    apt autoclean
 RUN a2enmod rewrite
 COPY . /var/www/html
 RUN mkdir /var/www/html/db /var/www/html/uploads

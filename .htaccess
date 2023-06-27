@@ -4,6 +4,9 @@
 # Set the maximum execution time for the script (adjust as needed)
 php_value max_execution_time 300
 
+# Disable directory browsing
+# Options -Indexes
+
 # Redirect all requests to index.php
 # RewriteEngine On
 # RewriteCond %{REQUEST_FILENAME} !-d
