@@ -11,16 +11,6 @@ if (!file_exists(DIR_PATH . 'uploads/')) {
 if (!file_exists(DIR_PATH . 'db/')) {
     mkdir(DIR_PATH . 'db/', 0777, true);
 }
-if (getenv('PASSWORD') !== false) {
-    $password = password_hash(getenv('PASSWORD'), PASSWORD_BCRYPT);
-} else {
-    $password = '$2y$10$Wd3nh6Kg6bRv6TpKz0E5eOrvONkObd7JhQmkeFV2QbVOHZqDSfkkK';
-}
-if (getenv('TZ') !== false) {
-    $tz = getenv('TZ');
-} else {
-    $tz = 'Europe/London';
-}
 
 try {
     $db = new PDO('sqlite:' . DB_FILE);
@@ -41,10 +31,10 @@ try {
 }
 
 if (!check('password')) {
-    write('password', $password);
+    write('password', '$2y$10$Wd3nh6Kg6bRv6TpKz0E5eOrvONkObd7JhQmkeFV2QbVOHZqDSfkkK');
 }
 if (!check('timezone')) {
-    write('timezone', $tz);
+    write('timezone', 'Europe/London');
 }
 if (!check('url')) {
     write('url', 'http://localhost:8000');

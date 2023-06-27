@@ -1,11 +1,11 @@
-# Enable the necessary modules
-# LoadModule rewrite_module modules/mod_rewrite.so
+# Set the upload file size limits
+php_value upload_max_filesize 50M
+php_value post_max_size 50M
 
-# Set the maximum execution time for the script (adjust as needed)
+# Settings (change only if you know what you are doing)
+LoadModule rewrite_module modules/mod_rewrite.so
 php_value max_execution_time 300
-
-# Disable directory browsing
-# Options -Indexes
+Options -Indexes
 
 # Redirect all requests to index.php
 # RewriteEngine On
