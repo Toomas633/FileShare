@@ -38,7 +38,7 @@ if (!check('timezone')) {
     write('timezone', 'Europe/London');
 }
 if (!check('url')) {
-    write('url', 'http://localhost:8000');
+    write('url', 'http://localhost:8000/');
 }
 
 function write($setting, $value)

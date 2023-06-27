@@ -6,7 +6,7 @@ ini_set('error_log', DIR_PATH . '/cleanup.log');
 function delete_entries()
 {
     $conn = new PDO('sqlite:' . DB_FILE);;
-    $files_in_folder = scandir(DIR_PATH . "uploads/");
+    $files_in_folder = scandir("uploads/");
     $files_in_database = [];
     $result = $conn->query("SELECT name FROM files");
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
@@ -31,7 +31,7 @@ function delete_files()
         $upload_time = $row['upload_time'];
         $delete_time = $row['delete_time'];
         if ($current_time > $delete_time && $delete_time != $upload_time) {
-            $file_path = DIR_PATH . 'uploads/' . $name;
+            $file_path ='uploads/' . $name;
             if (file_exists($file_path)) {
                 error_log("Deleted file: $name \t Delete time in db(utc): $delete_time", 3, DIR_PATH . '/cleanup.log');
                 unlink($file_path);
