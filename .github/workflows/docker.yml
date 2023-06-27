@@ -9,9 +9,6 @@ jobs:
     if: ${{ github.event_name == 'release' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Set Date Variable
-        run: echo "DATE=$(date +%Y-%m-%d)" >> $GITHUB_ENV
-
       - name: Checkout code
         uses: actions/checkout@v3
         with:
@@ -43,4 +40,3 @@ jobs:
             docker.io/toomas633/fileshare:latest
           labels: |
             org.opencontainers.image.version=${{ github.event.release.tag_name }}
-            org.opencontainers.image.version=${{ github.env.DATE }}
