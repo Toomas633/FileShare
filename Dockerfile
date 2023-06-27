@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM php:8.1-apache
 LABEL org.opencontainers.image.source=https://github.com/Toomas633/FileShare
 LABEL org.opencontainers.image.description="File share website"
 LABEL org.opencontainers.image.licenses=GPL-3.0
@@ -9,36 +9,26 @@ ENV PASSWORD=Password.123
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo 'Europe/London' > /etc/timezone
 VOLUME /var/www/html/uploads/
 VOLUME /var/www/html/db/
-RUN apt update
-RUN apt install -y \
-    php \
-    php-gd \
-    php-cli \
-    php-sqlite3 \ 
-    php-curl \
-    libgd-dev \
-    sqlite3 \
-    libsqlite3-dev \
-    python3 \
-    python3-pip \
-    python-is-python3 \
-    git \
+RUN apt update && \
+    apt install -y \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    supervisor \
+    libpng-dev \
+    libzip-dev \
     zip \
     unzip \
-    libzip-dev \ 
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \ 
-    libpq-dev \
-    libonig-dev \
-    supervisor \
-    nano
-RUN pip install datetime pytz
+    libsqlite3-dev \
+    nano \
+    curl && \
+    docker-php-ext-configure gd --with-freetype --with-jpeg && \
+    docker-php-ext-install -j$(nproc) gd pdo pdo_sqlite mysqli zip && \
+    apt-get clean
+RUN a2enmod rewrite
 COPY . /var/www/html
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-RUN chmod +x /var/www/html/cleanup.py
 RUN mkdir /var/www/html/db /var/www/html/uploads
 RUN chmod 777 /var/www/html/db /var/www/html/uploads
 WORKDIR /var/www/html
-EXPOSE 8000
+EXPOSE 80
 CMD ["/usr/bin/supervisord", "-n"]
