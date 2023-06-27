@@ -1,5 +1,5 @@
 # Enable the necessary modules
-LoadModule rewrite_module modules/mod_rewrite.so
+# LoadModule rewrite_module modules/mod_rewrite.so
 
 # Set the upload file size limits (uncomment to set custom values when not using the docker image)
 # php_value upload_max_filesize 50M
