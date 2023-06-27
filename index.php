@@ -1,5 +1,6 @@
 <?php
 require_once 'config.php';
+require_once 'cleanup.php';
 ?>
 <!DOCTYPE html>
 <html lang="eng">

@@ -1,7 +1,9 @@
 <?php
 require_once 'path.php';
 date_default_timezone_set('UTC');
+define('DB_FILE', DEFAULT_PATH . '/db/database.db');
 ini_set('error_log', 'cleanup.log');
+
 
 function delete_entries()
 {
