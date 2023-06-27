@@ -3,6 +3,7 @@ LABEL org.opencontainers.image.source=https://github.com/Toomas633/FileShare
 LABEL org.opencontainers.image.description="File share website"
 LABEL org.opencontainers.image.licenses=GPL-3.0
 LABEL org.opencontainers.image.authors=Toomas633
+ENV MAX_FILESIZE 100M
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo 'Europe/London' > /etc/timezone
 VOLUME /var/www/html/uploads/
 VOLUME /var/www/html/db/
@@ -22,12 +23,11 @@ RUN apt update && \
     docker-php-ext-install -j$(nproc) gd pdo pdo_sqlite mysqli zip && \
     apt autoremove && \
     apt autoclean
-RUN a2enmod rewrite
 COPY . /var/www/html
 RUN mkdir /var/www/html/db /var/www/html/uploads
+RUN php /var/www/html/createDB.php
 RUN chown -R www-data:www-data /var/www/html
 RUN chmod 755 -R /var/www/html
-RUN php /var/www/html/createDB.php
 RUN chmod 644 /var/www/html/db/database.db
 EXPOSE 80
-CMD ["apache2-foreground"]
+CMD ["php", "-c","FileShare_Docker.ini", "-S", "0.0.0.0:80"]

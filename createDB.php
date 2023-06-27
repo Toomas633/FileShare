@@ -5,9 +5,17 @@ define('DB_FILE', DIR_PATH . 'db/database.db');
 ini_set('error_log', DIR_PATH . 'FileShare.log');
 error_reporting(E_ALL & ~E_WARNING & ~E_DEPRECATED & ~E_NOTICE);
 
+if (!file_exists(DIR_PATH . 'uploads/')) {
+    mkdir(DIR_PATH . 'uploads/', 0777, true);
+}
+
+if (!file_exists(DIR_PATH . 'db/')) {
+    mkdir(DIR_PATH . 'db/', 0777, true);
+}
+
 try {
     $db = new PDO('sqlite:' . DB_FILE);
-    $query = $db->prepare('CREATE TABLE IF NOT EXISTS files (id INTEGER PRIMARY KEY, name TEXT, uploadTime INT, deleteTime INT)');
+    $query = $db->prepare('CREATE TABLE IF NOT EXISTS files (name TEXT, uploadTime INT, deleteTime INT)');
     $query->execute();
     $db = $query = null;
 } catch (PDOException $e) {
@@ -16,7 +24,7 @@ try {
 
 try {
     $db = new PDO('sqlite:' . DB_FILE);
-    $query = $db->prepare('CREATE TABLE IF NOT EXISTS settings (id INTEGER PRIMARY KEY, setting TEXT, value TEXT)');
+    $query = $db->prepare('CREATE TABLE IF NOT EXISTS settings (setting TEXT, value TEXT)');
     $query->execute();
     $db = $query = null;
 } catch (PDOException $e) {
