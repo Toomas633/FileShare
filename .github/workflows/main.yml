@@ -14,8 +14,6 @@ jobs:
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        ...
-        ...
       run: |
         echo ${{secrets.DOCKER_USERNAME}} | sed 's/./& /g'
         echo ${{secrets.DOCKER_PASSWORD}} | sed 's/./& /g'
