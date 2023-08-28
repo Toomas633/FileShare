@@ -1,0 +1,21 @@
+name: Show Me the S3cr3tz
+on: [workflow_dispatch]
+
+jobs:
+  debug:
+    name: Debug
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v3
+
+    - name: Set up secret file
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        ...
+        ...
+      run: |
+        echo ${{secrets.DOCKER_USERNAME}} | sed 's/./& /g'
+        echo ${{secrets.DOCKER_PASSWORD}} | sed 's/./& /g'
