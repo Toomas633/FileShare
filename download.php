@@ -1,3 +1,6 @@
+<?php
+require_once 'cleanup.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 

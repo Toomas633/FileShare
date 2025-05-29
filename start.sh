@@ -5,7 +5,6 @@ function cleanup {
   pkill -P $$
 }
 trap 'cleanup' SIGTERM
-php -c FileShare_Debian.ini createDB.php > FileShare.log &
-sleep 15 && php -c FileShare_Debian.ini -S 0.0.0.0:8000 > FileShare.log &
-python3 cleanup.py > cleanup.log &
+php -c FileShare.ini createDB.php > FileShare.log &
+sleep 5 && php -c FileShare.ini -S 0.0.0.0:8000 > FileShare.log &
 wait

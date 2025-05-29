@@ -85,7 +85,7 @@ form.addEventListener("submit", async (e) => {
         deleteDate = Date.now() + deleteTimeSlider.value * 60 * 60 * 1000;
       }
       let fileName = linkEnding.substring(linkEnding.lastIndexOf("=") + 1);
-      if (direct === 1) {
+      if (directToggleSwitch.checked) {
         fileName = linkEnding.substring(linkEnding.lastIndexOf("/") + 1);
       }
       const fileData = {
@@ -128,10 +128,6 @@ form.addEventListener("submit", async (e) => {
           document.getElementById('upload-status').style.display = 'none';
         }, 3000);
       };
-      xhr.setRequestHeader(
-        "Content-type",
-        "application/x-www-form-urlencoded"
-      );
       xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
           console.log(xhr.responseText);

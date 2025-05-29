@@ -1,4 +1,5 @@
 <?php
+require_once '../config.php';
 if (isset($_POST['filename'])) {
     $filename = $_POST['filename'];
     if (file_exists($filename)) {
@@ -13,7 +14,11 @@ if (isset($_POST['filename'])) {
         exit;
     } else {
         echo "ERROR: File not found.";
+        header("HTTP/1.1 200 OK");
+        header("Content-Type: text/plain");
     }
 } else {
     echo "ERROR: Filename not provided.";
+    header("HTTP/1.1 200 OK");
+    header("Content-Type: text/plain");
 }

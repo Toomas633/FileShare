@@ -1,7 +1,9 @@
 <?php
 require_once 'path.php';
-define('DB_FILE', DEFAULT_PATH . '/db/database.db');
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST");
+header("Access-Control-Allow-Headers: Content-Type");
 define('DIR_PATH', DEFAULT_PATH . '/');
+define('DB_FILE', DIR_PATH . 'db/database.db');
+ini_set('error_log', DIR_PATH . 'FileShare.log');
 error_reporting(E_ALL & ~E_WARNING & ~E_DEPRECATED & ~E_NOTICE);
-ini_set('log_errors', 1);
-ini_set('error_log', DEFAULT_PATH . '/FileShare.log');
